@@ -1,0 +1,14 @@
+@layer utilities {
+  @responsive {
+    .skip-to-content {
+      @apply absolute left-1/2 transform -translate-x-1/2 w-px h-px p-0 -m-px overflow-hidden text-xl bg-primary whitespace-nowrap;
+      clip: rect(0, 0, 0, 0);
+
+      &:focus {
+        @apply w-auto h-auto pt-3 pb-1.5 px-4 m-0 visible text-dark;
+        z-index: 999;
+        clip: auto;
+      }
+    }
+  }
+}

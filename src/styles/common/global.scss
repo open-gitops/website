@@ -1,0 +1,28 @@
+@layer base {
+  body {
+    @apply text-base text-white bg-gradient-to-b from-purple to-purple-blue min-h-screen;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    @apply transition-colors ease-linear duration-100 hover:text-primary focus:text-primary;
+  }
+
+  a,
+  button,
+  input {
+    @apply outline-none focus:outline-none focus:ring;
+  }
+
+  /**
+   * Selection
+   */
+  ::-moz-selection {
+    @apply bg-primary text-dark;
+  }
+
+  ::selection {
+    @apply bg-primary text-dark;
+  }
+}
