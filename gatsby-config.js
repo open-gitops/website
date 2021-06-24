@@ -11,29 +11,24 @@ module.exports = {
     },
     menuLinks: [
       {
-        title: "Workflows",
-        url: "/workflows",
-        external: false,
+        title: "About",
+        url: "/about",
       },
       {
-        title: "ArgoCD",
-        url: "/gitops-cd",
-        external: false,
+        title: "Community",
+        url: "/community",
       },
       {
-        title: "Rollouts",
-        url: "/rollouts",
-        external: false,
+        title: "Get Involved",
+        url: "/get-involved",
       },
       {
         title: "Events",
         url: "/events",
-        external: false,
       },
       {
         title: "Blog",
-        url: "https://blog.argoproj.io",
-        external: true,
+        url: "/blog",
       },
     ],
   },
@@ -49,9 +44,24 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        // extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 750,
+              linkImagesToOriginal: false,
+              backgroundColor: "white",
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -63,10 +73,25 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        path: "./content/blog",
+        name: "blog",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "pages",
         path: "./src/pages/",
       },
       __key: "pages",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "members",
+        path: "./src/members/",
+      },
+      __key: "members",
     },
     {
       resolve: "gatsby-plugin-react-svg",

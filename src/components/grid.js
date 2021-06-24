@@ -140,7 +140,7 @@ export function Grid({
   children,
 }) {
   const classes = classNames({
-    "grid gap-2": true,
+    "grid gap-4": true,
     ...colsXs(xs),
     ...colsSm(sm),
     ...colsMd(md),

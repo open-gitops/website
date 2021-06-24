@@ -16,7 +16,6 @@ const Footer = () => {
             menuLinks {
               title
               url
-              external
             }
           }
         }
@@ -27,17 +26,12 @@ const Footer = () => {
   return (
     <footer className="relative pt-10 pb-8">
       <Container className="text-white text-center">
-        <Button to="/" type="primary" label="Get Involved" external />
+        <Button to="/" type="primary" label="Get Involved" />
 
         <nav className="py-8">
           <ul className="px-4 text-sm lg:flex lg:justify-center lg:h-auto lg:space-x-6 lg:space-y-0">
             {site.siteMetadata.menuLinks.map(link => (
-              <NavItem
-                key={link.title}
-                title={link.title}
-                url={link.url}
-                external={link.external}
-              />
+              <NavItem key={link.title} title={link.title} url={link.url} />
             ))}
           </ul>
         </nav>

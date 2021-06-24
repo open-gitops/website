@@ -2,7 +2,8 @@ import * as React from "react"
 import { Link } from "gatsby"
 import classNames from "classnames"
 
-const NavItem = ({ title, url, external, color }) => {
+const NavItem = ({ title, url, color }) => {
+  const regex = new RegExp("^https?://")
   const linkClass = classNames({
     "lg:font-bold": true,
     "text-dark hover:text-primary": color === "light",
@@ -11,14 +12,14 @@ const NavItem = ({ title, url, external, color }) => {
 
   return (
     <li className="border-t border-light py-3 lg:py-0 lg:border-none">
-      {external && (
+      {regex.test(url) && (
         <a href={url} className={linkClass}>
           {" "}
           {title}{" "}
         </a>
       )}
 
-      {!external && (
+      {!regex.test(url) && (
         <Link to={url} className={linkClass} activeClassName="nav-item--active">
           {title}
         </Link>

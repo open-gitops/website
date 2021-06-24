@@ -17,7 +17,6 @@ const Nav = ({ isOpen, color }) => {
             menuLinks {
               title
               url
-              external
             }
           }
         }
@@ -60,7 +59,6 @@ const Nav = ({ isOpen, color }) => {
             key={link.title}
             title={link.title}
             url={link.url}
-            external={link.external}
             color={color}
           />
         ))}
