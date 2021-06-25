@@ -4,7 +4,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Container } from "../components/grid"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import ArticleWrapper from "../components/article-wrapper"
+import ContentWrapper from "../components/content-wrapper"
 import Meta from "../components/meta"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -35,7 +35,7 @@ const BlogPostTemplate = ({ data, location }) => {
         image={shareImage}
         url={currentURL}
       />
-      <Container className="mt-32 max-w-3xl space-y-6">
+      <Container narrow className="mt-32 space-y-6">
         <div className="aspect-w-16 aspect-h-9">
           <GatsbyImage
             image={post.frontmatter.thumbnail.childImageSharp.gatsbyImageData}
@@ -47,20 +47,22 @@ const BlogPostTemplate = ({ data, location }) => {
 
         <Meta author={post.frontmatter.author} date={post.frontmatter.date} />
 
-        <div className="py-12 px-10 bg-white rounded-2xl shadow-xl prose prose-lg">
+        <ContentWrapper>
           <header>
             <h1 itemProp="headline">{post.frontmatter.title}</h1>
           </header>
-          <ArticleWrapper>
+
+          <article itemScope itemType="http://schema.org/Article">
             <MDXRenderer>{post.body}</MDXRenderer>
-          </ArticleWrapper>
-        </div>
+          </article>
+        </ContentWrapper>
 
         <footer>
           <div className="p-8 text-center bg-white rounded-2xl shadow-2xl">
             <h4 className="mb-5 font-bold text-base text-dark uppercase tracking-widest">
               Share
             </h4>
+
             <div className="space-x-4">
               <FacebookShareButton
                 url={currentURL}

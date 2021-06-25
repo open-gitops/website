@@ -1,11 +1,23 @@
 import * as React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Container } from "../components/grid"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import Seo from "../components/seo"
-import ArticleWrapper from "../components/article-wrapper"
+import ContentWrapper from "../components/content-wrapper"
 import PressReleases from "../components/press-releases"
 
 const AboutPage = ({ location }) => {
+  const query = useStaticQuery(
+    graphql`
+      query {
+        mdx(slug: { eq: "about" }) {
+          body
+        }
+      }
+    `
+  )
+
   return (
     <Layout location={location}>
       <Seo
@@ -15,26 +27,14 @@ const AboutPage = ({ location }) => {
         // image={thumbnail}
       />
 
-      <Container className="mt-32 max-w-3xl">
+      <Container narrow className="mt-32">
         <h1 className="mb-12 text-center">
-          About <span className="text-primary">Open GitOps</span>
+          About <span className="text-primary">OpenGitOps</span>
         </h1>
 
-        <ArticleWrapper>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum
-          posuere lorem ipsum dolor sit amet consectetur adipiscing elit.
-          Egestas quis ipsum suspendisse ultrices gravida dictum fusce ut
-          placerat. Egestas diam in arcu cursus euismod quis. Diam sollicitudin
-          tempor id eu nisl nunc. Enim tortor at auctor urna nunc id cursus.
-          Duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat.
-          Non tellus orci ac auctor augue mauris. Augue interdum velit euismod
-          in pellentesque massa placerat. Malesuada fames ac turpis egestas
-          maecenas pharetra convallis posuere. Vitae congue mauris rhoncus
-          aenean vel. Quis ipsum suspendisse ultrices gravida dictum fusce ut.
-          Nunc congue nisi vitae suscipit tellus. Nisl nisi scelerisque eu
-          ultrices.
-        </ArticleWrapper>
+        <ContentWrapper>
+          <MDXRenderer>{query.mdx.body}</MDXRenderer>
+        </ContentWrapper>
 
         <PressReleases className="my-12" />
       </Container>

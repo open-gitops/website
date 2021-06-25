@@ -14,7 +14,7 @@ const AboutPage = ({ location }) => {
         // image={thumbnail}
       />
 
-      <Container className="mt-32 max-w-3xl">
+      <Container narrow className="mt-32">
         <h1 className="mb-12 text-center">Community</h1>
 
         <PressReleases className="my-12" />

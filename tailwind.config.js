@@ -1,7 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
-  // mode: "jit",
+  mode: "jit",
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -53,7 +53,8 @@ module.exports = {
         sans: ["Nunito", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
-        base: ["1.0625rem", "1.5"],
+        base: ["1.0625rem", "1.5rem"],
+        "3xl": ["1.875rem", "2.5rem"],
       },
       zIndex: {
         "-1": "-1",
@@ -73,6 +74,9 @@ module.exports = {
       },
       maxWidth: {
         "9/12": "75%",
+      },
+      borderRadius: {
+        circle: "100%",
       },
     },
   },

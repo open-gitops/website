@@ -5,6 +5,7 @@ import Title from "./title"
 import LogoIcon from "../svg/icon.svg"
 import Button from "../components/button"
 import NavItem from "../components/nav-item"
+import GwgIcon from "../svg/gitops-working-group-icon.svg"
 
 const Footer = () => {
   const date = new Date()
@@ -26,7 +27,7 @@ const Footer = () => {
   return (
     <footer className="relative pt-10 pb-8">
       <Container className="text-white text-center">
-        <Button to="/" type="primary" label="Get Involved" />
+        <Button to="/get-involved" type="primary" label="Get Involved" />
 
         <nav className="py-8">
           <ul className="px-4 text-sm lg:flex lg:justify-center lg:h-auto lg:space-x-6 lg:space-y-0">
@@ -37,8 +38,17 @@ const Footer = () => {
         </nav>
 
         <LogoIcon className="mx-auto" />
-        <small className="mt-4 max-w-3xl mx-auto block text-center">
-          {date.getFullYear()} &copy; <Title />
+
+        <small className="mt-4 max-w-3xl mx-auto px-8 block text-center">
+          {date.getFullYear()} &copy; <Title />. Overseen by the{" "}
+          <a
+            href="https://github.com/gitops-working-group/gitops-working-group"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline">
+            GitOps Working Group{" "}
+            <GwgIcon className="inline-block w-auto h-4 ml-1" />
+          </a>
         </small>
       </Container>
     </footer>

@@ -119,11 +119,13 @@ const itemsY = y => {
   }
 }
 
-export function Container({ className, children }) {
+export function Container({ className, narrow, children }) {
   const classes = classNames({
     container: true,
+    "max-w-4xl": narrow,
     [className]: className,
   })
+
   return <div className={classes}>{children}</div>
 }
 

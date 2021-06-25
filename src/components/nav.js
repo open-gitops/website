@@ -7,6 +7,7 @@ import {
   clearAllBodyScrollLocks,
 } from "body-scroll-lock"
 import NavItem from "./nav-item"
+import Stargazers from "./stargazers"
 
 const Nav = ({ isOpen, color }) => {
   const { site } = useStaticQuery(
@@ -14,6 +15,7 @@ const Nav = ({ isOpen, color }) => {
       query {
         site {
           siteMetadata {
+            repo
             menuLinks {
               title
               url
@@ -47,7 +49,7 @@ const Nav = ({ isOpen, color }) => {
 
   const navClass = classNames({
     "absolute z-998 -right-full top-0 w-4/6 h-screen pt-14 bg-white overflow-y-scroll transition-right duration-300 in-expo shadow-2xl": true,
-    "lg:items-center lg:ml-auto lg:flex lg:space-x-8 lg:relative lg:right-auto lg:top-auto lg:w-auto lg:h-auto lg:pt-0 lg:bg-none lg:bg-transparent lg:overflow-y-visible lg:shadow-none": true,
+    "lg:items-center lg:ml-auto lg:flex lg:space-x-6 lg:relative lg:right-auto lg:top-auto lg:w-auto lg:h-auto lg:pt-0 lg:bg-none lg:bg-transparent lg:overflow-y-visible lg:shadow-none": true,
     "nav--active": isOpen,
   })
 
@@ -63,6 +65,8 @@ const Nav = ({ isOpen, color }) => {
           />
         ))}
       </ul>
+
+      <Stargazers repo={site.siteMetadata.repo} />
     </nav>
   )
 }

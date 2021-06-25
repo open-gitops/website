@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: "Open GitOps",
+    title: "OpenGitOps",
     description:
-      "Open GitOps is a set of open-source standards, best practices, and community-focused education to help organizations adopt a structured, standardized approach to implementing GitOps.",
-    siteUrl: "https://argoproj.github.io",
+      "OpenGitOps is a set of open-source standards, best practices, and community-focused education to help organizations adopt a structured, standardized approach to implementing GitOps.",
+    siteUrl: "https://github.com/gitops-working-group/gitops-working-group",
+    repo: "gitops-working-group/gitops-working-group",
     social: {
       twitter: "",
       github: "https://github.com/argoproj",
@@ -44,12 +45,17 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -100,
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-plugin-mdx",
       options: {
-        // extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [
           {
             resolve: "gatsby-remark-images",
@@ -59,6 +65,7 @@ module.exports = {
               backgroundColor: "white",
             },
           },
+          `gatsby-remark-prismjs`,
         ],
       },
     },
@@ -73,9 +80,42 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: "./content/blog",
         name: "blog",
+        path: "./content/blog",
       },
+      __key: "blog",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "principles",
+        path: "./content/principles",
+      },
+      __key: "principles",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "events",
+        path: "./content/events",
+      },
+      __key: "events",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "testimonials",
+        path: "./content/testimonials",
+      },
+      __key: "testimonials",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: "./content/pages",
+      },
+      __key: "pages",
     },
     {
       resolve: "gatsby-source-filesystem",

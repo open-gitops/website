@@ -6,11 +6,7 @@ const Button = ({ label, type, to, className }) => {
   const regex = new RegExp("^https?://")
 
   const btnClasses = classNames({
-    "btn px-7 py-3 cursor-pointer inline-block font-extrabold text-center text-xl border-transparent border-solid rounded-full appearance-none transition-all ease-linear": true,
-    "bg-primary border border-primary text-dark hover:bg-primary hover:border-primary hover:text-white hover:shadow-primary":
-      type === "primary",
-    "bg-primary border border-primary text-primary bg-opacity-20 border-opacity-20 hover:bg-primary hover:border-primary hover:text-white":
-      type === "secondary",
+    btn: true,
     [className]: className,
   })
 
@@ -18,13 +14,29 @@ const Button = ({ label, type, to, className }) => {
     <React.Fragment>
       {regex.test(to) && (
         <a href={to} className={btnClasses}>
-          {label}
+          <div className="btn--bottom"></div>
+
+          <div className="btn--top">
+            <div className="btn--label">{label}</div>
+            <div className="btn--border btn--border-left"></div>
+            <div className="btn--border btn--border-top"></div>
+            <div className="btn--border btn--border-right"></div>
+            <div className="btn--border btn--border-bottom"></div>
+          </div>
         </a>
       )}
 
       {!regex.test(to) && (
         <Link to={to} className={btnClasses}>
-          {label}
+          <div className="btn--bottom"></div>
+
+          <div className="btn--top">
+            <div className="btn--label">{label}</div>
+            <div className="btn--border btn--border-left"></div>
+            <div className="btn--border btn--border-top"></div>
+            <div className="btn--border btn--border-right"></div>
+            <div className="btn--border btn--border-bottom"></div>
+          </div>
         </Link>
       )}
     </React.Fragment>

@@ -1,4 +1,9 @@
 @layer base {
+  html,
+  body {
+    @apply overflow-x-hidden;
+  }
+
   body {
     @apply text-base text-white bg-gradient-to-b from-purple to-purple-blue min-h-screen;
     -webkit-font-smoothing: antialiased;

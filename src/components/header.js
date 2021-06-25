@@ -16,14 +16,14 @@ const Header = ({ color }) => {
   })
 
   const logoClass = classNames({
-    "h-8 w-auto lg:h-10": true,
+    "h-8 w-auto lg:h-12": true,
     "text-dark": color === "light",
     "text-light": color !== "light",
   })
 
   return (
     <header className={headerClass}>
-      <div className="px-4 flex items-center">
+      <div className="px-4 flex items-center lg:px-12">
         <Link to="/">
           <span className="sr-only">
             <Title />
