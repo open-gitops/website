@@ -1,13 +1,13 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import classNames from "classnames"
+import NavItem from "./ui/nav-item"
+import Stargazers from "./ui/stargazers"
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock"
-import NavItem from "./nav-item"
-import Stargazers from "./stargazers"
 
 const Nav = ({ isOpen, color }) => {
   const { site } = useStaticQuery(
@@ -49,8 +49,8 @@ const Nav = ({ isOpen, color }) => {
 
   const navClass = classNames({
     "absolute z-998 -right-full top-0 w-4/6 h-screen pt-14 bg-white overflow-y-scroll transition-right duration-300 in-expo shadow-2xl": true,
-    "lg:items-center lg:ml-auto lg:flex lg:space-x-6 lg:relative lg:right-auto lg:top-auto lg:w-auto lg:h-auto lg:pt-0 lg:bg-none lg:bg-transparent lg:overflow-y-visible lg:shadow-none": true,
-    "nav--active": isOpen,
+    "lg:items-center lg:ml-auto lg:flex lg:relative lg:right-auto lg:top-auto lg:w-auto lg:h-auto lg:pt-0 lg:bg-none lg:bg-transparent lg:overflow-y-visible lg:shadow-none": true,
+    "!right-0": isOpen,
   })
 
   return (
@@ -66,7 +66,9 @@ const Nav = ({ isOpen, color }) => {
         ))}
       </ul>
 
-      <Stargazers repo={site.siteMetadata.repo} />
+      <div className="mt-4 ml-4 lg:ml-2 lg:mt-0 lg:w-32 lg:text-right">
+        <Stargazers repo={site.siteMetadata.repo} />
+      </div>
     </nav>
   )
 }

@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import PrinciplesItem from "./principles-item"
+import PrinciplesItem from "./ui/principles-item"
 
 const Priciples = () => {
   const query = useStaticQuery(

@@ -1,10 +1,10 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
-import { Container, Grid } from "../components/grid"
-import Seo from "../components/seo"
-import CardPost from "../components/card-post"
 import BeatLoader from "react-spinners/BeatLoader"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import { Container, Grid } from "../components/ui/grid"
+import CardPost from "../components/ui/card-post"
 
 const BlogPage = ({ location, perLoad }) => {
   const query = useStaticQuery(

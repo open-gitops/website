@@ -1,11 +1,11 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
-import { Container } from "../components/grid"
 import Seo from "../components/seo"
 import PressReleases from "../components/press-releases"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import ContentWrapper from "../components/content-wrapper"
+import { Container } from "../components/ui/grid"
+import ContentWrapper from "../components/ui/content-wrapper"
 
 const GetInvolvedPage = ({ location }) => {
   const query = useStaticQuery(

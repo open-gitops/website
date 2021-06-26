@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme")
+const typographyContent = require("./src/plugins/tailwindcss/typography-content")
 
 module.exports = {
   mode: "jit",
@@ -6,6 +7,11 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      ...typographyContent,
+      container: {
+        center: true,
+        padding: "1rem",
+      },
       colors: {
         primary: "#fff95e",
         secondary: "#3f18f5",
@@ -14,52 +20,34 @@ module.exports = {
         gray: "#777ea1",
         purple: "#8453ff",
         "purple-blue": "#5141d8",
-        white: "#fff",
-        black: "#000",
-        red: "#e12e40",
-        transparent: {
-          DEFAULT: "rgba(255, 255, 255, 0)",
-        },
-      },
-      typography: theme => ({
-        DEFAULT: {
-          css: {
-            color: theme("colors.dark"),
-            a: null,
-            "a:not(.btn, .stargazers)": {
-              color: theme("colors.primary"),
-              textDecoration: "underline",
-            },
-            "h1, h2, h3, h4, h5, h6": {
-              fontWeight: theme("fontWeight.extrabold"),
-              color: theme("colors.dark"),
-            },
-            ul: {
-              "> li::before": {
-                backgroundColor: theme("colors.primary"),
-              },
-            },
-            img: {
-              borderRadius: theme("borderRadius.lg"),
-            },
-          },
-        },
-      }),
-      container: {
-        center: true,
-        padding: "1rem",
+        transparent: "rgba(255, 255, 255, 0)",
       },
       fontFamily: {
         sans: ["Nunito", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
+        xs: [".75rem", "1rem"],
+        sm: [".875rem", "1.25rem"],
         base: ["1.0625rem", "1.5rem"],
+        lg: ["1.125rem", "1.75rem"],
+        xl: ["1.25rem", "1.75rem"],
+        "2xl": ["1.5rem", "2rem"],
         "3xl": ["1.875rem", "2.5rem"],
+        "4xl": ["2.25rem", "2.5rem"],
+        "5xl": ["3rem", "1"],
+        "6xl": ["4rem", "1"],
+        "7xl": ["5rem", "1"],
+        "8xl": ["5.5rem", "1"],
       },
       zIndex: {
         "-1": "-1",
-        800: "800",
         999: "999",
+      },
+      borderRadius: {
+        circle: "100%",
+      },
+      boxShadow: {
+        xl: "12px 0 34px -5px rgba(63, 24, 245, 0.55)",
       },
       transitionProperty: {
         left: "left",
@@ -69,15 +57,6 @@ module.exports = {
         "in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
         "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
       },
-      boxShadow: {
-        xl: "12px 0 34px -5px rgba(63, 24, 245, 0.55)",
-      },
-      maxWidth: {
-        "9/12": "75%",
-      },
-      borderRadius: {
-        circle: "100%",
-      },
     },
   },
   variants: {
@@ -86,5 +65,11 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
+    require("./src/plugins/tailwindcss/typography-theme"),
+    require("./src/plugins/tailwindcss/global"),
+    require("./src/plugins/tailwindcss/utilities"),
+    require("./src/plugins/tailwindcss/components/buttons"),
+    require("./src/plugins/tailwindcss/components/toggler"),
+    require("./src/plugins/tailwindcss/components/border-decor"),
   ],
 }

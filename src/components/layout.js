@@ -1,6 +1,7 @@
 import * as React from "react"
 import Header from "./header"
 import Footer from "./footer"
+import SkipToContent from "./ui/skip-to-content"
 
 const Layout = ({
   location,
@@ -15,9 +16,7 @@ const Layout = ({
 
   return (
     <div data-is-root-path={isRootPath}>
-      <a className="skip-to-content" href="#main">
-        Skip to content
-      </a>
+      <SkipToContent />
 
       {!hideHeader && <Header color={headerColor} />}
 

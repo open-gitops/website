@@ -1,10 +1,10 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Container } from "./grid"
-import Title from "./title"
+import { Container } from "./ui/grid"
+import Title from "./ui/title"
+import Button from "./ui/button"
+import NavItem from "./ui/nav-item"
 import LogoIcon from "../svg/icon.svg"
-import Button from "../components/button"
-import NavItem from "../components/nav-item"
 import GwgIcon from "../svg/gitops-working-group-icon.svg"
 
 const Footer = () => {
@@ -27,7 +27,7 @@ const Footer = () => {
   return (
     <footer className="relative pt-10 pb-8">
       <Container className="text-white text-center">
-        <Button to="/get-involved" type="primary" label="Get Involved" />
+        <Button to="/get-involved" label="Get Involved" />
 
         <nav className="py-8">
           <ul className="px-4 text-sm lg:flex lg:justify-center lg:h-auto lg:space-x-6 lg:space-y-0">

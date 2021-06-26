@@ -1,21 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  // Create slug field for MDX files.
-  if (node.internal.type === "Mdx") {
-    const value = createFilePath({ node, getNode })
-
-    createNodeField({
-      name: "slug",
-      node, // Individual MDX node.
-      value: value, // createFilePath returns a path with the leading "/".
-    })
-  }
-}
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
@@ -75,13 +60,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  // Create slug field for MDX files.
+  if (node.internal.type === "Mdx") {
     const value = createFilePath({ node, getNode })
 
     createNodeField({
-      name: `slug`,
-      node,
-      value,
+      name: "slug",
+      node, // Individual MDX node.
+      value, // createFilePath returns a path with the leading "/".
     })
   }
 }

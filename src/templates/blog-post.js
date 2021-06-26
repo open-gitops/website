@@ -1,12 +1,12 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Container } from "../components/grid"
+import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import ContentWrapper from "../components/content-wrapper"
-import Meta from "../components/meta"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { Container } from "../components/ui/grid"
+import ContentWrapper from "../components/ui/content-wrapper"
+import Meta from "../components/ui/meta"
 
 // Share buttons
 import {

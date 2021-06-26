@@ -1,5 +1,5 @@
 import * as React from "react"
-import ExternalLink from "./external-link"
+import ExternalLink from "./ui/external-link"
 
 const PressReleases = ({ className }) => {
   return (

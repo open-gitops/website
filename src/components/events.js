@@ -1,9 +1,9 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Grid } from "./grid"
-import CardEvent from "./card-event"
-import CardEventAlt from "./card-event-alt"
-import Button from "../components/button"
+import { Grid } from "./ui/grid"
+import CardEvent from "./ui/card-event"
+import CardEventAlt from "./ui/card-event-alt"
+import Button from "./ui/button"
 
 const Events = ({ upcomingLimit, pastLimit }) => {
   const date = new Date()

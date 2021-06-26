@@ -4,11 +4,5 @@
 // @include fontFace("Nunito", "../../static/fonts/nunito-400", 400);
 
 @import "tailwindcss/base";
-
-@import "common/global";
-@import "common/typograph";
-
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
-@import "common/custom-utilities";

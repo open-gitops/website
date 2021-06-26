@@ -1,15 +1,15 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import { Container } from "../components/grid"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
-import Button from "../components/button"
+import Seo from "../components/seo"
 import FeaturedMembers from "../components/featured-members"
 import Events from "../components/events"
-import LogoIcon from "../svg/icon.svg"
-import BgElement from "../components/bgElement"
 import Priciples from "../components/priciples"
 import Testimonials from "../components/testimonials"
+import { Container } from "../components/ui/grid"
+import Button from "../components/ui/button"
+import BgElement from "../components/ui/bgElement"
+import LogoIcon from "../svg/icon.svg"
 
 const IndexPage = ({ location }) => {
   return (

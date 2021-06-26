@@ -112,6 +112,14 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        name: "members",
+        path: "./content/members/",
+      },
+      __key: "members",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "pages",
         path: "./content/pages",
       },
@@ -124,14 +132,6 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "members",
-        path: "./src/members/",
-      },
-      __key: "members",
     },
     {
       resolve: "gatsby-plugin-react-svg",

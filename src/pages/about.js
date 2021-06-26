@@ -1,11 +1,11 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Layout from "../components/layout"
-import { Container } from "../components/grid"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Layout from "../components/layout"
 import Seo from "../components/seo"
-import ContentWrapper from "../components/content-wrapper"
 import PressReleases from "../components/press-releases"
+import { Container } from "../components/ui/grid"
+import ContentWrapper from "../components/ui/content-wrapper"
 
 const AboutPage = ({ location }) => {
   const query = useStaticQuery(

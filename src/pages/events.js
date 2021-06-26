@@ -1,8 +1,8 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { Container } from "../components/grid"
 import Seo from "../components/seo"
 import Events from "../components/events"
+import { Container } from "../components/ui/grid"
 
 const EventsPage = ({ location }) => {
   return (

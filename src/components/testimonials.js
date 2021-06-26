@@ -1,8 +1,8 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import CardTestimonial from "../components/card-testimonial"
-import { Grid } from "../components/grid"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { Grid } from "./ui/grid"
+import CardTestimonial from "../components/ui/card-testimonial"
 
 const Testimonials = () => {
   const query = useStaticQuery(
