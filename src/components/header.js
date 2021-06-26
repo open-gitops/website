@@ -4,7 +4,8 @@ import classNames from "classnames"
 import Title from "./ui/title"
 import Nav from "./nav"
 import NavToggler from "./ui/nav-toggler"
-import Logo from "../svg/logo.svg"
+import LogoIcon from "../svg/icon.svg"
+import LogoType from "../svg/logotype.svg"
 
 const Header = ({ color }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
@@ -14,22 +15,20 @@ const Header = ({ color }) => {
     "bg-light bg-opacity-50": color === "light",
     "bg-grad-from bg-opacity-90": color !== "light",
   })
-
-  const logoClass = classNames({
-    "h-8 w-auto lg:h-12": true,
-    "text-dark": color === "light",
-    "text-light": color !== "light",
-  })
-
   return (
     <header className={headerClass}>
-      <div className="px-4 flex items-center lg:px-12">
+      <div className="px-4 flex items-center 2xl:px-12">
         <Link to="/">
           <span className="sr-only">
             <Title />
           </span>
 
-          <Logo className={logoClass} />
+          <div className="flex items-center">
+            <LogoIcon className="h-10 w-auto text-dark lg:h-14" />
+            <span>
+              <LogoType className="ml-2 w-auto h-6 opacity-0 transition-opacity lg:opacity-100" />
+            </span>
+          </div>
         </Link>
 
         <Nav isOpen={isNavOpen} color={color} />

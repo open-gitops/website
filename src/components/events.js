@@ -4,6 +4,7 @@ import { Grid } from "./ui/grid"
 import CardEvent from "./ui/card-event"
 import CardEventAlt from "./ui/card-event-alt"
 import Button from "./ui/button"
+import Map from "../svg/map.svg"
 
 const Events = ({ upcomingLimit, pastLimit }) => {
   const date = new Date()
@@ -43,7 +44,9 @@ const Events = ({ upcomingLimit, pastLimit }) => {
 
   return (
     <React.Fragment>
-      <section className="py-32">
+      <section className="relative pt-32 pb-20 md:pb-32">
+        <Map className="absolute -z-1 top-12 -right-1/2 h-auto w-[140%] sm:w-[120%] text-dark opacity-10" />
+
         <h2>
           Upcomings <span className="text-primary">Events</span>
         </h2>
@@ -71,7 +74,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
         )}
       </section>
 
-      <section className="pb-20">
+      <section>
         <h2 className="text-3xl">
           Past <span className="text-primary">Events</span>
         </h2>

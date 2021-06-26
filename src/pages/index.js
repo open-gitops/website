@@ -21,7 +21,7 @@ const IndexPage = ({ location }) => {
         // image={thumbnail}
       />
 
-      <Container className="pt-40">
+      <Container className="pt-24 md:pt-40">
         <section className="flex flex-wrap">
           <div className="w-full lg:w-1/2">
             <h1 className="mb-6">
@@ -62,31 +62,31 @@ const IndexPage = ({ location }) => {
           </div>
 
           <div className="w-full lg:w-1/2">
-            <div className="relative flex justify-center items-center h-full">
-              <div className="absolute -z-1 left-12 my-auto h-[54rem] w-[54rem] rounded-circle bg-gradient-to-t from-transparent to-secondary opacity-20"></div>
-              <LogoIcon className="w-3/5 h-auto m-auto" />
+            <div className="relative flex justify-center items-center mt-10 h-full md:mt-16 lg:mt-0">
+              <div className="absolute -z-1 left-12 my-auto h-[54rem] w-[54rem] rounded-circle bg-gradient-to-t from-transparent to-purple opacity-20"></div>
+              <LogoIcon className="w-4/6 h-auto m-auto text-white xl:w-3/5" />
             </div>
           </div>
         </section>
 
-        <section className="py-32">
+        <section className="pt-24 md:pt-32">
           <Testimonials />
         </section>
 
-        <section className="py-32">
-          <h2>
+        <section className="pt-24 md:pt-32">
+          <h2 className="text-center md:text-left">
             Member <span className="text-primary">Companies</span>
           </h2>
 
           <FeaturedMembers />
         </section>
 
-        <section id="priciples" className="relative">
+        <section id="priciples" className="relative pt-24 md:pt-32">
           <BgElement className="-top-32" />
 
           <div className="flex flex-wrap">
             <div className="w-full lg:w-2/5">
-              <h2 className="pr-64 md:text-7xl lg:sticky lg:top-20 lg:mb-0">
+              <h2 className="mb-12 pr-64 text-6xl md:text-7xl lg:sticky lg:top-20 lg:mb-0">
                 <span className="text-primary">GitOps</span>{" "}
                 <span className="font-normal">Priciples</span>
               </h2>

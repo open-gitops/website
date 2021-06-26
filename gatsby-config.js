@@ -6,9 +6,11 @@ module.exports = {
     siteUrl: "https://github.com/gitops-working-group/gitops-working-group",
     repo: "gitops-working-group/gitops-working-group",
     social: {
-      twitter: "",
       github: "https://github.com/argoproj",
       slack: "https://argoproj.github.io/community/join-slack",
+      twitter: "https://twitter.com",
+      reddit: "https://reddit.com",
+      facebook: "https://facebook.com",
     },
     menuLinks: [
       {

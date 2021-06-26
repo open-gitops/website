@@ -36,7 +36,7 @@ const AboutPage = ({ location }) => {
           <MDXRenderer>{query.mdx.body}</MDXRenderer>
         </ContentWrapper>
 
-        <PressReleases className="my-12" />
+        <PressReleases className="mt-20" />
       </Container>
     </Layout>
   )

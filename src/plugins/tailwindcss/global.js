@@ -7,10 +7,10 @@ const globalStyles = plugin(function ({ addBase, theme }) {
     },
 
     body: {
-      color: theme("colors.white"),
-      backgroundImage: `linear-gradient(to bottom, ${theme(
+      color: theme("colors.dark"),
+      backgroundImage: `linear-gradient(36deg, ${theme(
         "colors.purple"
-      )}, ${theme("colors.purple-blue")})`,
+      )}, ${theme("colors.purple")}, #aac9ff)`,
       "-webkit-font-smoothing": "antialiased",
       "-moz-osx-font-smoothing": "grayscale",
     },

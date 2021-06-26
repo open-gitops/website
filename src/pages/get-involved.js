@@ -3,9 +3,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import PressReleases from "../components/press-releases"
 import { Container } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
+import Social from "../components/ui/social"
 
 const GetInvolvedPage = ({ location }) => {
   const query = useStaticQuery(
@@ -32,11 +32,11 @@ const GetInvolvedPage = ({ location }) => {
           Get <span className="text-primary">Involved</span>
         </h1>
 
+        <Social className="my-12" />
+
         <ContentWrapper>
           <MDXRenderer>{query.mdx.body}</MDXRenderer>
         </ContentWrapper>
-
-        <PressReleases className="my-12" />
       </Container>
     </Layout>
   )

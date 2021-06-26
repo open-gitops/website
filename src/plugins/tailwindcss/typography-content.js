@@ -6,7 +6,7 @@ const typographyContent = {
         color: theme("colors.dark"),
 
         "a:not(.btn, .stargazers)": {
-          color: theme("colors.primary"),
+          color: theme("colors.purple"),
           textDecoration: "underline",
         },
 

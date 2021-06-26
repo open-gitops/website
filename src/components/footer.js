@@ -4,6 +4,7 @@ import { Container } from "./ui/grid"
 import Title from "./ui/title"
 import Button from "./ui/button"
 import NavItem from "./ui/nav-item"
+import Social from "./ui/social"
 import LogoIcon from "../svg/icon.svg"
 import GwgIcon from "../svg/gitops-working-group-icon.svg"
 
@@ -25,19 +26,21 @@ const Footer = () => {
   )
 
   return (
-    <footer className="relative pt-10 pb-8">
+    <footer className="relative pt-20 pb-8">
       <Container className="text-white text-center">
-        <Button to="/get-involved" label="Get Involved" />
+        <Button to="/get-involved" label="Get Involved" className="mb-12" />
 
-        <nav className="py-8">
+        <LogoIcon className="mx-auto" />
+
+        <Social className="mt-5" />
+
+        <nav className="pt-9">
           <ul className="px-4 text-sm lg:flex lg:justify-center lg:h-auto lg:space-x-6 lg:space-y-0">
             {site.siteMetadata.menuLinks.map(link => (
               <NavItem key={link.title} title={link.title} url={link.url} />
             ))}
           </ul>
         </nav>
-
-        <LogoIcon className="mx-auto" />
 
         <small className="mt-4 max-w-3xl mx-auto px-8 block text-center">
           {date.getFullYear()} &copy; <Title />. Overseen by the{" "}

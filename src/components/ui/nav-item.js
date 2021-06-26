@@ -3,12 +3,10 @@ import { Link } from "gatsby"
 import classNames from "classnames"
 import { linkRegex } from "../../helpers"
 
-const NavItem = ({ title, url, color }) => {
+const NavItem = ({ title, url }) => {
   const regex = linkRegex()
   const linkClass = classNames({
-    "lg:font-bold": true,
-    "text-dark hover:text-primary": color === "light",
-    "text-dark lg:text-white hover:text-primary": color !== "light",
+    "lg:font-bold text-dark hover:text-primary": true,
   })
 
   return (
