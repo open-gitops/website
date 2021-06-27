@@ -26,18 +26,26 @@ const Footer = () => {
   )
 
   return (
-    <footer className="relative pt-20 pb-8">
-      <Container className="text-white text-center">
+    <footer className="relative pt-20 pb-8 text-night">
+      <Container className="text-center">
         <Button to="/get-involved" label="Get Involved" className="mb-12" />
 
         <LogoIcon className="mx-auto" />
 
-        <Social className="mt-5" />
+        <div className="mt-5 max-w-2xl mx-auto">
+          <Social size="sm" />
+        </div>
 
         <nav className="pt-9">
           <ul className="px-4 text-sm lg:flex lg:justify-center lg:h-auto lg:space-x-6 lg:space-y-0">
             {site.siteMetadata.menuLinks.map(link => (
-              <NavItem key={link.title} title={link.title} url={link.url} />
+              <NavItem
+                key={link.title}
+                title={link.title}
+                url={link.url}
+                border="dark"
+                color="night"
+              />
             ))}
           </ul>
         </nav>

@@ -27,7 +27,7 @@ const Stargazers = ({ repo, className }) => {
   }, [setStars, repo])
 
   const classes = classNames({
-    "stargazers px-3 py-1 inline-block border-2 border-secondary/50 bg-secondary/40 rounded-lg hover:bg-secondary hover:border-primary": true,
+    "stargazers px-3 py-1 inline-block border-2 border-light bg-white rounded-lg hover:bg-night hover:border-accent hover:stroke-current": true,
     [className]: className,
   })
 
@@ -41,14 +41,13 @@ const Stargazers = ({ repo, className }) => {
         <a
           href={url}
           aria-label="github"
-          target="_blank"
           rel="noopener noreferrer"
           title="Follow us on GitHub"
           className={classes}>
           <div className={innerClass}>
             <GithubIcon className="mr-2.5 h-auto w-5" />
-            <StarIcon className="mr-2 h-auto w-4 text-primary" />
-            <span className="pt-0.5">{stars}</span>
+            <StarIcon className="mr-2 h-auto w-4 text-accent" />
+            <span>{stars}</span>
           </div>
         </a>
       )}

@@ -6,11 +6,11 @@ module.exports = {
     siteUrl: "https://github.com/gitops-working-group/gitops-working-group",
     repo: "gitops-working-group/gitops-working-group",
     social: {
-      github: "https://github.com/argoproj",
-      slack: "https://argoproj.github.io/community/join-slack",
-      twitter: "https://twitter.com",
-      reddit: "https://reddit.com",
-      facebook: "https://facebook.com",
+      github: "https://github.com/open-gitops",
+      slack: "https://slack.cncf.io",
+      twitter: "https://twitter.com/open-gitops",
+      reddit: "https://reddit.com/open-gitops",
+      facebook: "https://facebook.com/open-gitops",
     },
     menuLinks: [
       {
@@ -50,7 +50,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-anchor-links",
       options: {
-        offset: -100,
+        offset: -50,
       },
     },
     "gatsby-plugin-sharp",
@@ -118,6 +118,14 @@ module.exports = {
         path: "./content/members/",
       },
       __key: "members",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "press-releases",
+        path: "./content/press-releases/",
+      },
+      __key: "press-releases",
     },
     {
       resolve: "gatsby-source-filesystem",

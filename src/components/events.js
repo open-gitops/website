@@ -45,10 +45,10 @@ const Events = ({ upcomingLimit, pastLimit }) => {
   return (
     <React.Fragment>
       <section className="relative pt-32 pb-20 md:pb-32">
-        <Map className="absolute -z-1 top-12 -right-1/2 h-auto w-[140%] sm:w-[120%] text-dark opacity-10" />
+        <Map className="absolute -z-1 top-12 -right-1/2 h-auto w-[140%] sm:w-[120%] text-[#4d8dff]" />
 
         <h2>
-          Upcomings <span className="text-primary">Events</span>
+          Upcomings <span className="text-accent">Events</span>
         </h2>
         <p>Today, {date.toDateString()}</p>
 
@@ -76,10 +76,10 @@ const Events = ({ upcomingLimit, pastLimit }) => {
 
       <section>
         <h2 className="text-3xl">
-          Past <span className="text-primary">Events</span>
+          Past <span className="text-accent">Events</span>
         </h2>
 
-        <Grid md={2} xl={3} className="py-6">
+        <Grid md={2} xl={3} className="pt-4 pb-6">
           {pastEvents.map(
             (item, index) =>
               index < pastLimit && (

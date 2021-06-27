@@ -4,6 +4,7 @@ const typographyTheme = plugin(function ({ addBase, theme }) {
   const typography = {
     "h1, h2, h3, h4, h5, h6": {
       marginBottom: theme("margin.4"),
+      fontFamily: theme("fontFamily.display"),
       fontWeight: theme("fontWeight.extrabold"),
     },
 

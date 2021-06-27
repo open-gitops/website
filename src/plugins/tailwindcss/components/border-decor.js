@@ -17,15 +17,9 @@ const borderDecor = plugin(function ({ addComponents, theme }) {
       },
     },
 
-    ".decor-primary": {
+    ".decor-accent": {
       "&::before": {
-        backgroundColor: theme("colors.primary"),
-      },
-    },
-
-    ".decor-purple": {
-      "&::before": {
-        backgroundColor: theme("colors.purple"),
+        backgroundColor: theme("colors.accent"),
       },
     },
   }

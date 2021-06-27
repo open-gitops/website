@@ -6,6 +6,7 @@ import Seo from "../components/seo"
 import { Container } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
 import Social from "../components/ui/social"
+import thumbnail from "../images/thumbnail-default.png"
 
 const GetInvolvedPage = ({ location }) => {
   const query = useStaticQuery(
@@ -24,19 +25,19 @@ const GetInvolvedPage = ({ location }) => {
         title="Events"
         description="Events"
         url={location.href}
-        // image={thumbnail}
+        image={thumbnail}
       />
 
-      <Container narrow className="mt-32">
-        <h1 className="mb-12 text-center">
-          Get <span className="text-primary">Involved</span>
+      <Container narrow className="pt-28 md:pt-32">
+        <h1 className="mb-8 lg:mb-12 text-center">
+          Get <span className="text-accent">Involved</span>
         </h1>
-
-        <Social className="my-12" />
 
         <ContentWrapper>
           <MDXRenderer>{query.mdx.body}</MDXRenderer>
         </ContentWrapper>
+
+        <Social full className="mt-10" />
       </Container>
     </Layout>
   )

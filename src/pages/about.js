@@ -6,6 +6,7 @@ import Seo from "../components/seo"
 import PressReleases from "../components/press-releases"
 import { Container } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
+import thumbnail from "../images/thumbnail-default.png"
 
 const AboutPage = ({ location }) => {
   const query = useStaticQuery(
@@ -24,12 +25,12 @@ const AboutPage = ({ location }) => {
         title="Events"
         description="Events"
         url={location.href}
-        // image={thumbnail}
+        image={thumbnail}
       />
 
-      <Container narrow className="mt-32">
-        <h1 className="mb-12 text-center">
-          About <span className="text-primary">OpenGitOps</span>
+      <Container narrow className="pt-28 md:pt-32">
+        <h1 className="mb-8 lg:mb-12 text-center">
+          About <span className="text-accent">OpenGitOps</span>
         </h1>
 
         <ContentWrapper>

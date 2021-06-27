@@ -4,23 +4,29 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const CardPost = ({ title, excerpt, img, date, to }) => {
   return (
-    <div className="block bg-white shadow-xl rounded-2xl overflow-hidden">
-      <div className="aspect-w-16 aspect-h-9">
-        <GatsbyImage image={img} alt={title} />
+    <Link
+      to={to}
+      className="group block bg-white shadow-xl rounded-2xl overflow-hidden transition hover:shadow-2xl">
+      <div className="aspect-w-16 aspect-h-9 overflow-hidden">
+        <GatsbyImage
+          image={img}
+          alt={title}
+          className="transform transition group-hover:scale-110"
+        />
       </div>
 
       <div className="relative z-10 px-4 pb-8 text-center">
         <div className="-mt-8 px-4 pt-4 bg-white rounded-2xl">
-          <Link to={to} className="font-bold text-2xl text-dark">
+          <div className="font-display text-xl text-dark transition group-hover:text-blue">
             {title}
-          </Link>
+          </div>
         </div>
 
-        <div className="my-6 font-bold text-sm text-purple">{date}</div>
+        <div className="my-4 font-display text-sm text-blue">{date}</div>
 
         <div className="px-4 text-gray">{excerpt}</div>
       </div>
-    </div>
+    </Link>
   )
 }
 

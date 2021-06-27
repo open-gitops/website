@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
@@ -7,49 +7,40 @@ import Seo from "../components/seo"
 import { Container } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
 import Meta from "../components/ui/meta"
-
-// Share buttons
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  TwitterShareButton,
-  LinkedinShareButton,
-} from "react-share"
-
-// Share icons
-import { EmailIcon, FacebookIcon, LinkedinIcon, TwitterIcon } from "react-share"
+import Share from "../components/ui/share"
 
 const BlogPostTemplate = ({ data, location }) => {
   const currentURL = location.href
   const post = data.mdx
   const shareImage =
-    post.frontmatter.thumbnail.childImageSharp?.gatsbyImageData?.images
+    post.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData?.images
       ?.fallback?.src
-  const { previous, next } = data
 
   return (
     <Layout location={location}>
       <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={post.frontmatter?.title}
+        description={post.frontmatter?.description || post.excerpt}
         image={shareImage}
         url={currentURL}
       />
-      <Container narrow className="mt-32 space-y-6">
+
+      <Container narrow className="mt-24 lg:mt-12 space-y-4">
         <div className="aspect-w-16 aspect-h-9">
           <GatsbyImage
-            image={post.frontmatter.thumbnail.childImageSharp.gatsbyImageData}
-            alt={post.frontmatter.title}
+            image={
+              post.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData
+            }
+            alt={post.frontmatter?.title}
             className="rounded-2xl"
-            aspectRatio={16 / 9}
           />
         </div>
 
-        <Meta author={post.frontmatter.author} date={post.frontmatter.date} />
+        <Meta author={post.frontmatter?.author} date={post.frontmatter?.date} />
 
         <ContentWrapper>
           <header>
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
+            <h1 itemProp="headline">{post.frontmatter?.title}</h1>
           </header>
 
           <article itemScope itemType="http://schema.org/Article">
@@ -59,65 +50,17 @@ const BlogPostTemplate = ({ data, location }) => {
 
         <footer>
           <div className="p-8 text-center bg-white rounded-2xl shadow-2xl">
-            <h4 className="mb-5 font-bold text-base text-dark uppercase tracking-widest">
+            <h4 className="mb-5 font-display text-base text-dark uppercase tracking-widest">
               Share
             </h4>
 
-            <div className="space-x-4">
-              <FacebookShareButton
-                url={currentURL}
-                quote={post.frontmatter.description}>
-                <FacebookIcon size={42} round={true} />
-              </FacebookShareButton>
-
-              <TwitterShareButton
-                url={currentURL}
-                title={post.frontmatter.title}>
-                <TwitterIcon size={42} round={true} />
-              </TwitterShareButton>
-
-              <LinkedinShareButton
-                url={currentURL}
-                title={post.frontmatter.title}
-                summary={post.frontmatter.description}
-                source="SecureNative">
-                <LinkedinIcon size={42} round={true} />
-              </LinkedinShareButton>
-
-              <EmailShareButton
-                url={currentURL}
-                subject={post.frontmatter.title}
-                body={post.frontmatter.description}>
-                <EmailIcon size={42} round={true} />
-              </EmailShareButton>
-            </div>
+            <Share
+              url={currentURL}
+              title={post.frontmatter?.title}
+              description={post.frontmatter?.description}
+            />
           </div>
         </footer>
-        <nav className="blog-post-nav">
-          <ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-            }}>
-            <li>
-              {previous && (
-                <Link to={`/blog/${previous.slug}`} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={`/blog/${next.slug}`} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </nav>
       </Container>
     </Layout>
   )
@@ -143,7 +86,7 @@ export const pageQuery = graphql`
         thumbnail {
           childImageSharp {
             gatsbyImageData(
-              width: 950
+              width: 650
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
             )

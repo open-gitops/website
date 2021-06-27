@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import classNames from "classnames"
 import NavItem from "./ui/nav-item"
 import Stargazers from "./ui/stargazers"
+import Social from "./ui/social"
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -69,6 +70,8 @@ const Nav = ({ isOpen, color }) => {
       <div className="mt-4 ml-4 lg:ml-2 lg:mt-0 lg:w-32 lg:text-right">
         <Stargazers repo={site.siteMetadata.repo} />
       </div>
+
+      <Social full mobile className="ml-4 mt-4 lg:hidden" />
     </nav>
   )
 }

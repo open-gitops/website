@@ -5,6 +5,7 @@ import Social from "../components/ui/social"
 import { Container, Grid } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
 import Members from "../components/members"
+import thumbnail from "../images/thumbnail-default.png"
 
 const AboutPage = ({ location }) => {
   return (
@@ -13,16 +14,16 @@ const AboutPage = ({ location }) => {
         title="Community"
         description="Community Description"
         url={location.href}
-        // image={thumbnail}
+        image={thumbnail}
       />
 
-      <Container narrow className="mt-32">
-        <h1 className="mb-12 text-center">Community</h1>
+      <Container narrow className="pt-28 md:pt-32">
+        <h1 className="mb-8 lg:mb-12 text-center">Community</h1>
 
-        <Social className="mb-32" />
+        <Social full className="mb-12 md:mb-24" />
 
         <h2 className="mb-10 text-center">
-          Member <span className="text-primary">Companies</span>
+          Member <span className="text-accent">Companies</span>
         </h2>
 
         <ContentWrapper prose={false}>

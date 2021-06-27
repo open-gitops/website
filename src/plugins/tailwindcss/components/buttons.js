@@ -8,6 +8,7 @@ const buttons = plugin(function ({ addComponents, theme }) {
       appearance: "none",
       borderRadius: 0,
       textDecoration: "none",
+      fontFamily: theme("fontFamily.display"),
 
       "&--bottom": {
         position: "absolute",
@@ -16,7 +17,7 @@ const buttons = plugin(function ({ addComponents, theme }) {
         display: "block",
         width: "100%",
         height: "100%",
-        backgroundColor: theme("colors.primary"),
+        backgroundColor: theme("colors.accent"),
         transitionProperty: "all",
         transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
         transitionDuration: "150ms",
@@ -29,14 +30,14 @@ const buttons = plugin(function ({ addComponents, theme }) {
         width: "100%",
         height: "100%",
         borderWidth: "2px",
-        borderColor: theme("colors.secondary"),
+        borderColor: theme("colors.night"),
         padding: "24px 34px 22px 34px",
       },
 
       "&--label": {
         fontWeight: theme("fontWeight.bold"),
         fontSize: theme("fontSize.xs"),
-        color: theme("colors.secondary"),
+        color: theme("colors.night"),
         textAlign: "center",
         letterSpacing: theme("letterSpacing.widest"),
         textTransform: "uppercase",
@@ -44,7 +45,7 @@ const buttons = plugin(function ({ addComponents, theme }) {
 
       "&--border": {
         position: "absolute",
-        backgroundColor: theme("colors.primary"),
+        backgroundColor: theme("colors.accent"),
         transitionProperty: "all",
         transitionTimingFunction: "ease-out",
         transitionDuration: "250ms",
@@ -82,11 +83,11 @@ const buttons = plugin(function ({ addComponents, theme }) {
         ".btn--bottom": {
           top: 0,
           left: 0,
-          backgroundColor: theme("colors.secondary"),
+          backgroundColor: theme("colors.night"),
         },
 
         ".btn--label": {
-          color: theme("colors.primary"),
+          color: theme("colors.accent"),
         },
 
         ".btn--border-left, .btn--border-right": {

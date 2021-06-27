@@ -1,7 +1,7 @@
 @import "mixins";
 
-// @include fontFace("Nunito", "../../static/fonts/nunito-800", 800);
-// @include fontFace("Nunito", "../../static/fonts/nunito-400", 400);
+@include fontFace("montserrat", "../../static/fonts/montserrat-800", 800);
+@include fontFace("avenir", "../../static/fonts/avenir-500", 500);
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";

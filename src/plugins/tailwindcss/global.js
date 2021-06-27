@@ -8,9 +8,10 @@ const globalStyles = plugin(function ({ addBase, theme }) {
 
     body: {
       color: theme("colors.dark"),
-      backgroundImage: `linear-gradient(36deg, ${theme(
-        "colors.purple"
-      )}, ${theme("colors.purple")}, #aac9ff)`,
+      minHeight: "100vh",
+      backgroundImage: `linear-gradient(36deg, ${theme("colors.blue")}, ${theme(
+        "colors.blue"
+      )}, #6E9EF4)`,
       "-webkit-font-smoothing": "antialiased",
       "-moz-osx-font-smoothing": "grayscale",
     },
@@ -21,7 +22,7 @@ const globalStyles = plugin(function ({ addBase, theme }) {
       transitionDuration: theme("transitionDuration.100"),
 
       "&:hover": {
-        color: theme("colors.primary"),
+        color: theme("colors.accent"),
       },
     },
 
@@ -35,12 +36,12 @@ const globalStyles = plugin(function ({ addBase, theme }) {
     },
 
     "::-moz-selection": {
-      backgroundColor: theme("colors.primary"),
+      backgroundColor: theme("colors.accent"),
       color: theme("colors.dark"),
     },
 
     "::selection": {
-      backgroundColor: theme("colors.primary"),
+      backgroundColor: theme("colors.accent"),
       color: theme("colors.dark"),
     },
   }

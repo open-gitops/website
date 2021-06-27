@@ -1,9 +1,12 @@
 import * as React from "react"
 import classNames from "classnames"
 
-const BgElement = ({ className }) => {
+const BgElement = ({ side, className }) => {
   const classes = classNames({
-    "absolute -z-1 -left-1/2 my-auto h-[54rem] w-1/2 bg-gradient-to-b from-transparent to-white transform rotate-45 -translate-x-1/2 lg:w-2/3": true,
+    " absolute -z-1 top-0 h-[44rem] md:h-[64rem] w-[140%]  bg-gradient-to-t from-[#4d8dff] to-transparent": true,
+    "bg-clip-right right-0 w-2/3": side === "right",
+    "bg-clip-left -translate-x-32 md:-translate-x-1/2 lg:w-full":
+      side !== "right",
     [className]: className,
   })
 

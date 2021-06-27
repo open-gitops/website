@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Container, Grid } from "../components/ui/grid"
 import CardPost from "../components/ui/card-post"
+import thumbnail from "../images/thumbnail-default.png"
 
 const BlogPage = ({ location, perLoad }) => {
   const query = useStaticQuery(
@@ -95,11 +96,11 @@ const BlogPage = ({ location, perLoad }) => {
         title="Blog"
         description="Blog"
         url={location.href}
-        // image={thumbnail}
+        image={thumbnail}
       />
 
-      <Container className="mt-32 mb-12">
-        <h1 className="mb-12 text-center">Blog</h1>
+      <Container className="pt-28">
+        <h1 className="mb-8 lg:mb-12 text-center lg:text-left">Blog</h1>
 
         <Grid md={2} lg={3}>
           {posts.map((item, index) => {

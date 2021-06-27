@@ -2,7 +2,7 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import CardMember from "./ui/card-member"
 
-const Members = () => {
+const Members = ({ max }) => {
   const query = useStaticQuery(
     graphql`
       query {
@@ -27,7 +27,7 @@ const Members = () => {
   )
 
   const allMembers = query.allMdx.edges
-  const [members, setMembers] = React.useState(allMembers.slice(0, 23))
+  const [members, setMembers] = React.useState([...allMembers.slice(0, max)])
 
   return (
     <React.Fragment>
@@ -44,8 +44,8 @@ const Members = () => {
               allMembers.length !== members.length && (
                 <button
                   onClick={() => setMembers(allMembers)}
-                  className="flex justify-center items-center text-primary bg-gradient-to-tl from-primary/20 to-transparent rounded-xl transition-shadow duration-200 hover:shadow-primary">
-                  <div className="px-4 font-bold text-2xl">
+                  className="flex justify-center items-center text-blue bg-gradient-to-tl from-blue/20 to-transparent rounded-xl transition hover:text-dark">
+                  <div className="px-4 font-display text-2xl">
                     See all {allMembers.length}
                   </div>
                 </button>
@@ -55,6 +55,10 @@ const Members = () => {
       })}
     </React.Fragment>
   )
+}
+
+Members.defaultProps = {
+  max: 24,
 }
 
 export default Members
