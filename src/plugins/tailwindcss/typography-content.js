@@ -1,5 +1,3 @@
-const { backgroundColor } = require("tailwindcss/defaultTheme")
-
 const typographyContent = {
   typography: theme => ({
     DEFAULT: {
@@ -90,6 +88,19 @@ const typographyContent = {
                 paddingRight: theme("padding.4"),
               },
             },
+          },
+        },
+      },
+    },
+    lg: {
+      css: {
+        h1: {
+          fontSize: theme("fontSize.3xl[0]"),
+          lineHeight: theme("fontSize.3xl[1]"),
+
+          "@screen lg": {
+            fontSize: theme("fontSize.4xl[0]"),
+            lineHeight: theme("fontSize.4xl[1]"),
           },
         },
       },

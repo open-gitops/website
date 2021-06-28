@@ -32,13 +32,13 @@ const BlogPostTemplate = ({ data, location }) => {
               post.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData
             }
             alt={post.frontmatter?.title}
-            className="rounded-2xl"
+            className="!absolute rounded-2xl"
           />
         </div>
 
         <Meta author={post.frontmatter?.author} date={post.frontmatter?.date} />
 
-        <ContentWrapper>
+        <ContentWrapper offset>
           <header>
             <h1 itemProp="headline">{post.frontmatter?.title}</h1>
           </header>

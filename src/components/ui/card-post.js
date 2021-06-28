@@ -11,7 +11,7 @@ const CardPost = ({ title, excerpt, img, date, to }) => {
         <GatsbyImage
           image={img}
           alt={title}
-          className="!absolute transform transition group-hover:scale-110"
+          className="!absolute transform transition rounded-t-2xl group-hover:scale-110"
         />
       </div>
 

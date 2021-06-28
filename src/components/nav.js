@@ -23,7 +23,7 @@ const Nav = ({ isOpen, color }) => {
   )
 
   const navClass = classNames({
-    "absolute z-998 -right-full top-0 w-4/6 h-screen pt-14 pb-8 bg-white overflow-y-scroll transition-right duration-300 in-expo shadow-2xl": true,
+    "absolute z-998 -right-full top-0 w-4/6 h-screen pt-14 pb-16 bg-white overflow-y-scroll transition-right duration-300 in-expo shadow-2xl": true,
     "lg:items-center lg:ml-auto lg:flex lg:relative lg:right-auto lg:top-auto lg:w-auto lg:h-auto lg:pt-0 lg:pb-0 lg:bg-none lg:bg-transparent lg:overflow-y-visible lg:shadow-none": true,
     "!right-0": isOpen,
   })
