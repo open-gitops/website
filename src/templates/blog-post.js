@@ -26,13 +26,13 @@ const BlogPostTemplate = ({ data, location }) => {
       />
 
       <Container narrow className="mt-24 lg:mt-32 space-y-4">
-        <div className="aspect-w-16 aspect-h-9">
+        <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
           <GatsbyImage
             image={
               post.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData
             }
             alt={post.frontmatter?.title}
-            className="!absolute rounded-2xl"
+            className="!absolute !rounded-2xl"
           />
         </div>
 

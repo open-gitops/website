@@ -27,7 +27,7 @@ const Header = ({ color }) => {
           <div className="flex items-center">
             <LogoIcon className="h-10 w-auto lg:h-14" />
             <span>
-              <LogoType className="ml-2 w-auto h-6 opacity-0 transition-opacity lg:opacity-100" />
+              <LogoType className="ml-2 w-auto h-6 hidden lg:block" />
             </span>
           </div>
         </Link>
