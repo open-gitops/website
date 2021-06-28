@@ -5,6 +5,7 @@ const globalStyles = plugin(function ({ addBase, theme }) {
     body: {
       color: theme("colors.dark"),
       minHeight: "100vh",
+      fontWeight: 500,
       backgroundImage: `linear-gradient(36deg, ${theme("colors.blue")}, ${theme(
         "colors.blue"
       )}, #6E9EF4)`,
