@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import MdxContent from "../components/ui/mdx-content"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -25,7 +25,7 @@ const BlogPostTemplate = ({ data, location }) => {
         url={currentURL}
       />
 
-      <Container narrow className="mt-24 lg:mt-12 space-y-4">
+      <Container narrow className="mt-24 lg:mt-32 space-y-4">
         <div className="aspect-w-16 aspect-h-9">
           <GatsbyImage
             image={
@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </header>
 
           <article itemScope itemType="http://schema.org/Article">
-            <MDXRenderer>{post.body}</MDXRenderer>
+            <MdxContent>{post.body}</MdxContent>
           </article>
         </ContentWrapper>
 

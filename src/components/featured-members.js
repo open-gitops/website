@@ -47,7 +47,7 @@ const FeaturedMembers = ({ className }) => {
   return (
     <div className={wrapperClass}>
       <Circle className="absolute top-0 left-[30%] text-[#3d81f6]" />
-      <Circle className="absolute -top-44 left-[50%] h-auto w-[800px] text-[#3d81f6] transform rotate-[150deg]" />
+      <Circle className="absolute -top-44 left-[50%] h-auto w-[700px] lg:w-[800px] text-[#3d81f6] transform rotate-[150deg]" />
 
       <div className="relative py-28 w-full sm:py-40 md:py-48 lg:w-3/4 lg:py-52">
         <div

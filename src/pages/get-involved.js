@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import MdxContent from "../components/ui/mdx-content"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Container } from "../components/ui/grid"
@@ -28,13 +28,13 @@ const GetInvolvedPage = ({ location }) => {
         image={thumbnail}
       />
 
-      <Container narrow className="pt-28 md:pt-32">
+      <Container narrow className="pt-28 md:pt-48">
         <h1 className="mb-8 lg:mb-12 text-center">
           Get <span className="text-accent">Involved</span>
         </h1>
 
         <ContentWrapper>
-          <MDXRenderer>{query.mdx.body}</MDXRenderer>
+          <MdxContent>{query.mdx.body}</MdxContent>
         </ContentWrapper>
 
         <Social full className="mt-10" />

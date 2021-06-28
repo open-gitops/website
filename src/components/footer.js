@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
 
         <nav className="pt-9">
-          <ul className="px-4 text-sm lg:flex lg:justify-center lg:h-auto lg:space-x-6 lg:space-y-0">
+          <ul className="px-4 text-sm font-bold lg:flex lg:justify-center lg:h-auto lg:space-x-6 lg:space-y-0">
             {site.siteMetadata.menuLinks.map(link => (
               <NavItem
                 key={link.title}

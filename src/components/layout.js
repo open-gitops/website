@@ -20,7 +20,7 @@ const Layout = ({
     <div data-is-root-path={isRootPath}>
       <SkipToContent />
 
-      {decor && <BgElement side="right" className="top-32" />}
+      {decor && <BgElement side="right" className="top-24" />}
 
       {!hideHeader && <Header color={headerColor} />}
 

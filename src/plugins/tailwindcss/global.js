@@ -2,10 +2,6 @@ const plugin = require("tailwindcss/plugin")
 
 const globalStyles = plugin(function ({ addBase, theme }) {
   const styles = {
-    "html, body": {
-      "overflow-x": "hidden",
-    },
-
     body: {
       color: theme("colors.dark"),
       minHeight: "100vh",

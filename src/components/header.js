@@ -11,7 +11,7 @@ const Header = ({ color }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
 
   const headerClass = classNames({
-    "fixed top-0 left-0 z-50 py-3 w-full lg:static lg:py-5": true,
+    "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": true,
     "bg-light bg-opacity-50": color === "light",
     "bg-grad-from bg-opacity-90": color !== "light",
   })

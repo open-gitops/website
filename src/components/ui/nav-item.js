@@ -12,7 +12,7 @@ const NavItem = ({ title, url, border, color }) => {
   })
 
   const itemClass = classNames({
-    "border-t py-3 lg:py-0 lg:border-none": true,
+    "border-b py-3 lg:py-0 lg:border-none": true,
     "border-light/50": border === "light" || !border,
     "border-night/10": border === "dark",
   })

@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Grid } from "./ui/grid"
+import { Grid, Container } from "./ui/grid"
 import CardEvent from "./ui/card-event"
 import CardEventAlt from "./ui/card-event-alt"
 import Button from "./ui/button"
@@ -43,58 +43,64 @@ const Events = ({ upcomingLimit, pastLimit }) => {
   })
 
   return (
-    <React.Fragment>
-      <section className="relative pt-32 pb-20 md:pb-32">
-        <Map className="absolute -z-1 top-12 -right-1/2 h-auto w-[140%] sm:w-[120%] text-[#4d8dff]" />
+    <div className="relative pt-32 overflow-hidden">
+      <Map className="absolute -z-1 top-12 left-[40%] h-auto w-[140%] sm:w-[1700px] text-[#4d8dff]" />
 
-        <h2>
-          Upcomings <span className="text-accent">Events</span>
-        </h2>
-        <p>Today, {date.toDateString()}</p>
+      <Container>
+        {upcomingtEvents.length && (
+          <React.Fragment>
+            <h2>
+              Upcomings <span className="text-accent">Events</span>
+            </h2>
+            <p>Today, {date.toDateString()}</p>
 
-        <div className="mt-12 max-w-4xl space-y-7">
-          {upcomingtEvents.map(
-            (item, index) =>
-              index < upcomingLimit && (
-                <CardEvent
-                  key={index}
-                  date={item.node.frontmatter?.date}
-                  title={item.node.frontmatter?.title}
-                  location={item.node.frontmatter?.location}
-                  url={item.node.frontmatter?.url}
-                />
-              )
-          )}
-        </div>
+            <div className="mt-12 max-w-4xl space-y-7">
+              {upcomingtEvents.map(
+                (item, index) =>
+                  index < upcomingLimit && (
+                    <CardEvent
+                      key={index}
+                      date={item.node.frontmatter?.date}
+                      title={item.node.frontmatter?.title}
+                      location={item.node.frontmatter?.location}
+                      url={item.node.frontmatter?.url}
+                    />
+                  )
+              )}
+            </div>
 
-        {Events.defaultProps.upcomingLimit !== upcomingLimit && (
-          <div className="text-center mt-10 lg:text-left">
-            <Button to="/events" label="View all Events" />
-          </div>
+            {Events.defaultProps.upcomingLimit !== upcomingLimit && (
+              <div className="text-center mt-10 lg:text-left">
+                <Button to="/events" label="View all Events" />
+              </div>
+            )}
+          </React.Fragment>
         )}
-      </section>
 
-      <section>
-        <h2 className="text-3xl">
-          Past <span className="text-accent">Events</span>
-        </h2>
+        {pastEvents.length && (
+          <React.Fragment>
+            <h2 className="mt-20 text-3xl lg:mt-32">
+              Past <span className="text-accent">Events</span>
+            </h2>
 
-        <Grid md={2} xl={3} className="pt-4 pb-6">
-          {pastEvents.map(
-            (item, index) =>
-              index < pastLimit && (
-                <CardEventAlt
-                  key={index}
-                  date={item.node.frontmatter?.date}
-                  title={item.node.frontmatter?.title}
-                  location={item.node.frontmatter?.location}
-                  url={item.node.frontmatter?.url}
-                />
-              )
-          )}
-        </Grid>
-      </section>
-    </React.Fragment>
+            <Grid md={2} xl={3} className="pt-4 pb-6">
+              {pastEvents.map(
+                (item, index) =>
+                  index < pastLimit && (
+                    <CardEventAlt
+                      key={index}
+                      date={item.node.frontmatter?.date}
+                      title={item.node.frontmatter?.title}
+                      location={item.node.frontmatter?.location}
+                      url={item.node.frontmatter?.url}
+                    />
+                  )
+              )}
+            </Grid>
+          </React.Fragment>
+        )}
+      </Container>
+    </div>
   )
 }
 

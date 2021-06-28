@@ -3,7 +3,7 @@ import classNames from "classnames"
 
 const BgElement = ({ side, className }) => {
   const classes = classNames({
-    " absolute -z-1 top-0 h-[44rem] md:h-[64rem] w-[140%]  bg-gradient-to-t from-[#4d8dff] to-transparent": true,
+    " absolute -z-1 top-0 h-[44rem] w-full bg-gradient-to-t from-[#4d8dff] to-transparent-blue md:h-[64rem]": true,
     "bg-clip-right right-0 w-2/3": side === "right",
     "bg-clip-left -translate-x-32 md:-translate-x-1/2 lg:w-full":
       side !== "right",

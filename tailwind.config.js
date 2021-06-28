@@ -19,7 +19,10 @@ module.exports = {
         dark: "#042660",
         light: "#d5dcf2",
         gray: "#777ea1",
-        transparent: "rgba(255, 255, 255, 0)",
+        transparent: {
+          DEFAULT: "rgba(255, 255, 255, 0)",
+          blue: "rgba(84, 141, 246, 0)",
+        },
       },
       fontFamily: {
         sans: ["avenir", ...defaultTheme.fontFamily.sans],

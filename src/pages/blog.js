@@ -99,7 +99,7 @@ const BlogPage = ({ location, perLoad }) => {
         image={thumbnail}
       />
 
-      <Container className="pt-28">
+      <Container className="pt-28 lg:pt-48">
         <h1 className="mb-8 lg:mb-12 text-center lg:text-left">Blog</h1>
 
         <Grid md={2} lg={3}>
