@@ -1,0 +1,8 @@
+@import "mixins";
+
+@include fontFace("montserrat", "../../static/fonts/montserrat-800", 800);
+@include fontFace("avenir", "../../static/fonts/avenir-500", 500);
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
