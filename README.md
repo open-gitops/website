@@ -5,10 +5,14 @@
 
 Code for CNCF OpenGitOps project website.
 
-**Local Development.**
+**👩‍💻 Local Development.**
 
 ```shell
-cd opengitops/
+# if you like npm 
+npm i
+npm start
+
+# Or if you like yarn
+yarn install
 yarn start
 ```
-

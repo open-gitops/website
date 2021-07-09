@@ -8,8 +8,8 @@ module.exports = {
     social: {
       github: "https://github.com/open-gitops",
       slack: "https://slack.cncf.io",
-      twitter: "https://twitter.com/open-gitops",
-      reddit: "https://reddit.com/open-gitops",
+      twitter: "https://twitter.com/opengitops",
+      reddit: "https://www.reddit.com/r/GitOps",
       facebook: "https://facebook.com/open-gitops",
     },
     menuLinks: [
