@@ -81,7 +81,7 @@ const IndexPage = ({ location }) => {
       <section className="pt-24 pb-24 md:pt-32 md:pb-32 xl:pt-40 xl:pb-40 overflow-hidden">
         <Container>
           <h2 className="text-center md:text-left">
-            Member <span className="text-accent">Companies</span>
+            Founding <span className="text-accent">Members</span>
           </h2>
 
           <FeaturedMembers />
