@@ -51,7 +51,7 @@ const FeaturedMembers = ({ className }) => {
 
       <div className="relative py-28 w-full sm:py-40 md:py-48 lg:w-3/4 lg:py-52">
         <div
-          className={`${itemClass} animate-float w-[25%] lg:w-[21%] 2xl:w-[17%] top-[1%] left-0`}>
+          className={`${itemClass} animate-float w-[23%] lg:w-[19%] 2xl:w-[15%] top-[1%] left-0`}>
           <div className={itemInnerClass}>
             <Codefresh className={itemLogoClass} />
           </div>
