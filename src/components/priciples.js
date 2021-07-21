@@ -2,7 +2,7 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import PrinciplesItem from "./ui/principles-item"
 
-const Priciples = () => {
+const Principles = () => {
   const query = useStaticQuery(
     graphql`
       query {
@@ -38,4 +38,4 @@ const Priciples = () => {
   )
 }
 
-export default Priciples
+export default Principles
