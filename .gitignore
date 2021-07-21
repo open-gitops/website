@@ -1,4 +1,5 @@
 node_modules/
 .cache/
-public
+public/*
+!public/CNAME
 .DS_Store
