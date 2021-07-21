@@ -4,7 +4,7 @@ import { AnchorLink } from "gatsby-plugin-anchor-links"
 import Seo from "../components/seo"
 import FeaturedMembers from "../components/featured-members"
 import Events from "../components/events"
-import Priciples from "../components/priciples"
+import Principles from "../components/principles"
 import Testimonials from "../components/testimonials"
 import { Container } from "../components/ui/grid"
 import Button from "../components/ui/button"
@@ -48,15 +48,15 @@ const IndexPage = ({ location }) => {
 
                 <div className="space-x-8 text-center text-sm sm:text-base md:space-x-6 md:text-left">
                   <AnchorLink
-                    to="/#priciples"
-                    title="Priciples"
+                    to="/#principles"
+                    title="Principles"
                     className="font-bold text-accent hover:underline">
                     <span>GitOps Principles</span>
                   </AnchorLink>
 
                   <AnchorLink
                     to="/#events"
-                    title="Priciples"
+                    title="Principles"
                     className="font-bold text-accent hover:underline">
                     <span>Upcoming Events</span>
                   </AnchorLink>
@@ -88,7 +88,7 @@ const IndexPage = ({ location }) => {
         </Container>
       </section>
 
-      <section id="priciples" className="relative">
+      <section id="principles" className="relative">
         <BgElement className="top-12 lg:top-64" />
 
         <Container>
@@ -96,12 +96,12 @@ const IndexPage = ({ location }) => {
             <div className="w-full lg:w-2/5">
               <h2 className="mb-12 pr-64 text-5xl md:text-6xl lg:sticky lg:top-12 xl:text-7xl lg:mb-0">
                 <span className="text-accent">GitOps</span>{" "}
-                <span className="font-normal">Priciples</span>
+                <span className="font-normal">Principles</span>
               </h2>
             </div>
 
             <div className="w-full lg:w-3/5">
-              <Priciples />
+              <Principles />
 
               <Button
                 to="/get-involved"
