@@ -96,7 +96,8 @@ const IndexPage = ({ location }) => {
             <div className="w-full lg:w-2/5">
               <h2 className="mb-12 pr-64 text-5xl md:text-6xl lg:sticky lg:top-12 xl:text-7xl lg:mb-0">
                 <span className="text-accent">GitOps</span>{" "}
-                <span className="font-normal">Principles</span>
+                <span className="font-normal">Principles</span>{" "}
+                <span className="font-normal sm:text-3xl"><a href="https://github.com/open-gitops/documents/releases/tag/v0.1.0">v0.1.0</a></span>
               </h2>
             </div>
 
