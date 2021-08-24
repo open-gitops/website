@@ -53,42 +53,43 @@ const FeaturedMembers = ({ className }) => {
         <div
           className={`${itemClass} animate-float w-[23%] lg:w-[19%] 2xl:w-[15%] top-[1%] left-0`}>
           <div className={itemInnerClass}>
-            <Codefresh className={itemLogoClass} />
+          <Amazong className={`${itemLogoClass} top-2`} />
+            
           </div>
         </div>
 
         <div
           className={`${itemClass} animate-float animate-delay-100 w-[22%] lg:w-[18%] 2xl:w-[14%] top-[15%] left-[32%] lg:left-[32%] `}>
           <div className={itemInnerClass}>
-            <Github className={itemLogoClass} />
+            <Azure className={itemLogoClass} />
           </div>
         </div>
 
         <div
           className={`${itemClass} animate-float animate-delay-200 w-[27%] md:w-[26%] lg:w-[18%] 2xl:w-[16%] top-[10%] left-[60%] lg:left-[65%] `}>
           <div className={itemInnerClass}>
-            <Azure className={itemLogoClass} />
+            <Codefresh className={itemLogoClass} />
           </div>
         </div>
 
         <div
           className={`${itemClass} animate-float w-[25%] lg:w-[17%] 2xl:w-[13%] top-[50%] sm:top-[60%] left-[10%] lg:left-[16%] `}>
           <div className={itemInnerClass}>
-            <Redhat className={itemLogoClass} />
+            <Github className={itemLogoClass} />
           </div>
         </div>
 
         <div
           className={`${itemClass} animate-float animate-delay-250 w-[20%] lg:w-[19%] 2xl:w-[15%] top-[60%] left-[46%] lg:left-[50%] `}>
           <div className={itemInnerClass}>
-            <Weaveworks className={itemLogoClass} />
+            <Redhat className={itemLogoClass} />
           </div>
         </div>
 
         <div
           className={`${itemClass} animate-float animate-delay-150 w-[22%] lg:w-[18%] 2xl:w-[14%] top-[60%] left-[77%] lg:left-[85%] `}>
           <div className={itemInnerClass}>
-            <Amazong className={`${itemLogoClass} top-2`} />
+            <Weaveworks className={itemLogoClass} />
           </div>
         </div>
       </div>

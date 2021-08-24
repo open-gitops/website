@@ -61,6 +61,16 @@ const Footer = () => {
             <GwgIcon className="inline-block w-auto h-4 ml-1" />
           </a>
         </small>
+        <small className="mt-4 max-w-3xl mx-auto px-8 block text-center">
+          &copy; {date.getFullYear()} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our{" "}
+          <a
+            href="https://www.linuxfoundation.org/trademark-usage"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline">
+            Trademark Usage{""}
+          </a> page.
+        </small>
       </Container>
     </footer>
   )
