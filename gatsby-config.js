@@ -11,7 +11,6 @@ module.exports = {
       slack: "https://slack.cncf.io",
       twitter: "https://twitter.com/opengitops",
       reddit: "https://www.reddit.com/r/GitOps",
-      facebook: "https://facebook.com/open-gitops",
     },
     menuLinks: [
       {

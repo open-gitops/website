@@ -2,7 +2,6 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import classNames from "classnames"
 import ExternalLink from "./external-link"
-import Facebook from "../../svg/facebook.svg"
 import Github from "../../svg/github.svg"
 import Slack from "../../svg/slack.svg"
 import Twitter from "../../svg/twitter.svg"
@@ -18,7 +17,6 @@ const Social = ({ color, size, full, mobile, className }) => {
               twitter
               github
               slack
-              facebook
               reddit
             }
           }
@@ -60,18 +58,6 @@ const Social = ({ color, size, full, mobile, className }) => {
           label="GitHub"
           attrs={{ "aria-label": "github", title: "Follow us on GitHub" }}
           icon={<Github className={iconClass} />}
-        />
-      </div>
-
-      <div className={itemClass}>
-        <ExternalLink
-          to={site.siteMetadata.social.facebook}
-          size={size}
-          color={color}
-          full={full}
-          label="Facebook"
-          attrs={{ "aria-label": "facebook", title: "Join our Facebook page" }}
-          icon={<Facebook className={iconClass} />}
         />
       </div>
 
