@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import PrinciplesItem from "./ui/principles-item"
+import MdxContent from "../components/ui/mdx-content"
 
 const Principles = () => {
   const query = useStaticQuery(
@@ -12,10 +13,12 @@ const Principles = () => {
         ) {
           edges {
             node {
+              body
               frontmatter {
                 order
                 title
                 description
+
               }
             }
           }
@@ -31,7 +34,7 @@ const Principles = () => {
           key={index}
           order={item.node.frontmatter?.order}
           title={item.node.frontmatter?.title}>
-          {item.node.frontmatter?.description}
+          <MdxContent>{item.node.body}</MdxContent>
         </PrinciplesItem>
       ))}
     </ol>
