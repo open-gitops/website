@@ -8,12 +8,12 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages -d public -b gh-pages"
+    "develop": "GATSBY_TELEMETRY_DISABLED=1 gatsby develop",
+    "start": "GATSBY_TELEMETRY_DISABLED=1 gatsby develop",
+    "build": "GATSBY_TELEMETRY_DISABLED=1 gatsby build",
+    "serve": "GATSBY_TELEMETRY_DISABLED=1 gatsby serve",
+    "clean": "GATSBY_TELEMETRY_DISABLED=1 gatsby clean",
+    "deploy": "GATSBY_TELEMETRY_DISABLED=1 gatsby build && gh-pages -d public -b gh-pages"
   },
   "dependencies": {
     "@animated-burgers/burger-squeeze": "^1.1.2",
