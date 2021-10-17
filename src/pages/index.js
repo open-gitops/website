@@ -72,23 +72,10 @@ const IndexPage = ({ location }) => {
             </div>
           </div>
 
-          <div className="pt-12 md:pt-32">
-            <Testimonials />
-          </div>
         </Container>
       </section>
 
-      <section className="pt-24 pb-24 md:pt-32 md:pb-32 xl:pt-40 xl:pb-40 overflow-hidden">
-        <Container>
-          <h2 className="text-center md:text-left">
-            Founding <span className="text-accent">Members</span>
-          </h2>
-
-          <FeaturedMembers />
-        </Container>
-      </section>
-
-      <section id="principles" className="relative">
+      <section id="principles" className="pt-28 md:pt-48 2xl:pt-56 overflow-hidden">
         <BgElement className="top-12 lg:top-64" />
 
         <Container>
@@ -116,6 +103,24 @@ const IndexPage = ({ location }) => {
 
       <section id="events">
         <Events upcomingLimit={5} pastLimit={9} />
+      </section>
+
+      <section className="pt-28 md:pt-48 2xl:pt-56 overflow-hidden">
+        <Container>
+          <div className="pt-12 md:pt-32">
+            <Testimonials />
+          </div>
+        </Container>
+      </section>
+
+      <section className="pt-24 pb-24 md:pt-32 md:pb-32 xl:pt-40 xl:pb-40 overflow-hidden">
+        <Container>
+          <h2 className="text-center md:text-left">
+            Founding <span className="text-accent">Members</span>
+          </h2>
+
+          <FeaturedMembers />
+        </Container>
       </section>
     </Layout>
   )
