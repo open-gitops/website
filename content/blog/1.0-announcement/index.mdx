@@ -1,17 +1,18 @@
 ---
-title: Open GitOps 1.0 is finally here and why you should care
-date: "2021-11-01T09:00:01.284Z"
-description: "Open GitOps 1.0 brings a mature standard to the DevOps industry."
-author: Dan Garfield and ?
+title: OpenGitOps 1.0 is finally here and why you should care
+date: "2021-11-03T09:00:01.284Z"
+description: "OpenGitOps 1.0 brings a mature standard to the DevOps industry."
+author: Dan Garfield and Scott Rigby
 thumbnail: images/GitOps-1.0.jpg
 ---
 
 GitOps is a term coined by Alexis Richardson a few years ago and has grown immensely in popularity.
-In a nutshell, GitOps offers a new pattern for deploying software that differs from the traditional CD pipeline approach that has dominated the industry for decades.
+In a nutshell, GitOps is a set of principles for operating and managing software systems, derived from modern software operations, but also rooted in pre-existing and widely adopted best practices.
+However they differ in specific ways from traditional CI/CD pipeline approach that has dominated the industry for decades.
 Last year, Amazon, Azure, Codefresh, Github, Redhat, and Weaveworks teamed up to launch the GitOps Working Group under the CNCF.
 The goal was to formalize all the ideas that have developed around GitOps into a single cohesive set of principles that would be easily digestible and repeatable by any organization.
 
-We’re very proud to announce that over 60 companies, 96 interested parties, and 34 co-authors have brought the best of DevOps into the [Open GitOps 1.0 principles](https://github.com/open-gitops/documents/releases/tag/v1.0.0).
+We’re very proud to announce that over 60 companies, 96 interested parties, and 34 co-authors have brought the best of DevOps into the [OpenGitOps 1.0 Principles and Glossary](https://github.com/open-gitops/documents/releases/tag/v1.0.0).
 Each principle discusses the desired state of a system and how it should be operated.
 
 The desired state of a GitOps managed system must be:
@@ -34,23 +35,23 @@ The desired state of a GitOps managed system must be:
 
 ## GitOps is more than just storing infrastructure-as-code
 
-As the [git history proves](https://github.com/open-gitops/documents/commits/v1.0.0), the wording of each of these principles was very carefully chosen.
+As [git history shows](https://github.com/open-gitops/documents/commits/v1.0.0), the wording of each principle and linked glossary item was very carefully chosen.
 While many of these principles should be familiar to DevOps professionals, many are surprised to learn that they still have work to do to implement GitOps fully.
 
-Declarative is usually the easiest to understand.
+_Declarative_ is usually the easiest principle to understand.
 Not just infrastructure-as-code but all configuration data that is needed to run a system including the application layer.
 While this doesn’t generally include persistent application data such as database contents it often includes credentials and configuration for data recovery or data access.
 
-Versioned and Immutable is often understood as “use git” but there is more to it than that.
+_Versioned and Immutable_ is often understood as “use git” but there is more to it than that.
 If that desired state describes using a “latest” tag for example, it is no longer versioned because there is no way to rollback changes in the desired state.
 Likewise, many version control systems can be used in GitOps as long as they meet those two basic requirements and teams use them in a conformant manner.
 
-Pulled Automatically means we have to have software agents constantly observing the desired state.
+_Pulled Automatically_ means we have to have software agents constantly observing the desired state.
 While triggers may exist to speed up that observation, a GitOps system shouldn’t exclusively rely on them.
-Software agents need to be smart enough to constantly be aware of what the desired state should be.
-The verb “pull” here is used very clearly in contrast to the way traditional CD pipelines function based on triggers that simply push.
+Software agents need to constantly be aware of what the desired state should be, not only when a deliberate change is made.
+The verb “pull” here is used very clearly in contrast to the way traditional CI/CD pipelines function based on triggers that simply push.
 
-Finally, Continuously Reconciling brings it all together.
+Finally, _Continuously Reconciled_ brings it all together.
 The GitOps software agents have to be aware of the actual state of a system under management and attempt to apply the desired state.
 Being constantly aware of both the actual state and desired state means we can detect anytime they are out of alignment whether by changes to the desired state (normal operation) or changes to the actual state (drift), a GitOps software agent should detect this attempt to apply the desired state.
 
@@ -60,7 +61,13 @@ They bring together decades of experience delivering software to create a standa
 ## What’s next
 
 There’s so much more on the horizon and we need your help!
-[Get involved](https://opengitops.dev/get-involved)!
-We’d love more participation to build GitOps Blueprints, GitOps Whitepapers, plan GitOps events, and help with the direction of the Open GitOps projects.
+This vendor-neutral, principle-led meaning of GitOps will establish a foundation for interoperability between tools, conformance, and certification through lasting programs, documents, and code.
 
-Lets go!
+How do you use GitOps?
+Join us in developing GitOps case studies and best practices, plan GitOps events, and help with the direction of the OpenGitOps project!
+
+<Button
+  to="/get-involved"
+  label="How To Get involved"
+  className="w-full mt-12 md:w-auto"
+/>
