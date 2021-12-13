@@ -22,8 +22,8 @@ const GetInvolvedPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Seo
-        title="Events"
-        description="Events"
+        title="Get Involved"
+        description="Get Involved"
         url={location.href}
         image={thumbnail}
       />
