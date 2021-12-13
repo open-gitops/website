@@ -22,8 +22,8 @@ const AboutPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Seo
-        title="Events"
-        description="Events"
+        title="About"
+        description="About"
         url={location.href}
         image={thumbnail}
       />
