@@ -2,7 +2,6 @@ import * as React from "react"
 import Layout from "../components/layout"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 import Seo from "../components/seo"
-import FeaturedMembers from "../components/featured-members"
 import Events from "../components/events"
 import Principles from "../components/principles"
 import Testimonials from "../components/testimonials"
@@ -78,17 +77,7 @@ const IndexPage = ({ location }) => {
         </Container>
       </section>
 
-      <section className="pt-24 pb-24 md:pt-32 md:pb-32 xl:pt-40 xl:pb-40 overflow-hidden">
-        <Container>
-          <h2 className="text-center md:text-left">
-            Founding <span className="text-accent">Members</span>
-          </h2>
-
-          <FeaturedMembers />
-        </Container>
-      </section>
-
-      <section id="principles" className="relative">
+      <section id="principles" className="relative pt-24  md:pt-32 xl:pt-40">
         <BgElement className="top-12 lg:top-64" />
 
         <Container>
