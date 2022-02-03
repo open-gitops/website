@@ -4,8 +4,8 @@ module.exports = {
     title: "OpenGitOps",
     description:
       "OpenGitOps is a set of open-source standards, best practices, and community-focused education to help organizations adopt a structured, standardized approach to implementing GitOps.",
-    siteUrl: "https://github.com/gitops-working-group/gitops-working-group",
-    repo: "gitops-working-group/gitops-working-group",
+    siteUrl: "https://github.com/open-gitops/project",
+    repo: "open-gitops/project",
     social: {
       github: "https://github.com/open-gitops",
       slack: "https://slack.cncf.io",
