@@ -47,7 +47,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
       <Map className="absolute -z-1 top-12 left-[40%] h-auto w-[140%] sm:w-[1700px] text-[#4d8dff]" />
 
       <Container>
-        {upcomingtEvents.length && (
+        {upcomingtEvents.length > 0 && (
           <React.Fragment>
             <h2>
               Upcomings <span className="text-accent">Events</span>
@@ -77,7 +77,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
           </React.Fragment>
         )}
 
-        {pastEvents.length && (
+        {pastEvents.length > 0 && (
           <React.Fragment>
             <h2 className="mt-20 text-3xl lg:mt-32">
               Past <span className="text-accent">Events</span>
