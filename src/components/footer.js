@@ -57,7 +57,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="underline">
-            CNCF App Delivery TAG{" "}
+            GitOps Working Group{" "}
             <GwgIcon className="inline-block w-auto h-4 ml-1" />
           </a>
         </small>
