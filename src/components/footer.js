@@ -53,7 +53,7 @@ const Footer = () => {
         <small className="mt-4 max-w-3xl mx-auto px-8 block text-center">
           {date.getFullYear()} &copy; <Title />. Overseen by the{" "}
           <a
-            href="https://github.com/cncf/tag-app-delivery"
+            href="https://github.com/cncf/tag-app-delivery/tree/main/gitops-wg"
             target="_blank"
             rel="noopener noreferrer"
             className="underline">
