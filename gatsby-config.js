@@ -67,6 +67,14 @@ module.exports = {
               backgroundColor: "white",
             },
           },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              removeAccents: true,
+              elements: [`h2`, `h3`],
+              icon: false,
+            },
+          },
           `gatsby-remark-prismjs`,
         ],
       },
