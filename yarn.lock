@@ -6625,10 +6625,10 @@
     "xstate" "^4.9.1"
     "yoga-layout-prebuilt" "^1.9.6"
 
-"gatsby-remark-autolink-headers@^5.7.0":
-  "integrity" "sha512-scUhTzfDNCK/WCke/5LeelzjZVZx5TpmWOvka43DJBn1UuazLesah7fzJRZJhFGp0IjEt1AOAvVXSOyBc92sGg=="
-  "resolved" "https://registry.npmjs.org/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-5.7.0.tgz"
-  "version" "5.7.0"
+"gatsby-remark-autolink-headers@^4.11.0":
+  "integrity" "sha512-wklhIRpVQfv9xMPoSVKDl/DRLBzxKWr13PRQgw602zVmj/IdMzgVarJgU8aCzlyb3+JztlptnKE1U/htFs8HGQ=="
+  "resolved" "https://registry.npmjs.org/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-4.11.0.tgz"
+  "version" "4.11.0"
   dependencies:
     "@babel/runtime" "^7.15.4"
     "github-slugger" "^1.3.0"
@@ -6750,7 +6750,7 @@
   dependencies:
     "@babel/core" "^7.14.0"
 
-"gatsby@^3.6.2":
+"gatsby@^3.0.0-next.0", "gatsby@^3.6.2":
   "integrity" "sha512-cBM5Ak4uWMg/eI4du776NIqymGdiQH6qYPvDYdxTItjDrJxZz13Fs3k8fRBgKyGq9xh3+48FLjdSikK2ZUaQXA=="
   "resolved" "https://registry.npmjs.org/gatsby/-/gatsby-3.9.0.tgz"
   "version" "3.9.0"
@@ -11836,7 +11836,7 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
-"react-dom@^17.0.1":
+"react-dom@^16.9.0 || ^17.0.0", "react-dom@^17.0.1":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -11900,7 +11900,7 @@
   dependencies:
     "@emotion/react" "^11.1.4"
 
-"react@^17.0.1":
+"react@^16.9.0 || ^17.0.0", "react@^17.0.1":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
