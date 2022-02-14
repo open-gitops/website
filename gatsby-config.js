@@ -4,8 +4,8 @@ module.exports = {
     title: "OpenGitOps",
     description:
       "OpenGitOps is a set of open-source standards, best practices, and community-focused education to help organizations adopt a structured, standardized approach to implementing GitOps.",
-    siteUrl: "https://github.com/gitops-working-group/gitops-working-group",
-    repo: "gitops-working-group/gitops-working-group",
+    siteUrl: "https://github.com/open-gitops/project",
+    repo: "open-gitops/project",
     social: {
       github: "https://github.com/open-gitops",
       slack: "https://slack.cncf.io",
@@ -65,6 +65,14 @@ module.exports = {
               maxWidth: 750,
               linkImagesToOriginal: false,
               backgroundColor: "white",
+            },
+          },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              removeAccents: true,
+              elements: [`h2`, `h3`],
+              icon: false,
             },
           },
           `gatsby-remark-prismjs`,

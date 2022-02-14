@@ -53,7 +53,7 @@ const Footer = () => {
         <small className="mt-4 max-w-3xl mx-auto px-8 block text-center">
           {date.getFullYear()} &copy; <Title />. Overseen by the{" "}
           <a
-            href="https://github.com/gitops-working-group/gitops-working-group"
+            href="https://github.com/cncf/tag-app-delivery/tree/main/gitops-wg"
             target="_blank"
             rel="noopener noreferrer"
             className="underline">
@@ -62,14 +62,17 @@ const Footer = () => {
           </a>
         </small>
         <small className="mt-4 max-w-3xl mx-auto px-8 block text-center">
-          &copy; {date.getFullYear()} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our{" "}
+          &copy; {date.getFullYear()} The Linux Foundation. All rights reserved.
+          The Linux Foundation has registered trademarks and uses trademarks.
+          For a list of trademarks of The Linux Foundation, please see our{" "}
           <a
             href="https://www.linuxfoundation.org/trademark-usage"
             target="_blank"
             rel="noopener noreferrer"
             className="underline">
             Trademark Usage{""}
-          </a> page.
+          </a>{" "}
+          page.
         </small>
       </Container>
     </footer>
