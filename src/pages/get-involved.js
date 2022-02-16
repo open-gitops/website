@@ -22,8 +22,8 @@ const GetInvolvedPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Seo
-        title="Events"
-        description="Events"
+        title="Get Involved"
+        description="The GitOps Working Group is an open group, inviting companies and individuals to join and contribute to the community and the adoption of GitOps across the cloud native landscape. There are a few ways you can get involved."
         url={location.href}
         image={thumbnail}
       />

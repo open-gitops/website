@@ -21,8 +21,8 @@ const AboutPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Seo
-        title="Events"
-        description="Events"
+        title="About"
+        description="The GitOps Working Group is a WG under the CNCF App Delivery SIG. The focus of the GitOps WG is to clearly define a vendor-neutral, principle-led meaning of GitOps."
         url={location.href}
         image={thumbnail}
       />
