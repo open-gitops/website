@@ -2,7 +2,6 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import PressReleases from "../components/press-releases"
 import MdxContent from "../components/ui/mdx-content"
 import { Container } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
@@ -36,8 +35,6 @@ const AboutPage = ({ location }) => {
         <ContentWrapper>
           <MdxContent>{query.mdx.body}</MdxContent>
         </ContentWrapper>
-
-        <PressReleases className="mt-20" />
       </Container>
     </Layout>
   )
