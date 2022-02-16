@@ -130,14 +130,6 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "press-releases",
-        path: "./content/press-releases/",
-      },
-      __key: "press-releases",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
         name: "pages",
         path: "./content/pages",
       },
