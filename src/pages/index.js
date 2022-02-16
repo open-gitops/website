@@ -56,7 +56,7 @@ const IndexPage = ({ location }) => {
 
                   <AnchorLink
                     to="/#events"
-                    title="Principles"
+                    title="Upcoming Events"
                     className="font-bold text-accent hover:underline">
                     <span>Upcoming Events</span>
                   </AnchorLink>
@@ -97,7 +97,11 @@ const IndexPage = ({ location }) => {
               <h2 className="mb-12 pr-64 text-5xl md:text-6xl lg:sticky lg:top-12 xl:text-7xl lg:mb-0">
                 <span className="text-accent">GitOps</span>{" "}
                 <span className="font-normal">Principles</span>{" "}
-                <span className="font-normal sm:text-3xl"><a href="https://github.com/open-gitops/documents/releases/tag/v1.0.0">v1.0.0</a></span>
+                <span className="font-normal sm:text-3xl">
+                  <a href="https://github.com/open-gitops/documents/releases/tag/v1.0.0">
+                    v1.0.0
+                  </a>
+                </span>
               </h2>
             </div>
 
