@@ -1,0 +1,63 @@
+---
+title: Security of GitOps
+date: "2022-02-22T22:12:03.284Z"
+description: "Security of GitOps"
+author: Mateusz Pruchniak
+thumbnail: images/GitOps-1.0.jpg
+---
+
+# Security of GitOps
+
+## Introduction to GitOps
+
+GitOps is code-based infrastructure and operational procedure that rely on Git as a source control system. It is an evolution of Infrastructure as Code (IaC) and a DevOps best practice that leverages Git as the single source of truth, and control mechanism for creating, updating, and deleting IT system architecture. Implementing and using GitOps based strategy changes the way of securing the overall IT systems. Proper implementation of GitOps strategy increases the security and reliability itself but still leaves several attack vectors. Traditional processes mostly rely on human operational knowledge, expertise and actions performed manually but in case of GitOps all changes are made as interaction with Git repository.
+GitOps allows to separate deployments from development and use full advantage of the immutable declarative infrastructure. Every element of the environment can be deployed as often as needed with the same result, instances are redeployed instead of restoring from multiple unique configurations and versions. Immutability of infrastructure protects from making changes from outside of the main deployment process and makes it easier to detect and reverse environment changes based on the declarative state in the Git repository.
+One of the other key benefits of GitOps could be more than just how to make the deployment of the infrastructure and software faster, but could also improve MTTR - Mean Time To Remediate/Repair. MTTR is an essential failure metric that represents the average time it takes to repair and restore a component or system to function. GitOps is also helpful in the case of the disaster recovery plan, rollback, and reversing changes.
+
+
+## Securing GitOps Repository nad Process
+
+GitOps provides:
+* a SINGLE source of truth for the whole environment,
+* a SINGLE process to introduce changes,
+* a SINGLE set of security scans,
+* a SINGLE set of tests, 
+* a SINGLE set of permissions and implement necessary controls and gates on this process to make sure that you can meet security requirements. 
+* ability to eliminate the need to make manual changes on environments.
+The centralized management process provides easy access to audit trail: what was changed, who and why made changes. It is achievable thanks to the full history of every change with a dedicated commit message. The best practice of GitOps requires enforcing master branch protection by making Pull Requests with required code review by other senior specialists.
+
+
+### Secure Git Repository
+
+In general, the Git repository should be treated as a standard production system and secured in the same way, including the principle of least privilege as well as the separation of duties.
+
+Particular attention should be focus on:
+* Restrict access to repository and branches,
+* Dedicated Git repository, one for each team or application,
+* Enforce branching policy and protect master branch, 
+* Require Pull Request reviews before merging,
+* Require conversation resolution before merging, 
+* Enforce policy to block sensitive data being pushed to Git, in order to store secrets and credentials safely in a public or private Git repository, use Mozilla SOPS CLI or SealedSecrets to protect it,
+* Enforce strong identity with GPG Signed Commits, to give accountability and traceability,
+* Require linear history and maintain a commit history by disallowing force pushes,
+* Require dedicated reviewers to accept Pull Requests and reviewers from Code Owners (a CODEOWNERS file),
+* Enforce static code analysis to security checks,
+* Use dedicated technical accounts for GitOps (read-only access) and for CI/CD pipelines,
+* Monitoring of Git vulnerabilities, keeping Git and related tools up to date,
+* Rotate SSH keys and Personal Access Tokens, block unauthorized access to Git repositories, 
+* Monitor and implement alerting mechanism,
+* Use physical GPG Keys to increase security,
+* Always backup Git repositories, backup can be used by verification tools to verify integrity of repository that the commits hashes match, so that if somebody rewrites history to bypass the protections, then commit hashes will not match.
+
+
+### Securing GitOps Process
+
+GitOps Process should be secure by design. GitOps processes are responsible to deliver changes to the production environment and if that process is compromised then it can open backdoor in infrastructure or deliver harmful software to the production environment. GitOps processes need to utilize a dedicated non-user technical account for access where credentials are frequently rotated and short lived. It should be restricted who can make changes in process itself including the principle of least privilege as well as the separation of duties. It should be avoided to use administration permissions. GitOps process should be hardened and protected from elevating permissions to remove security features without leaving an audit trail and triggering alerts. List of allowed repositories should be limited by using FQDN filtering.
+It is important to implement quality gates in the process and prevent the deployment of containers with critical vulnerability (use e.g. Open Policy Agent, Grafeas, Kritis).
+
+
+### Securing GitOps Containers
+
+GitOps require that only images that have successfully passed and gone through all the steps of CI/CD pipeline are allowed to be deployed into every environment. 
+Process of building images should be hermetic and nobody can sideload images bypassing the main process. GitOps containers should be stored in a private container registry, not only for security reasons but also for reliability, performance, and privacy. Containers should be immutable and never change the meaning of a container as well as an assigned tag. Every container should be scanned for vulnerabilities (e.g. TwistLock), dependency scanning, signed and verified compliance with CIS Kubernetes Benchmark.
+
