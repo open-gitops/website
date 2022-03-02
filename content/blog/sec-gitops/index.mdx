@@ -35,7 +35,7 @@ In general, the Git repository should be treated as a standard production system
 Particular attention should be focus on:
 * Restrict access to repository and branches,
 * Dedicated Git repository, one for each team or application,
-* Enforce branching policy and protect master branch, 
+* Enforce branching policy and protect release and shared (i.e. main) branches, 
 * Enforce peer reviews before changes are merged in shared repositories (i.e. GitHub's Pull Request reviews, pair programming),
 * Require conversation resolution before merging, 
 * Enforce policy to block sensitive data being pushed to Git, in order to store secrets and credentials safely in a public or private Git repository, use Mozilla SOPS CLI or SealedSecrets to protect it,
