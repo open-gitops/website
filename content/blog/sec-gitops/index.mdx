@@ -20,7 +20,8 @@ One of the other key benefits of GitOps could be more than just how to make the 
 GitOps provides:
 * a SINGLE source of truth for the state of a given environment,
 * a SINGLE process to introduce changes,
-* a SINGLE set of security scans,
+* a SINGLE source of truth to run security scans against intended state, allowing for best practices to be enforced before they reach the target environments,
+* a SINGLE source of truth to run security scans against previous states to identify when a security issue was introduced (i.e. git bisect),
 * a SINGLE set of tests, 
 * a SINGLE set of permissions and implement necessary controls and gates on this process to make sure that you can meet security requirements. 
 * ability to eliminate the need to make manual changes on environments.
