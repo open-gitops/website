@@ -83,7 +83,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
               Past <span className="text-accent">Events</span>
             </h2>
 
-            <Grid md={2} xl={3} className="pt-4 pb-6">
+            <Grid md={2} xl={3} className="pr-6 pt-4 pb-6 lg:gap-12">
               {pastEvents.map(
                 (item, index) =>
                   index < pastLimit && (
