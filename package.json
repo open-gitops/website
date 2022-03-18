@@ -13,7 +13,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages -d public -b gh-pages"
+    "deploy": "gatsby build && gh-pages -d public -b gh-pages",
+    "lint": "eslint ./src --ext .js"
   },
   "dependencies": {
     "@animated-burgers/burger-squeeze": "^1.1.2",
@@ -50,6 +51,8 @@
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.2.6",
+    "eslint": "^8.11.0",
+    "eslint-plugin-react": "^7.29.4",
     "gatsby-plugin-postcss": "^4.8.0",
     "gh-pages": "^3.2.3",
     "postcss": "^8.3.5",
