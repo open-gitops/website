@@ -12,7 +12,7 @@ const AboutPage = ({ location }) => {
     <Layout location={location}>
       <Seo
         title="Community"
-        description="Community Description"
+        description="Where to find the OpenGitOps project online."
         url={location.href}
         image={thumbnail}
       />
