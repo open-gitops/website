@@ -21,7 +21,8 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                 title
                 date(formatString: "MMM DD, YYYY")
                 location
-                url
+                attend
+                recordings
               }
             }
           }
@@ -63,7 +64,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                       date={item.node.frontmatter?.date}
                       title={item.node.frontmatter?.title}
                       location={item.node.frontmatter?.location}
-                      url={item.node.frontmatter?.url}
+                      url={item.node.frontmatter?.attend}
                     />
                   )
               )}
@@ -92,7 +93,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                       date={item.node.frontmatter?.date}
                       title={item.node.frontmatter?.title}
                       location={item.node.frontmatter?.location}
-                      url={item.node.frontmatter?.url}
+                      url={item.node.frontmatter?.recordings}
                     />
                   )
               )}
