@@ -12,11 +12,13 @@ const CardEvent = ({ date, title, location, url }) => {
         <div className="flex-1">{location}</div>
       </div>
 
-      <Button
-        to={url}
-        label="Attend"
-        className="mt-6 lg:!absolute lg:top-1/2 lg:-right-8 lg:mt-0 lg:transform lg:-translate-y-1/2"
-      />
+      {url && (
+        <Button
+          to={url}
+          label="Attend"
+          className="mt-6 lg:!absolute lg:top-1/2 lg:-right-8 lg:mt-0 lg:transform lg:-translate-y-1/2"
+        />
+      )}
     </div>
   )
 }
