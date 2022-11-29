@@ -6,18 +6,32 @@ import Title from "./ui/title"
 import NavToggler from "./ui/nav-toggler"
 import LogoIcon from "../svg/icon.svg"
 import LogoType from "../svg/logotype.svg"
+import Banner from "./ui/banner"
 
 const Header = ({ color }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
 
+  const hasBanner = true
+
   const headerClass = classNames({
-    "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": true,
+    "z-50 w-full lg:absolute": hasBanner,
+    "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": !hasBanner,
     "bg-light bg-opacity-50": color === "light",
     "bg-grad-from bg-opacity-90": color !== "light",
   })
 
   return (
     <header className={headerClass}>
+      {hasBanner && (
+        <div className="pb-4">
+          <Banner
+            emoji={"🎉"}
+            description={"Big news! Flux has graduated!"}
+            shortDescription={"Flux has graduated!"}
+            announcementLink={"#"}
+          />
+        </div>
+      )}
       <div className="px-4 flex items-center 2xl:px-12">
         <Link to="/" className="hover:text-night">
           <span className="sr-only">
