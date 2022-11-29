@@ -21,7 +21,8 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                 title
                 date(formatString: "MMM DD, YYYY")
                 location
-                url
+                attend
+                recordings
               }
             }
           }
@@ -30,11 +31,13 @@ const Events = ({ upcomingLimit, pastLimit }) => {
     `
   )
 
-  const upcomingtEvents = query.allMdx.edges.filter(event => {
-    const eventDate = event.node.frontmatter?.date
-    const startDate = new Date(eventDate)
-    return eventDate ? startDate > date : false
-  })
+  const upcomingEvents = query.allMdx.edges
+    .filter(event => {
+      const eventDate = event.node.frontmatter?.date
+      const startDate = new Date(eventDate)
+      return eventDate ? startDate > date : false
+    })
+    .sort((a, b) => a.node.frontmatter?.date < b.node.frontmatter?.date)
 
   const pastEvents = query.allMdx.edges.filter(event => {
     const eventDate = event.node.frontmatter?.date
@@ -47,7 +50,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
       <Map className="absolute -z-1 top-12 left-[40%] h-auto w-[140%] sm:w-[1700px] text-[#4d8dff]" />
 
       <Container>
-        {upcomingtEvents.length > 0 && (
+        {upcomingEvents.length > 0 && (
           <React.Fragment>
             <h2>
               Upcomings <span className="text-accent">Events</span>
@@ -55,7 +58,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
             <p>Today, {date.toDateString()}</p>
 
             <div className="mt-12 max-w-4xl space-y-7">
-              {upcomingtEvents.map(
+              {upcomingEvents.map(
                 (item, index) =>
                   index < upcomingLimit && (
                     <CardEvent
@@ -63,7 +66,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                       date={item.node.frontmatter?.date}
                       title={item.node.frontmatter?.title}
                       location={item.node.frontmatter?.location}
-                      url={item.node.frontmatter?.url}
+                      url={item.node.frontmatter?.attend}
                     />
                   )
               )}
@@ -92,7 +95,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                       date={item.node.frontmatter?.date}
                       title={item.node.frontmatter?.title}
                       location={item.node.frontmatter?.location}
-                      url={item.node.frontmatter?.url}
+                      url={item.node.frontmatter?.recordings}
                     />
                   )
               )}
