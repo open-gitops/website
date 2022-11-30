@@ -13,7 +13,7 @@ const BlogPage = ({ location, perLoad }) => {
       query {
         allMdx(
           filter: { fileAbsolutePath: { regex: "/(content/blog)/" } }
-          sort: { fields: [frontmatter___date], order: ASC }
+          sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
           edges {
