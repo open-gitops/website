@@ -27,7 +27,6 @@ const Header = ({ color, hasBanner }) => {
             description={"Big news! Flux has graduated!"}
             shortDescription={"Flux has graduated!"}
             announcementLink={"/blog/flux-cncf-graduation"}
-            // blank={true} // For external URLs, we can set blank to true
           />
         </div>
       )}

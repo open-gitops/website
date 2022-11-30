@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const Banner = ({ description, shortDescription, emoji, announcementLink, blank }) => {
+const Banner = ({ description, shortDescription, emoji, announcementLink }) => {
   return (
     <div className="bg-accent">
       <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
@@ -12,15 +12,11 @@ const Banner = ({ description, shortDescription, emoji, announcementLink, blank 
                 <>
                   <a
                     href={announcementLink}
-                    target={blank ? "_blank" : undefined}
-                    rel={blank ? "noopener noreferrer" : undefined}
                     className="md:hidden hover:underline hover:text-night">
                     {shortDescription}
                   </a>
                   <a
                     href={announcementLink}
-                    target={blank ? "_blank" : undefined}
-                    rel={blank ? "noopener noreferrer" : undefined}
                     className="hidden md:inline hover:underline hover:text-night">
                     {description}
                   </a>
