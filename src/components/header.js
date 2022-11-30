@@ -8,10 +8,8 @@ import LogoIcon from "../svg/icon.svg"
 import LogoType from "../svg/logotype.svg"
 import Banner from "./ui/banner"
 
-const Header = ({ color }) => {
+const Header = ({ color, hasBanner }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
-
-  const hasBanner = true
 
   const headerClass = classNames({
     "z-50 w-full lg:absolute": hasBanner,

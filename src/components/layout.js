@@ -22,7 +22,12 @@ const Layout = ({
 
       {decor && <BgElement side="right" className="top-24" />}
 
-      {!hideHeader && <Header color={headerColor} />}
+      {!hideHeader && (
+        <Header
+          color={headerColor}
+          hasBanner={!location.pathname.includes("/blog/") ? true : false}
+        />
+      )}
 
       <main id="main">
         {hero}

@@ -12,11 +12,15 @@ const Banner = ({ description, shortDescription, emoji, announcementLink }) => {
                 <>
                   <a
                     href={announcementLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="md:hidden hover:underline hover:text-night">
                     {shortDescription}
                   </a>
                   <a
                     href={announcementLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="hidden md:inline hover:underline hover:text-night">
                     {description}
                   </a>
