@@ -25,7 +25,7 @@ const Layout = ({
       {!hideHeader && (
         <Header
           color={headerColor}
-          hasBanner={!location.pathname.includes("/blog/") ? true : false}
+          hasBanner={!location.pathname.includes("/blog/flux-cncf-graduation") ? true : false}
         />
       )}
 
