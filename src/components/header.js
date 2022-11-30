@@ -26,7 +26,7 @@ const Header = ({ color, hasBanner }) => {
             emoji={"🎉"}
             description={"Big news! Flux has graduated!"}
             shortDescription={"Flux has graduated!"}
-            announcementLink={"#"}
+            announcementLink={"/blog/flux-cncf-graduation"}
           />
         </div>
       )}
