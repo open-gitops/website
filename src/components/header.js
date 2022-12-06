@@ -24,9 +24,9 @@ const Header = ({ color, hasBanner }) => {
         <div className="pb-4">
           <Banner
             emoji={"🎉"}
-            description={"Big news! Flux has graduated!"}
-            shortDescription={"Flux has graduated!"}
-            announcementLink={"/blog/flux-cncf-graduation"}
+            description={"Great news! Argo has graduated!"}
+            shortDescription={"Argo has graduated!"}
+            announcementLink={"https://www.cncf.io/announcements/2022/12/06/the-cloud-native-computing-foundation-announces-argo-has-graduated/"}
           />
         </div>
       )}
