@@ -23,10 +23,10 @@ const Header = ({ color, hasBanner }) => {
       {hasBanner && (
         <div className="pb-4">
           <Banner
-            emoji={"🎉"}
-            description={"Great news! Argo has graduated!"}
-            shortDescription={"Argo has graduated!"}
-            announcementLink={"https://www.cncf.io/announcements/2022/12/06/the-cloud-native-computing-foundation-announces-argo-has-graduated/"}
+            emoji={"📢"}
+            description={"GitOpsCon relocates to Open Source Summit"}
+            shortDescription={"GitOpsCon relocates to Open Source Summit"}
+            announcementLink={"/blog/cdcon+gitopscon-at-open-source-summit"}
           />
         </div>
       )}
