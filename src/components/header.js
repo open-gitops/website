@@ -12,7 +12,7 @@ const Header = ({ color, hasBanner }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
 
   const headerClass = classNames({
-    "z-50 w-full lg:absolute": hasBanner,
+    "z-50 w-full top-0 lg:absolute": hasBanner,
     "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": !hasBanner,
     "bg-light bg-opacity-50": color === "light",
     "bg-grad-from bg-opacity-90": color !== "light",
