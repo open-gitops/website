@@ -25,7 +25,7 @@ const BlogPostTemplate = ({ data, location }) => {
         url={currentURL}
       />
 
-      <Container narrow className="mt-24 lg:mt-32 space-y-4">
+      <Container narrow className="mt-24 lg:mt-48 space-y-4">
         <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
           <GatsbyImage
             image={

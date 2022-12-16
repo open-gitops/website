@@ -12,7 +12,7 @@ const Header = ({ color, hasBanner }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
 
   const headerClass = classNames({
-    "z-50 w-full lg:absolute": hasBanner,
+    "z-50 w-full top-0 lg:absolute": hasBanner,
     "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": !hasBanner,
     "bg-light bg-opacity-50": color === "light",
     "bg-grad-from bg-opacity-90": color !== "light",
@@ -23,10 +23,10 @@ const Header = ({ color, hasBanner }) => {
       {hasBanner && (
         <div className="pb-4">
           <Banner
-            emoji={"🎉"}
-            description={"Great news! Argo has graduated!"}
-            shortDescription={"Argo has graduated!"}
-            announcementLink={"https://www.cncf.io/announcements/2022/12/06/the-cloud-native-computing-foundation-announces-argo-has-graduated/"}
+            emoji={"📢"}
+            description={"GitOpsCon relocates to Open Source Summit"}
+            shortDescription={"GitOpsCon relocates to Open Source Summit"}
+            announcementLink={"/blog/cdcon+gitopscon-at-open-source-summit"}
           />
         </div>
       )}
