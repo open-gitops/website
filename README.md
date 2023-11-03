@@ -16,3 +16,12 @@ npm start
 yarn install
 yarn start
 ```
+
+**Docker setup**
+```shell
+# Build docker image from local filesystem
+docker build . --no-cache -t website:latest
+
+# Run docker image with mapping port 80 on your computer
+docker run -dit -p 0.0.0.0:80:8000 website:latest
+```
