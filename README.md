@@ -19,9 +19,9 @@ yarn start
 
 **Docker setup**
 ```shell
-# Build docker image from local filesystem
-docker build . --no-cache -t website:latest
+# Build container image from local filesystem with Node version as build arg
+docker build --build-arg NODE_VERSION=19 --no-cache -t website:<tag> -f Containerfile .
 
-# Run docker image with mapping port 80 on your computer
-docker run -dit -p 0.0.0.0:80:8000 website:latest
+# Run container image with mapping port 80 on your computer
+docker run -dit -p 80:8000 website:<tag>
 ```
