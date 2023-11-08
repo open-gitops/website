@@ -1,10 +1,10 @@
 # Use the NODE_VERSION argument to specify the Node.js version
-ARG NODE_VERSION
+ARG NODE_VERSION=20
 
 # Use the specified Node.js version as the base image
 FROM node:${NODE_VERSION}-alpine
 
-# Set Node args
+# Set Node args (do not set in node version 16 and below)
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apk add --update autoconf automake build-base libtool nasm pkgconf && \
