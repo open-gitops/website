@@ -22,6 +22,10 @@ module.exports = {
         url: "/community",
       },
       {
+        title: "Training",
+        url: "/training",
+      },
+      {
         title: "Get Involved",
         url: "/get-involved",
       },
@@ -102,6 +106,14 @@ module.exports = {
         path: "./content/principles",
       },
       __key: "principles",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "trainings",
+        path: "./content/trainings",
+      },
+      __key: "trainings",
     },
     {
       resolve: "gatsby-source-filesystem",
