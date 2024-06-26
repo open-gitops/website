@@ -24,9 +24,9 @@ const Header = ({ color, hasBanner }) => {
         <div className="pb-4">
           <Banner
             emoji={"🎉"}
-            description={"GitOpsCon is coming to Seattle (April 15)!"}
+            description={"OpenGitOps at KubeCon + CloudNativeCon + Open Source Summit + AI_dev China (21-23 AUGUST, 2024)"}
             shortDescription={"Register Here!"}
-            announcementLink={"https://events.linuxfoundation.org/gitopscon-north-america/"}
+            announcementLink={"https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/"}
           />
         </div>
       )}
