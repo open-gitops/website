@@ -10,6 +10,8 @@ Code for CNCF OpenGitOps project website.
 ```shell
 # if you like npm 
 npm i
+#Mitigates OpenSSL 3.0 Webpack incompatibility
+export NODE_OPTIONS=--openssl-legacy-provider
 npm start
 
 # Or if you like yarn
