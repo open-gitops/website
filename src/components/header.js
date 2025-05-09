@@ -24,7 +24,7 @@ const Header = ({ color, hasBanner }) => {
         <div className="pb-4">
           <Banner
             emoji={"🖥️"}
-            description={"Join us atGitOpsCon Europe 2025 VIRTUAL (May 28, 2025)"}
+            description={"Join us at GitOpsCon Europe 2025 VIRTUAL (May 28, 2025)"}
             shortDescription={"Register Here!"}
             announcementLink={"https://community.cncf.io/events/details/cncf-virtual-project-events-hosted-by-cncf-presents-gitopscon-europe-2025-virtual/"}
           />
