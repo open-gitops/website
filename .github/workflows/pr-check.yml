@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: '14'
           cache: npm
-          cache-key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: npm ci
       - name: Lint
