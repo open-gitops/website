@@ -1,5 +1,5 @@
 # Use the NODE_VERSION argument to specify the Node.js version
-ARG NODE_VERSION=20
+ARG NODE_VERSION=22
 
 # Use the specified Node.js version as the base image
 FROM node:${NODE_VERSION}-alpine
