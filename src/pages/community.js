@@ -2,40 +2,12 @@ import * as React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Social from "../components/ui/social"
-import { useStaticQuery, graphql } from "gatsby"
-import { Container, Grid } from "../components/ui/grid"
+import { Container } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
-import Members from "../components/members"
 import FoundingMembers from "../components/founding-members"
 import thumbnail from "../images/thumbnail-default.png"
 
 const AboutPage = ({ location }) => {
-
-  const members = useStaticQuery(graphql`
-    query  {
-      all: allMdx(
-        filter: { fileAbsolutePath: { regex: "/(content/members)/" },  frontmatter: {
-           current: {ne: false}
-        }}
-        sort: { order: ASC, fields: frontmatter___title }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              site
-              founding
-              logo {
-                publicURL
-              }
-            }
-          }
-        }
-       }
-    }
-  `)
-
-
   return (
     <Layout location={location}>
       <Seo
@@ -57,18 +29,6 @@ const AboutPage = ({ location }) => {
         <ContentWrapper prose={false}>
           <FoundingMembers />
         </ContentWrapper>
-
-        <h2 className="mb-10 text-center pt-12 md:pt-24">
-          Current <span className="text-accent">Members</span>
-        </h2>
-
-        <ContentWrapper prose={false}>
-          <Grid xs={2} md={3} lg={4}>
-            <Members members={members.all.edges} />
-          </Grid>
-        </ContentWrapper>
-
-
       </Container>
     </Layout>
   )
