@@ -6,10 +6,13 @@ import CardEventAlt from "./ui/card-event-alt"
 import Button from "./ui/button"
 import Map from "../svg/map.svg"
 
+const pageSize = 9
+
 const Events = ({ upcomingLimit, pastLimit }) => {
   const date = new Date()
   const [expanded, setExpanded] = React.useState(false)
   const [search, setSearch] = React.useState("")
+  const [page, setPage] = React.useState(0)
   const query = useStaticQuery(
     graphql`
       query {
@@ -49,11 +52,17 @@ const Events = ({ upcomingLimit, pastLimit }) => {
 
   const showAll = expanded || pastEvents.length <= pastLimit
   const term = search.trim().toLowerCase()
-  const shownPastEvents = showAll
+  // Search covers every past event; pagination applies to the matches.
+  const matchedPastEvents = showAll
     ? pastEvents.filter(({ node: { frontmatter: f } }) =>
         `${f?.title} ${f?.location} ${f?.date}`.toLowerCase().includes(term)
       )
     : pastEvents.slice(0, pastLimit)
+  const pageCount = Math.max(1, Math.ceil(matchedPastEvents.length / pageSize))
+  const currentPage = Math.min(page, pageCount - 1)
+  const shownPastEvents = showAll
+    ? matchedPastEvents.slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+    : matchedPastEvents
 
   return (
     <div className="relative pt-32 overflow-hidden">
@@ -100,7 +109,10 @@ const Events = ({ upcomingLimit, pastLimit }) => {
               <input
                 type="search"
                 value={search}
-                onChange={e => setSearch(e.target.value)}
+                onChange={e => {
+                  setSearch(e.target.value)
+                  setPage(0)
+                }}
                 placeholder="Search past events"
                 aria-label="Search past events"
                 className="mt-6 w-full max-w-md rounded-xl bg-dark/20 px-4 py-3 text-white placeholder-light/70 focus:outline-none focus:ring-2 focus:ring-accent"
@@ -121,6 +133,30 @@ const Events = ({ upcomingLimit, pastLimit }) => {
 
             {showAll && shownPastEvents.length === 0 && (
               <p className="mt-4">No events match &ldquo;{search}&rdquo;.</p>
+            )}
+
+            {showAll && pageCount > 1 && (
+              <nav
+                aria-label="Past events pages"
+                className="flex items-center justify-center gap-6 mt-4 lg:justify-start">
+                <button
+                  type="button"
+                  disabled={currentPage === 0}
+                  onClick={() => setPage(currentPage - 1)}
+                  className="font-bold text-accent hover:underline disabled:opacity-40 disabled:no-underline">
+                  &larr; Newer
+                </button>
+                <span>
+                  Page {currentPage + 1} of {pageCount}
+                </span>
+                <button
+                  type="button"
+                  disabled={currentPage === pageCount - 1}
+                  onClick={() => setPage(currentPage + 1)}
+                  className="font-bold text-accent hover:underline disabled:opacity-40 disabled:no-underline">
+                  Older &rarr;
+                </button>
+              </nav>
             )}
 
             {!showAll && (
