@@ -108,7 +108,7 @@ const IndexPage = ({ location }) => {
       </section>
 
       <section id="events">
-        <Events upcomingLimit={5} pastLimit={9} />
+        <Events upcomingLimit={5} pastLimit={3} />
       </section>
     </Layout>
   )
