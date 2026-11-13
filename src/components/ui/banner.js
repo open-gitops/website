@@ -1,7 +1,13 @@
 import { Link } from "gatsby"
 import * as React from "react"
 
-const Banner = ({ description, shortDescription, emoji, announcementLink }) => {
+const Banner = ({
+  description,
+  shortDescription,
+  emoji,
+  announcementLink,
+  cta,
+}) => {
   const isExternalLink =
     announcementLink.indexOf("http://") === 0 ||
     announcementLink.indexOf("https://") === 0
@@ -53,6 +59,16 @@ const Banner = ({ description, shortDescription, emoji, announcementLink }) => {
               )}
             </p>
           </div>
+
+          {cta && announcementLink && (
+            <a
+              href={announcementLink}
+              target={isExternalLink ? "_blank" : undefined}
+              rel={isExternalLink ? "noopener noreferrer" : undefined}
+              className="ml-3 shrink-0 rounded-lg bg-night px-4 py-2 font-display font-bold uppercase tracking-wider text-sm text-white hover:bg-dark hover:text-white">
+              {cta}
+            </a>
+          )}
         </div>
       </div>
     </div>
