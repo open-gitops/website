@@ -14,7 +14,7 @@ const Header = ({ color, hasBanner }) => {
     query {
       allMdx(
         filter: { internal: { contentFilePath: { regex: "/(content/events)/" } } }
-        sort: { frontmatter: { date: ASC } }
+        sort: [{ frontmatter: { date: ASC } }, { frontmatter: { title: ASC } }]
       ) {
         nodes {
           frontmatter {
@@ -32,13 +32,18 @@ const Header = ({ color, hasBanner }) => {
   const today = new Date().toISOString().slice(0, 10)
   const events = allMdx.nodes.map(n => n.frontmatter).filter(e => e.date)
   const nextEvent = events.find(e => e.date.slice(0, 10) >= today)
+  // Co-located events on the same day share the banner, e.g. ArgoCon + FluxCon.
+  const nextTitles = events
+    .filter(e => nextEvent && e.date === nextEvent.date)
+    .map(e => e.title)
+    .join(" & ")
   const lastRecorded = events
     .filter(e => e.recordings && e.date.slice(0, 10) < today)
     .pop()
   const banner = nextEvent
     ? {
-        description: `Join us for ${nextEvent.title}!`,
-        shortDescription: nextEvent.title,
+        description: `Join us for ${nextTitles}!`,
+        shortDescription: nextTitles,
         link: nextEvent.attend,
         cta: "Register",
       }
