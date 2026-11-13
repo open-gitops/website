@@ -8,6 +8,8 @@ import Map from "../svg/map.svg"
 
 const Events = ({ upcomingLimit, pastLimit }) => {
   const date = new Date()
+  const [expanded, setExpanded] = React.useState(false)
+  const [search, setSearch] = React.useState("")
   const query = useStaticQuery(
     graphql`
       query {
@@ -37,13 +39,21 @@ const Events = ({ upcomingLimit, pastLimit }) => {
       const startDate = new Date(eventDate)
       return eventDate ? startDate > date : false
     })
-    .sort((a, b) => a.node.frontmatter?.date < b.node.frontmatter?.date)
+    .reverse()
 
   const pastEvents = query.allMdx.edges.filter(event => {
     const eventDate = event.node.frontmatter?.date
     const startDate = new Date(eventDate)
     return eventDate ? startDate < date : false
   })
+
+  const showAll = expanded || pastEvents.length <= pastLimit
+  const term = search.trim().toLowerCase()
+  const shownPastEvents = showAll
+    ? pastEvents.filter(({ node: { frontmatter: f } }) =>
+        `${f?.title} ${f?.location} ${f?.date}`.toLowerCase().includes(term)
+      )
+    : pastEvents.slice(0, pastLimit)
 
   return (
     <div className="relative pt-32 overflow-hidden">
@@ -86,20 +96,41 @@ const Events = ({ upcomingLimit, pastLimit }) => {
               Past <span className="text-accent">Events</span>
             </h2>
 
+            {showAll && (
+              <input
+                type="search"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                placeholder="Search past events"
+                aria-label="Search past events"
+                className="mt-6 w-full max-w-md rounded-xl bg-dark/20 px-4 py-3 text-white placeholder-light/70 focus:outline-none focus:ring-2 focus:ring-accent"
+              />
+            )}
+
             <Grid md={2} xl={3} className="pr-6 pt-4 pb-6 lg:gap-12">
-              {pastEvents.map(
-                (item, index) =>
-                  index < pastLimit && (
-                    <CardEventAlt
-                      key={index}
-                      date={item.node.frontmatter?.date}
-                      title={item.node.frontmatter?.title}
-                      location={item.node.frontmatter?.location}
-                      url={item.node.frontmatter?.recordings}
-                    />
-                  )
-              )}
+              {shownPastEvents.map((item, index) => (
+                <CardEventAlt
+                  key={index}
+                  date={item.node.frontmatter?.date}
+                  title={item.node.frontmatter?.title}
+                  location={item.node.frontmatter?.location}
+                  url={item.node.frontmatter?.recordings}
+                />
+              ))}
             </Grid>
+
+            {showAll && shownPastEvents.length === 0 && (
+              <p className="mt-4">No events match "{search}".</p>
+            )}
+
+            {!showAll && (
+              <div className="text-center mt-6 lg:text-left">
+                <Button
+                  onClick={() => setExpanded(true)}
+                  label={`Show all ${pastEvents.length} past events`}
+                />
+              </div>
+            )}
           </React.Fragment>
         )}
       </Container>
