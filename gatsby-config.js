@@ -33,10 +33,6 @@ module.exports = {
         title: "Events",
         url: "/events",
       },
-      {
-        title: "Blog",
-        url: "/blog",
-      },
     ],
   },
   plugins: [
