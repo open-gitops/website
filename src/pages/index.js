@@ -5,6 +5,7 @@ import Seo from "../components/seo"
 import Events from "../components/events"
 import Principles from "../components/principles"
 import Testimonials from "../components/testimonials"
+import FoundingMembers from "../components/founding-members"
 import { Container } from "../components/ui/grid"
 import Button from "../components/ui/button"
 import BgElement from "../components/ui/bgElement"
@@ -104,6 +105,15 @@ const IndexPage = ({ location }) => {
               />
             </div>
           </div>
+        </Container>
+      </section>
+
+      <section id="founding-members" className="pt-24 md:pt-32">
+        <Container>
+          <h2 className="mb-10">
+            Founding <span className="text-accent">Members</span>
+          </h2>
+          <FoundingMembers />
         </Container>
       </section>
 
