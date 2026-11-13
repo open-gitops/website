@@ -60,11 +60,6 @@
     "logo": "cncf.svg"
   },
   {
-    "name": "Codefresh",
-    "site": "https://codefresh.io",
-    "logo": "codefresh.svg"
-  },
-  {
     "name": "Contino",
     "site": "https://www.contino.io",
     "logo": "contino.png"
@@ -193,6 +188,11 @@
     "name": "OCTO Technology",
     "site": "https://www.octo.com",
     "logo": "octo-technology.png"
+  },
+  {
+    "name": "Octopus Deploy",
+    "site": "https://octopus.com",
+    "logo": "octopus-deploy.svg"
   },
   {
     "name": "Orange Business",
