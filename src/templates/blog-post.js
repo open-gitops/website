@@ -9,7 +9,7 @@ import ContentWrapper from "../components/ui/content-wrapper"
 import Meta from "../components/ui/meta"
 import Share from "../components/ui/share"
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data, location, children }) => {
   const currentURL = location.href
   const post = data.mdx
   const shareImage =
@@ -26,13 +26,13 @@ const BlogPostTemplate = ({ data, location }) => {
       />
 
       <Container narrow className="mt-24 lg:mt-48 space-y-4">
-        <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
+        <div className="relative aspect-video rounded-2xl overflow-hidden">
           <GatsbyImage
             image={
               post.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData
             }
             alt={post.frontmatter?.title}
-            className="!absolute !rounded-2xl"
+            className="!absolute inset-0 h-full w-full !rounded-2xl"
           />
         </div>
 
@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data, location }) => {
           </header>
 
           <article itemScope itemType="http://schema.org/Article">
-            <MdxContent>{post.body}</MdxContent>
+            <MdxContent>{children}</MdxContent>
           </article>
         </ContentWrapper>
 
@@ -69,15 +69,10 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+  query BlogPostBySlug($id: String!) {
     mdx(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
-      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
@@ -92,18 +87,6 @@ export const pageQuery = graphql`
             )
           }
         }
-      }
-    }
-    previous: mdx(id: { eq: $previousPostId }) {
-      slug
-      frontmatter {
-        title
-      }
-    }
-    next: mdx(id: { eq: $nextPostId }) {
-      slug
-      frontmatter {
-        title
       }
     }
   }

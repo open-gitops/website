@@ -12,13 +12,15 @@ const BlogPage = ({ location, perLoad }) => {
     graphql`
       query {
         allMdx(
-          filter: { fileAbsolutePath: { regex: "/(content/blog)/" } }
-          sort: { fields: [frontmatter___date], order: DESC }
+          filter: { internal: { contentFilePath: { regex: "/(content/blog)/" } } }
+          sort: { frontmatter: { date: DESC } }
           limit: 1000
         ) {
           edges {
             node {
-              slug
+              fields {
+                slug
+              }
               excerpt(pruneLength: 160)
               frontmatter {
                 title
@@ -110,7 +112,7 @@ const BlogPage = ({ location, perLoad }) => {
                 title={item.node.frontmatter.title}
                 date={item.node.frontmatter.date}
                 excerpt={item.node.excerpt}
-                to={item.node.slug}
+                to={`/blog${item.node.fields.slug}`}
                 img={
                   item.node.frontmatter.thumbnail?.childImageSharp
                     .gatsbyImageData

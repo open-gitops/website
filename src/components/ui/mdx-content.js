@@ -1,5 +1,4 @@
 import * as React from "react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
 import Button from "./button"
@@ -11,7 +10,7 @@ const MdxContent = ({ children }) => {
   return (
     <React.Fragment>
       <MDXProvider components={shortcodes}>
-        <MDXRenderer>{children}</MDXRenderer>
+        {children}
       </MDXProvider>
     </React.Fragment>
   )

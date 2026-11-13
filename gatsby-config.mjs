@@ -1,4 +1,6 @@
-module.exports = {
+import remarkGfm from "remark-gfm"
+
+export default {
   pathPrefix: "/website",
   siteMetadata: {
     title: "OpenGitOps",
@@ -58,6 +60,9 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mdx",
       options: {
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: "gatsby-remark-images",

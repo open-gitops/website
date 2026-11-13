@@ -17,8 +17,8 @@ const Events = ({ upcomingLimit, pastLimit }) => {
     graphql`
       query {
         allMdx(
-          filter: { fileAbsolutePath: { regex: "/(content/events)/" } }
-          sort: { fields: [frontmatter___date], order: DESC }
+          filter: { internal: { contentFilePath: { regex: "/(content/events)/" } } }
+          sort: { frontmatter: { date: DESC } }
         ) {
           edges {
             node {
@@ -115,7 +115,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                 }}
                 placeholder="Search past events"
                 aria-label="Search past events"
-                className="mt-6 w-full max-w-md rounded-xl bg-dark/20 px-4 py-3 text-white placeholder-light/70 focus:outline-none focus:ring-2 focus:ring-accent"
+                className="mt-6 w-full max-w-md rounded-xl bg-dark/20 px-4 py-3 font-normal text-white placeholder-light/70 focus:outline-none focus:ring-2 focus:ring-accent"
               />
             )}
 
@@ -132,7 +132,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
             </Grid>
 
             {showAll && shownPastEvents.length === 0 && (
-              <p className="mt-4">No events match &ldquo;{search}&rdquo;.</p>
+              <p className="mt-4">No events match &quot;{search}&quot;.</p>
             )}
 
             {showAll && pageCount > 1 && (
