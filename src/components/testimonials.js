@@ -3,9 +3,9 @@ import { useStaticQuery, graphql, withPrefix } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import CardTestimonial from "../components/ui/card-testimonial"
 import images from "../data/testimonial-images.json"
+import useCrawl from "../hooks/use-crawl"
 
 const Testimonials = () => {
-  const track = React.useRef(null)
   const query = useStaticQuery(
     graphql`
       query {
@@ -25,34 +25,39 @@ const Testimonials = () => {
       }
     `
   )
+  const nodes = query.allMdx.nodes
+  const { track, scroll, pause, resume } = useCrawl(nodes.length)
 
-  // Scroll by one visible "page" of cards; CSS snap handles alignment.
-  const scroll = dir =>
-    track.current?.scrollBy({
-      left: dir * track.current.clientWidth,
-      behavior: "smooth",
+  // The cards render twice so the crawl can loop seamlessly; the copy is inert.
+  const cards = copy =>
+    nodes.map(node => {
+      const image = images[node.parent.name]
+      return (
+        <div
+          key={`${copy}-${node.parent.name}`}
+          inert={copy ? "" : undefined}
+          aria-hidden={copy ? "true" : undefined}
+          className="flex-shrink-0 w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+          <CardTestimonial image={image && withPrefix(`/testimonials/${image}`)}>
+            <MDXRenderer>{node.body}</MDXRenderer>
+          </CardTestimonial>
+        </div>
+      )
     })
 
   return (
     <div className="relative">
       <div
         ref={track}
-        className="no-scrollbar flex gap-6 overflow-x-auto pb-4"
-        style={{ scrollSnapType: "x mandatory" }}>
-        {query.allMdx.nodes.map(node => {
-          const image = images[node.parent.name]
-          return (
-            <div
-              key={node.parent.name}
-              className="flex-shrink-0 w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
-              style={{ scrollSnapAlign: "start" }}>
-              <CardTestimonial
-                image={image && withPrefix(`/testimonials/${image}`)}>
-                <MDXRenderer>{node.body}</MDXRenderer>
-              </CardTestimonial>
-            </div>
-          )
-        })}
+        onMouseEnter={pause}
+        onMouseLeave={() => resume(0)}
+        onFocus={pause}
+        onBlur={() => resume(0)}
+        onTouchStart={pause}
+        onTouchEnd={() => resume(2000)}
+        className="no-scrollbar flex gap-6 overflow-x-auto pb-4">
+        {cards(false)}
+        {cards(true)}
       </div>
 
       <div className="flex justify-center gap-4 mt-4 lg:justify-end">
