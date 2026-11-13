@@ -37,7 +37,7 @@ const Testimonials = () => {
     <div className="relative">
       <div
         ref={track}
-        className="flex gap-6 overflow-x-auto pb-4"
+        className="no-scrollbar flex gap-6 overflow-x-auto pb-4"
         style={{ scrollSnapType: "x mandatory" }}>
         {query.allMdx.nodes.map(node => {
           const image = images[node.parent.name]
