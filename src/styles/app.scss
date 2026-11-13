@@ -11,3 +11,11 @@ a:not([class]) {
   @apply text-accent;
 }
 
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
