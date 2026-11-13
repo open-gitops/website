@@ -7,11 +7,11 @@ const CardPost = ({ title, excerpt, img, date, to }) => {
     <Link
       to={to}
       className="group block bg-white shadow-xl rounded-2xl overflow-hidden transition hover:shadow-2xl">
-      <div className="aspect-w-16 aspect-h-9 overflow-hidden">
+      <div className="relative aspect-video overflow-hidden">
         <GatsbyImage
           image={img}
           alt={title}
-          className="!absolute transform transition rounded-t-2xl lg:group-hover:scale-110"
+          className="!absolute inset-0 h-full w-full transform transition rounded-t-2xl lg:group-hover:scale-110"
         />
       </div>
 

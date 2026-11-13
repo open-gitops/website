@@ -23,11 +23,7 @@ const typographyContent = {
           color: theme("colors.dark"),
         },
 
-        ul: {
-          "> li::before": {
-            backgroundColor: theme("colors.blue"),
-          },
-        },
+        "--tw-prose-bullets": theme("colors.blue"),
 
         img: {
           borderRadius: theme("borderRadius.lg"),
@@ -55,6 +51,7 @@ const typographyContent = {
               paddingRight: theme("padding.4"),
               textAlign: "center",
               verticalAlign: "middle",
+              fontWeight: theme("fontWeight.bold"),
               color: theme("colors.white"),
               backgroundColor: theme("colors.night"),
 
@@ -94,6 +91,11 @@ const typographyContent = {
     },
     lg: {
       css: {
+        // keep list text where the pre-0.5 typography plugin put it
+        "ul, ol": {
+          paddingLeft: "1.25em",
+        },
+
         h1: {
           fontSize: theme("fontSize.3xl[0]"),
           lineHeight: theme("fontSize.3xl[1]"),

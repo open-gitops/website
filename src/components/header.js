@@ -13,8 +13,8 @@ const Header = ({ color, hasBanner }) => {
   const { allMdx } = useStaticQuery(graphql`
     query {
       allMdx(
-        filter: { fileAbsolutePath: { regex: "/(content/events)/" } }
-        sort: { fields: [frontmatter___date], order: ASC }
+        filter: { internal: { contentFilePath: { regex: "/(content/events)/" } } }
+        sort: { frontmatter: { date: ASC } }
       ) {
         nodes {
           frontmatter {

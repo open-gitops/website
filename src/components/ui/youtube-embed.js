@@ -3,7 +3,7 @@ import * as React from "react"
 const YoutubeEmbed = ({ id, title }) => (
   <React.Fragment>
     {id && (
-      <div className="aspect-w-16 aspect-h-9 bg-light">
+      <div className="relative aspect-video bg-light">
         <iframe
           width="853"
           height="480"
