@@ -120,7 +120,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
             </Grid>
 
             {showAll && shownPastEvents.length === 0 && (
-              <p className="mt-4">No events match "{search}".</p>
+              <p className="mt-4">No events match &ldquo;{search}&rdquo;.</p>
             )}
 
             {!showAll && (
