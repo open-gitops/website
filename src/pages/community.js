@@ -6,6 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Container, Grid } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
 import Members from "../components/members"
+import FoundingMembers from "../components/founding-members"
 import thumbnail from "../images/thumbnail-default.png"
 
 const AboutPage = ({ location }) => {
@@ -31,26 +32,6 @@ const AboutPage = ({ location }) => {
           }
         }
        }
-
-      founding: allMdx(
-        filter: { fileAbsolutePath: { regex: "/(content/members)/" },  frontmatter: {
-          founding: {eq: true}
-        }}
-        sort: { order: ASC, fields: frontmatter___title }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              site
-              founding
-              logo {
-                publicURL
-              }
-            }
-          }
-        }
-      }
     }
   `)
 
@@ -74,9 +55,7 @@ const AboutPage = ({ location }) => {
         </h2>
 
         <ContentWrapper prose={false}>
-          <Grid xs={2} md={3} lg={4}>
-            <Members members={members.founding.edges} />
-          </Grid>
+          <FoundingMembers />
         </ContentWrapper>
 
         <h2 className="mb-10 text-center pt-12 md:pt-24">
