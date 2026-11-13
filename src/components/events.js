@@ -1,10 +1,11 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, withPrefix } from "gatsby"
 import { Grid, Container } from "./ui/grid"
 import CardEvent from "./ui/card-event"
 import CardEventAlt from "./ui/card-event-alt"
 import Button from "./ui/button"
 import Map from "../svg/map.svg"
+import photos from "../data/event-photos.json"
 
 const pageSize = 9
 
@@ -90,6 +91,41 @@ const Events = ({ upcomingLimit, pastLimit }) => {
                   )
               )}
             </div>
+
+            <figure className="mt-12">
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+                {photos.map(p => (
+                  <a
+                    key={p.file}
+                    href={p.page}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`${p.event} (CNCF, ${p.license})`}>
+                    <img
+                      src={withPrefix(`/event-photos/${p.file}`)}
+                      alt={p.alt}
+                      loading="lazy"
+                      className="w-full aspect-[3/2] object-cover rounded-xl transition hover:opacity-90"
+                    />
+                  </a>
+                ))}
+              </div>
+              <figcaption className="mt-3 text-sm">
+                Scenes from past ArgoCons. Photos:{" "}
+                <a
+                  href="https://www.flickr.com/photos/143247548@N03/"
+                  className="underline hover:text-accent">
+                  CNCF on Flickr
+                </a>
+                ,{" "}
+                <a
+                  href="https://creativecommons.org/licenses/by-nc/2.0/"
+                  className="underline hover:text-accent">
+                  CC BY-NC 2.0
+                </a>
+                .
+              </figcaption>
+            </figure>
 
             {Events.defaultProps.upcomingLimit !== upcomingLimit && (
               <div className="text-center mt-10 lg:text-left">
