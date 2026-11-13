@@ -10,7 +10,7 @@ const Testimonials = () => {
       query {
         allMdx(
           filter: { fileAbsolutePath: { regex: "/(content/testimonials)/" } }
-          limit: 6
+          limit: 9
         ) {
           edges {
             node {
