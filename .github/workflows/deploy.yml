@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "0 6 * * *" # daily rebuild so the header banner picks up the next event
+  workflow_dispatch:
 
 permissions:
   contents: write

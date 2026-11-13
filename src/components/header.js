@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import classNames from "classnames"
 import Nav from "./nav"
 import Title from "./ui/title"
@@ -10,23 +10,45 @@ import Banner from "./ui/banner"
 
 const Header = ({ color, hasBanner }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
+  const { allMdx } = useStaticQuery(graphql`
+    query {
+      allMdx(
+        filter: { fileAbsolutePath: { regex: "/(content/events)/" } }
+        sort: { fields: [frontmatter___date], order: ASC }
+      ) {
+        nodes {
+          frontmatter {
+            title
+            date
+            attend
+          }
+        }
+      }
+    }
+  `)
+  // Next event on or after today; the scheduled deploy rebuilds daily so this rolls forward.
+  const today = new Date().toISOString().slice(0, 10)
+  const nextEvent = allMdx.nodes
+    .map(n => n.frontmatter)
+    .find(e => e.date && e.date.slice(0, 10) >= today)
+  const showBanner = hasBanner && nextEvent
 
   const headerClass = classNames({
-    "z-50 w-full top-0 lg:absolute": hasBanner,
-    "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": !hasBanner,
+    "z-50 w-full top-0 lg:absolute": showBanner,
+    "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": !showBanner,
     "bg-light bg-opacity-50": color === "light",
     "bg-grad-from bg-opacity-90": color !== "light",
   })
 
   return (
     <header className={headerClass}>
-      {hasBanner && (
+      {showBanner && (
         <div className="pb-4">
           <Banner
-            emoji={"🇯🇵"}
-            description={"ArgoCon is headed to Japan! (July 28 in Yokohama)"}
-            shortDescription={"Submit your talk and register."}
-            announcementLink={"https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/co-located-events/argocon/"}
+            emoji={"🎉"}
+            description={`Join us for ${nextEvent.title}!`}
+            shortDescription={"Register now"}
+            announcementLink={nextEvent.attend || ""}
           />
         </div>
       )}
