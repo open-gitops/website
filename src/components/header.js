@@ -21,17 +21,34 @@ const Header = ({ color, hasBanner }) => {
             title
             date
             attend
+            recordings
           }
         }
       }
     }
   `)
   // Next event on or after today; the scheduled deploy rebuilds daily so this rolls forward.
+  // With nothing upcoming, fall back to the most recent event that has recordings.
   const today = new Date().toISOString().slice(0, 10)
-  const nextEvent = allMdx.nodes
-    .map(n => n.frontmatter)
-    .find(e => e.date && e.date.slice(0, 10) >= today)
-  const showBanner = hasBanner && nextEvent
+  const events = allMdx.nodes.map(n => n.frontmatter).filter(e => e.date)
+  const nextEvent = events.find(e => e.date.slice(0, 10) >= today)
+  const lastRecorded = events
+    .filter(e => e.recordings && e.date.slice(0, 10) < today)
+    .pop()
+  const banner = nextEvent
+    ? {
+        description: `Join us for ${nextEvent.title}!`,
+        shortDescription: nextEvent.title,
+        link: nextEvent.attend,
+        cta: "Register",
+      }
+    : lastRecorded && {
+        description: `Recordings for ${lastRecorded.title} are available`,
+        shortDescription: `${lastRecorded.title} recordings`,
+        link: lastRecorded.recordings,
+        cta: "Watch now",
+      }
+  const showBanner = hasBanner && banner
 
   const headerClass = classNames({
     "z-50 w-full top-0 lg:absolute": showBanner,
@@ -45,11 +62,11 @@ const Header = ({ color, hasBanner }) => {
       {showBanner && (
         <div className="pb-4">
           <Banner
-            emoji={"🎉"}
-            description={`Join us for ${nextEvent.title}!`}
-            shortDescription={nextEvent.title}
-            announcementLink={nextEvent.attend || ""}
-            cta="Register"
+            emoji={nextEvent ? "🎉" : "🎬"}
+            description={banner.description}
+            shortDescription={banner.shortDescription}
+            announcementLink={banner.link || ""}
+            cta={banner.cta}
           />
         </div>
       )}
