@@ -7,6 +7,7 @@ import Principles from "../components/principles"
 import Testimonials from "../components/testimonials"
 import FoundingMembers from "../components/founding-members"
 import TrainingCta from "../components/training-cta"
+import Adopters from "../components/adopters"
 import { Container } from "../components/ui/grid"
 import Button from "../components/ui/button"
 import BgElement from "../components/ui/bgElement"
@@ -107,6 +108,10 @@ const IndexPage = ({ location }) => {
             </div>
           </div>
         </Container>
+      </section>
+
+      <section id="adopters" className="pt-24 md:pt-32">
+        <Adopters />
       </section>
 
       <section id="founding-members" className="pt-24 md:pt-32">
