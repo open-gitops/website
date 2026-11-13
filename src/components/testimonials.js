@@ -20,7 +20,7 @@ const Testimonials = () => {
     <div className="relative">
       <div
         ref={track}
-        className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+        className="no-scrollbar flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
         {testimonials
           .keys()
           .sort()
