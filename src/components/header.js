@@ -47,8 +47,9 @@ const Header = ({ color, hasBanner }) => {
           <Banner
             emoji={"🎉"}
             description={`Join us for ${nextEvent.title}!`}
-            shortDescription={"Register now"}
+            shortDescription={nextEvent.title}
             announcementLink={nextEvent.attend || ""}
+            cta="Register"
           />
         </div>
       )}
