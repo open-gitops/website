@@ -12,13 +12,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       {
         allMdx(
-          filter: { fileAbsolutePath: { regex: "/(content/blog)/" } }
-          sort: { fields: [frontmatter___date], order: ASC }
+          filter: { internal: { contentFilePath: { regex: "/(content/blog)/" } } }
+          sort: { frontmatter: { date: ASC } }
           limit: 1000
         ) {
           nodes {
             id
-            slug
+            fields {
+              slug
+            }
+            internal {
+              contentFilePath
+            }
           }
         }
       }
@@ -36,25 +41,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.allMdx.nodes
 
   // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
-      createPage({
-        path: `/blog/${post.slug}`,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
+  posts.forEach(post => {
+    createPage({
+      path: `/blog${post.fields.slug}`,
+      component: `${blogPost}?__contentFilePath=${post.internal.contentFilePath}`,
+      context: { id: post.id },
     })
-  }
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

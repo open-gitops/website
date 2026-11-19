@@ -8,8 +8,8 @@ const TrainingCta = () => {
   const { allMdx } = useStaticQuery(graphql`
     query {
       allMdx(
-        filter: { fileAbsolutePath: { regex: "/(content/trainings)/" } }
-        sort: { order: ASC, fields: frontmatter___title }
+        filter: { internal: { contentFilePath: { regex: "/(content/trainings)/" } } }
+        sort: { frontmatter: { title: ASC } }
       ) {
         nodes {
           frontmatter {

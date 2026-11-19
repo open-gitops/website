@@ -1,23 +1,13 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import MdxContent from "../components/ui/mdx-content"
+import AboutContent from "../../content/pages/about.mdx"
 import { Container } from "../components/ui/grid"
 import ContentWrapper from "../components/ui/content-wrapper"
 import thumbnail from "../images/thumbnail-default.png"
 
 const AboutPage = ({ location }) => {
-  const query = useStaticQuery(
-    graphql`
-      query {
-        mdx(slug: { eq: "about" }) {
-          body
-        }
-      }
-    `
-  )
-
   return (
     <Layout location={location}>
       <Seo
@@ -33,7 +23,9 @@ const AboutPage = ({ location }) => {
         </h1>
 
         <ContentWrapper>
-          <MdxContent>{query.mdx.body}</MdxContent>
+          <MdxContent>
+            <AboutContent />
+          </MdxContent>
         </ContentWrapper>
       </Container>
     </Layout>

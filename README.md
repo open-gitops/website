@@ -8,13 +8,8 @@ Code for CNCF OpenGitOps project website.
 **👩‍💻 Local Development.**
 
 ```shell
-# if you like npm 
-npm i
+npm ci
 npm start
-
-# Or if you like yarn
-yarn install
-yarn start
 ```
 
 **Docker setup**
@@ -23,7 +18,7 @@ yarn start
 docker build --no-cache -t website:<tag> -f Containerfile .
 
 # Build container image from local filesystem with Node version as build arg
-docker build --build-arg NODE_VERSION=19 --no-cache -t website:<tag> -f Containerfile .
+docker build --build-arg NODE_VERSION=22 --no-cache -t website:<tag> -f Containerfile .
 
 # Run container image with mapping port 80 on your computer
 docker run -dit -p 8000:8000 website:<tag>
