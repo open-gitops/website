@@ -1,0 +1,297 @@
+[
+  {
+    "name": "Accenture",
+    "site": "https://www.accenture.com",
+    "logo": "accenture.svg"
+  },
+  {
+    "name": "Akuity",
+    "site": "https://akuity.io",
+    "logo": "akuity.svg"
+  },
+  {
+    "name": "Alibaba",
+    "site": "https://www.alibabagroup.com",
+    "logo": "alibaba.svg"
+  },
+  {
+    "name": "AppsFlyer",
+    "site": "https://www.appsflyer.com",
+    "logo": "appsflyer.svg"
+  },
+  {
+    "name": "Atos",
+    "site": "https://atos.net",
+    "logo": "atos.svg"
+  },
+  {
+    "name": "Avanade",
+    "site": "https://www.avanade.com",
+    "logo": "avanade.svg"
+  },
+  {
+    "name": "AWS",
+    "site": "https://aws.amazon.com",
+    "logo": "aws.svg"
+  },
+  {
+    "name": "BBC",
+    "site": "https://www.bbc.co.uk",
+    "logo": "bbc.svg"
+  },
+  {
+    "name": "Billie",
+    "site": "https://www.billie.io",
+    "logo": "billie.svg"
+  },
+  {
+    "name": "Cerence",
+    "site": "https://www.cerence.com",
+    "logo": "cerence.svg"
+  },
+  {
+    "name": "Cloud Native Architects",
+    "site": "https://cloudnativearchitects.com",
+    "logo": "cloud-native-architects.png"
+  },
+  {
+    "name": "CNCF",
+    "site": "https://www.cncf.io",
+    "logo": "cncf.svg"
+  },
+  {
+    "name": "Contino",
+    "site": "https://www.contino.io",
+    "logo": "contino.png"
+  },
+  {
+    "name": "Continuous Delivery Foundation",
+    "site": "https://cd.foundation",
+    "logo": "cdf.svg"
+  },
+  {
+    "name": "Crayon",
+    "site": "https://www.crayon.com",
+    "logo": "crayon.svg"
+  },
+  {
+    "name": "D2iQ",
+    "site": "https://d2iq.com",
+    "logo": "d2iq.svg"
+  },
+  {
+    "name": "DataGalaxy",
+    "site": "https://www.datagalaxy.com",
+    "logo": "datagalaxy.svg"
+  },
+  {
+    "name": "Deloitte",
+    "site": "https://www.deloitte.com",
+    "logo": "deloitte.svg"
+  },
+  {
+    "name": "DeployHub",
+    "site": "https://www.deployhub.io",
+    "logo": "deployhub.svg"
+  },
+  {
+    "name": "Deutsche Bahn",
+    "site": "https://www.deutschebahn.com",
+    "logo": "deutsche-bahn.svg"
+  },
+  {
+    "name": "Docker",
+    "site": "https://www.docker.com",
+    "logo": "docker.svg"
+  },
+  {
+    "name": "Dynatrace",
+    "site": "https://www.dynatrace.com",
+    "logo": "dynatrace.svg"
+  },
+  {
+    "name": "effx",
+    "site": "https://effx.com",
+    "logo": "effx.png"
+  },
+  {
+    "name": "Fairwinds",
+    "site": "https://www.fairwinds.com",
+    "logo": "fairwinds.svg"
+  },
+  {
+    "name": "Flanksource",
+    "site": "https://flanksource.com",
+    "logo": "flanksource.svg"
+  },
+  {
+    "name": "GitHub",
+    "site": "https://github.com",
+    "logo": "github.svg"
+  },
+  {
+    "name": "GitLab",
+    "site": "https://about.gitlab.com",
+    "logo": "gitlab.svg"
+  },
+  {
+    "name": "HashiCorp",
+    "site": "https://www.hashicorp.com",
+    "logo": "hashicorp.svg"
+  },
+  {
+    "name": "IBM",
+    "site": "https://www.ibm.com",
+    "logo": "ibm.svg"
+  },
+  {
+    "name": "Infoblox",
+    "site": "https://www.infoblox.com",
+    "logo": "infoblox.svg"
+  },
+  {
+    "name": "INNOQ",
+    "site": "https://www.innoq.com",
+    "logo": "innoq.svg"
+  },
+  {
+    "name": "Intuit",
+    "site": "https://www.intuit.com",
+    "logo": "intuit.svg"
+  },
+  {
+    "name": "Liquid Reply",
+    "site": "https://www.reply.com/liquid-reply",
+    "logo": "liquid-reply.svg"
+  },
+  {
+    "name": "Mambu",
+    "site": "https://mambu.com",
+    "logo": "mambu.svg"
+  },
+  {
+    "name": "Microsoft",
+    "site": "https://www.microsoft.com",
+    "logo": "microsoft.svg"
+  },
+  {
+    "name": "Morgan Stanley",
+    "site": "https://www.morganstanley.com",
+    "logo": "morgan-stanley.svg"
+  },
+  {
+    "name": "MSD Animal Health",
+    "site": "https://www.msd-animal-health.com",
+    "logo": "msd-animal-health.png"
+  },
+  {
+    "name": "OCTO Technology",
+    "site": "https://www.octo.com",
+    "logo": "octo-technology.png"
+  },
+  {
+    "name": "Octopus Deploy",
+    "site": "https://octopus.com",
+    "logo": "octopus-deploy.svg"
+  },
+  {
+    "name": "Orange Business",
+    "site": "https://www.orange-business.com",
+    "logo": "orange-business.svg"
+  },
+  {
+    "name": "PCCW Solutions",
+    "site": "https://www.pccwsolutions.com",
+    "logo": "pccw-solutions.svg"
+  },
+  {
+    "name": "PingCAP",
+    "site": "https://www.pingcap.com",
+    "logo": "pingcap.svg"
+  },
+  {
+    "name": "Rally Health",
+    "site": "https://www.rallyhealth.com",
+    "logo": "rally-health.svg"
+  },
+  {
+    "name": "rebaze",
+    "site": "https://www.rebaze.de",
+    "logo": "rebaze.png"
+  },
+  {
+    "name": "Red Hat",
+    "site": "https://www.redhat.com",
+    "logo": "redhat.svg"
+  },
+  {
+    "name": "Salesforce",
+    "site": "https://www.salesforce.com",
+    "logo": "salesforce.svg"
+  },
+  {
+    "name": "Schwarz IT",
+    "site": "https://it.schwarz",
+    "logo": "schwarz-it.svg"
+  },
+  {
+    "name": "Snyk",
+    "site": "https://snyk.io",
+    "logo": "snyk.svg"
+  },
+  {
+    "name": "Sopra Steria",
+    "site": "https://www.soprasteria.com",
+    "logo": "sopra-steria.svg"
+  },
+  {
+    "name": "Stytch",
+    "site": "https://stytch.com",
+    "logo": "stytch.svg"
+  },
+  {
+    "name": "Syncier",
+    "site": "https://www.syncier.com",
+    "logo": "syncier.png"
+  },
+  {
+    "name": "Thrivent",
+    "site": "https://www.thrivent.com",
+    "logo": "thrivent.svg"
+  },
+  {
+    "name": "University of Michigan",
+    "site": "https://umich.edu",
+    "logo": "umich.svg"
+  },
+  {
+    "name": "UPchieve",
+    "site": "https://upchieve.org",
+    "logo": "upchieve.png"
+  },
+  {
+    "name": "uShip",
+    "site": "https://www.uship.com",
+    "logo": "uship.svg"
+  },
+  {
+    "name": "Verifa",
+    "site": "https://verifa.io",
+    "logo": "verifa.svg"
+  },
+  {
+    "name": "VMware",
+    "site": "https://www.vmware.com",
+    "logo": "vmware.svg"
+  },
+  {
+    "name": "Weaveworks",
+    "site": "https://www.weave.works",
+    "logo": "weaveworks.svg"
+  },
+  {
+    "name": "Workday",
+    "site": "https://www.workday.com",
+    "logo": "workday.svg"
+  }
+]
