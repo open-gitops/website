@@ -8,10 +8,10 @@ const FoundingMembers = () => {
     query {
       founding: allMdx(
         filter: {
-          fileAbsolutePath: { regex: "/(content/members)/" }
+          internal: { contentFilePath: { regex: "/(content/members)/" } }
           frontmatter: { founding: { eq: true } }
         }
-        sort: { order: ASC, fields: frontmatter___title }
+        sort: { frontmatter: { title: ASC } }
       ) {
         edges {
           node {

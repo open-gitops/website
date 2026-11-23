@@ -1,5 +1,4 @@
 import * as React from "react"
-import axios from "axios"
 import classNames from "classnames"
 import StarIcon from "../../svg/star.svg"
 import GithubIcon from "../../svg/github-outlined.svg"
@@ -13,10 +12,11 @@ const Stargazers = ({ repo, className }) => {
       const endpoint = `https://api.github.com/repos/${repo}`
 
       try {
-        const res = await axios.get(endpoint)
-        if (200 === res.status) {
-          setStars(res.data.stargazers_count)
-          setUrl(res.data.html_url)
+        const res = await fetch(endpoint)
+        if (res.ok) {
+          const data = await res.json()
+          setStars(data.stargazers_count)
+          setUrl(data.html_url)
         }
       } catch (err) {
         console.error(err.message)

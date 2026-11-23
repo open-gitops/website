@@ -8,8 +8,8 @@ const CardMember = ({ to, logoSrc, title }) => {
           {title}
         </div>
 
-        <div className="aspect-w-4 aspect-h-3">
-          <div className="flex items-center justify-center">
+        <div className="relative aspect-[4/3]">
+          <div className="absolute inset-0 flex items-center justify-center">
             <img
               src={logoSrc}
               alt={title}

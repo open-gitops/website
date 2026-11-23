@@ -7,7 +7,7 @@ const PrinciplesItem = ({ title, order, children }) => {
         {order}
       </div>
       <h3 className="text-3xl sm:text-4xl text-accent">{title}</h3>
-      <p className="text-xl sm:text-2xl">{children}</p>
+      <div className="text-xl sm:text-2xl">{children}</div>
     </li>
   )
 }

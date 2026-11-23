@@ -12,8 +12,8 @@ export default function TrainingPage({ location }) {
     graphql`
       query {
         allMdx(
-          filter: { fileAbsolutePath: { regex: "/(content/trainings)/" } }
-          sort: { order: ASC, fields: frontmatter___title }
+          filter: { internal: { contentFilePath: { regex: "/(content/trainings)/" } } }
+          sort: { frontmatter: { title: ASC } }
           limit: 6
         ) {
           edges {

@@ -2,9 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme")
 const typographyContent = require("./src/plugins/tailwindcss/typography-content")
 
 module.exports = {
-  mode: "jit",
-  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       ...typographyContent,
@@ -71,12 +69,9 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/aspect-ratio"),
+    // legacy: keep pre-0.5 selector specificity so prose styles beat the global link styles
+    require("@tailwindcss/typography")({ target: "legacy" }),
     require("./src/plugins/tailwindcss/typography-theme"),
     require("./src/plugins/tailwindcss/global"),
     require("./src/plugins/tailwindcss/utilities"),
