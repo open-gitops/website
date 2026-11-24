@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Social from "../components/ui/social"
 import { Container } from "../components/ui/grid"
-import ContentWrapper from "../components/ui/content-wrapper"
 import FoundingMembers from "../components/founding-members"
 import thumbnail from "../images/thumbnail-default.png"
 
@@ -17,7 +16,7 @@ const AboutPage = ({ location }) => {
         image={thumbnail}
       />
 
-      <Container narrow className="pt-28 md:pt-48">
+      <Container narrow className="py-12 md:py-20">
         <h1 className="mb-8 lg:mb-12 text-center">Community</h1>
 
         <Social full className="mb-12 md:mb-24" />
@@ -26,9 +25,7 @@ const AboutPage = ({ location }) => {
           Founding <span className="text-accent">Members</span>
         </h2>
 
-        <ContentWrapper prose={false}>
-          <FoundingMembers />
-        </ContentWrapper>
+        <FoundingMembers className="justify-center" />
       </Container>
     </Layout>
   )

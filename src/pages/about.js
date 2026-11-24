@@ -17,7 +17,7 @@ const AboutPage = ({ location }) => {
         image={thumbnail}
       />
 
-      <Container narrow className="pt-28 md:pt-48">
+      <Container narrow className="py-12 md:py-20">
         <h1 className="mb-8 lg:mb-12 text-center">
           About <span className="text-accent">OpenGitOps</span>
         </h1>

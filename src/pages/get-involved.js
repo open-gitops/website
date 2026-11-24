@@ -18,7 +18,7 @@ const GetInvolvedPage = ({ location }) => {
         image={thumbnail}
       />
 
-      <Container narrow className="pt-28 md:pt-48">
+      <Container narrow className="py-12 md:py-20">
         <h1 className="mb-8 lg:mb-12 text-center">
           Get <span className="text-accent">Involved</span>
         </h1>

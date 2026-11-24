@@ -6,7 +6,7 @@ import thumbnail from "../images/thumbnail-default.png"
 
 const EventsPage = ({ location }) => {
   return (
-    <Layout location={location} decor={false}>
+    <Layout location={location}>
       <Seo
         title="Events"
         description="Events"
@@ -14,7 +14,7 @@ const EventsPage = ({ location }) => {
         image={thumbnail}
       />
 
-      <div className="md:pt-12">
+      <div>
         <Events />
       </div>
     </Layout>

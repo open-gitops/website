@@ -1,14 +1,15 @@
 import * as React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import classNames from "classnames"
 import Nav from "./nav"
 import Title from "./ui/title"
 import NavToggler from "./ui/nav-toggler"
+import ThemeSwitch from "./ui/theme-switch"
+import Button from "./ui/button"
 import LogoIcon from "../svg/icon.svg"
 import LogoType from "../svg/logotype.svg"
 import Banner from "./ui/banner"
 
-const Header = ({ color, hasBanner }) => {
+const Header = ({ hasBanner }) => {
   const [isNavOpen, setisNavOpen] = React.useState(false)
   const { allMdx } = useStaticQuery(graphql`
     query {
@@ -20,6 +21,8 @@ const Header = ({ color, hasBanner }) => {
           frontmatter {
             title
             date
+            shortDate: date(formatString: "MMM D")
+            location
             attend
             recordings
           }
@@ -40,61 +43,53 @@ const Header = ({ color, hasBanner }) => {
   const lastRecorded = events
     .filter(e => e.recordings && e.date.slice(0, 10) < today)
     .pop()
+  // "Kubecon - Barcelona, Spain" -> "Barcelona"
+  const city = nextEvent?.location?.split(" - ").pop().split(",")[0]
   const banner = nextEvent
     ? {
-        description: `Join us for ${nextTitles}!`,
-        shortDescription: nextTitles,
+        text: [nextTitles, nextEvent.shortDate, city].filter(Boolean).join(" · "),
         link: nextEvent.attend,
         cta: "Register",
       }
     : lastRecorded && {
-        description: `Recordings for ${lastRecorded.title} are available`,
-        shortDescription: `${lastRecorded.title} recordings`,
+        text: `Recordings for ${lastRecorded.title} are available`,
         link: lastRecorded.recordings,
         cta: "Watch now",
       }
-  const showBanner = hasBanner && banner
-
-  const headerClass = classNames({
-    "z-50 w-full top-0 lg:absolute": showBanner,
-    "fixed top-0 left-0 z-50 py-3 w-full lg:absolute lg:py-5": !showBanner,
-    "bg-light bg-opacity-50": color === "light",
-    "bg-grad-from bg-opacity-90": color !== "light",
-  })
 
   return (
-    <header className={headerClass}>
-      {showBanner && (
-        <div className="pb-4">
-          <Banner
-            emoji={nextEvent ? "🎉" : "🎬"}
-            description={banner.description}
-            shortDescription={banner.shortDescription}
-            announcementLink={banner.link || ""}
-            cta={banner.cta}
-          />
-        </div>
-      )}
-      <div className="px-4 flex items-center 2xl:px-12">
-        <Link to="/" className="hover:text-night">
-          <span className="sr-only">
-            <Title />
-          </span>
+    <header>
+      {hasBanner && banner && <Banner {...banner} />}
 
-          <div className="flex items-center">
-            <LogoIcon className="h-10 w-auto lg:h-14" />
-            <span>
-              <LogoType className="ml-2 w-auto h-6 hidden lg:block" />
+      <div className="bg-surface border-b border-line">
+        <div className="container flex items-center gap-2 py-3.5">
+          <Link
+            to="/"
+            className="flex items-center gap-3 min-h-[44px] text-ink hover:text-ink">
+            <span className="sr-only">
+              <Title />
             </span>
+            <LogoIcon className="w-[60px] h-10 text-mark" aria-hidden="true" />
+            <LogoType className="w-auto h-5" aria-hidden="true" />
+          </Link>
+
+          <Nav isOpen={isNavOpen} />
+
+          <div className="flex items-center gap-2 ml-auto lg:ml-4">
+            <ThemeSwitch />
+            <Button
+              to="/get-involved"
+              label="Get involved"
+              variant="accent"
+              size="sm"
+              className="hidden lg:inline-flex"
+            />
+            <NavToggler
+              onClick={() => setisNavOpen(!isNavOpen)}
+              isOpen={isNavOpen}
+            />
           </div>
-        </Link>
-
-        <Nav isOpen={isNavOpen} color={color} />
-
-        <NavToggler
-          onClick={() => setisNavOpen(!isNavOpen)}
-          isOpen={isNavOpen}
-        />
+        </div>
       </div>
     </header>
   )

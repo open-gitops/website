@@ -1,13 +1,19 @@
 import * as React from "react"
-import { useStaticQuery, graphql, withPrefix } from "gatsby"
-import { Grid, Container } from "./ui/grid"
-import CardEvent from "./ui/card-event"
-import CardEventAlt from "./ui/card-event-alt"
-import Button from "./ui/button"
-import Map from "../svg/map.svg"
+import { Link, useStaticQuery, graphql, withPrefix } from "gatsby"
+import { Container } from "./ui/grid"
+import Reveal from "./ui/reveal"
 import photos from "../data/event-photos.json"
 
 const pageSize = 9
+
+// "Kubecon - Barcelona, Spain" -> "KubeCon · Barcelona, Spain"
+const place = location =>
+  location?.replace(/kubecon/i, "KubeCon").replace(" - ", " · ")
+
+const sectionTitle =
+  "m-0 text-[clamp(32px,3.6vw,44px)] leading-[1.12] tracking-[-0.025em]"
+const textLink =
+  "inline-flex items-center min-h-[44px] font-semibold text-link underline underline-offset-4 hover:text-link-hover"
 
 const Events = ({ upcomingLimit, pastLimit }) => {
   const date = new Date()
@@ -19,7 +25,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
       query {
         allMdx(
           filter: { internal: { contentFilePath: { regex: "/(content/events)/" } } }
-          sort: { frontmatter: { date: DESC } }
+          sort: [{ frontmatter: { date: DESC } }, { frontmatter: { title: ASC } }]
         ) {
           edges {
             node {
@@ -43,7 +49,8 @@ const Events = ({ upcomingLimit, pastLimit }) => {
       const startDate = new Date(eventDate)
       return eventDate ? startDate > date : false
     })
-    .reverse()
+    // Soonest first; same-day events keep their title order.
+    .sort((a, b) => new Date(a.node.frontmatter.date) - new Date(b.node.frontmatter.date))
 
   const pastEvents = query.allMdx.edges.filter(event => {
     const eventDate = event.node.frontmatter?.date
@@ -51,6 +58,7 @@ const Events = ({ upcomingLimit, pastLimit }) => {
     return eventDate ? startDate < date : false
   })
 
+  const isHome = Events.defaultProps.upcomingLimit !== upcomingLimit
   const showAll = expanded || pastEvents.length <= pastLimit
   const term = search.trim().toLowerCase()
   // Search covers every past event; pagination applies to the matches.
@@ -66,147 +74,167 @@ const Events = ({ upcomingLimit, pastLimit }) => {
     : matchedPastEvents
 
   return (
-    <div className="relative pt-32 overflow-hidden">
-      <Map className="absolute -z-1 top-12 left-[40%] h-auto w-[140%] sm:w-[1700px] text-[#4d8dff]" />
+    <Container className="flex flex-col gap-8 py-16 md:py-[88px]">
+      {upcomingEvents.length > 0 && (
+        <React.Fragment>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+            <h2 className={sectionTitle}>Upcoming Events</h2>
+            {isHome && (
+              <Link to="/events" className={textLink}>
+                View all events
+              </Link>
+            )}
+          </div>
 
-      <Container>
-        {upcomingEvents.length > 0 && (
-          <React.Fragment>
-            <h2>
-              Upcomings <span className="text-accent">Events</span>
-            </h2>
-            <p>Today, {date.toDateString()}</p>
-
-            <div className="mt-12 max-w-4xl space-y-7">
-              {upcomingEvents.map(
-                (item, index) =>
-                  index < upcomingLimit && (
-                    <CardEvent
-                      key={index}
-                      date={item.node.frontmatter?.date}
-                      title={item.node.frontmatter?.title}
-                      location={item.node.frontmatter?.location}
-                      url={item.node.frontmatter?.attend}
-                    />
-                  )
-              )}
-            </div>
-
-            <figure className="mt-12">
-              <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-                {photos.map(p => (
+          <Reveal className="flex flex-col px-7 py-2 rounded-2xl bg-card border border-line">
+            {upcomingEvents.slice(0, upcomingLimit).map(({ node: { frontmatter: e } }) => (
+              <div
+                key={e.title}
+                className="flex flex-wrap items-center gap-x-6 gap-y-2 py-5 border-t border-line first:border-t-0">
+                <span className="flex-[0_0_120px] text-[15px] font-semibold text-date">
+                  {e.date}
+                </span>
+                <span className="flex-[1_1_220px] font-display font-bold text-xl">
+                  {e.title}
+                </span>
+                <span className="flex-[1_1_220px] text-base text-muted">
+                  {place(e.location)}
+                </span>
+                {e.attend && (
                   <a
-                    key={p.file}
-                    href={p.page}
+                    href={e.attend}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={`${p.event} (CNCF, ${p.license})`}>
-                    <img
-                      src={withPrefix(`/event-photos/${p.file}`)}
-                      alt={p.alt}
-                      loading="lazy"
-                      className="w-full aspect-[3/2] object-cover rounded-xl transition hover:opacity-90"
-                    />
+                    aria-label={`Attend ${e.title}`}
+                    className="btn btn-accent btn-sm">
+                    Attend
                   </a>
-                ))}
+                )}
               </div>
-              <figcaption className="mt-3 text-sm">
-                Scenes from past ArgoCons. Photos:{" "}
+            ))}
+          </Reveal>
+
+          <Reveal as="figure" className="flex flex-col gap-3">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+              {photos.map(p => (
                 <a
-                  href="https://www.flickr.com/photos/143247548@N03/"
-                  className="underline hover:text-accent">
-                  CNCF on Flickr
+                  key={p.file}
+                  href={p.page}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`${p.event} (CNCF, ${p.license})`}>
+                  <img
+                    src={withPrefix(`/event-photos/${p.file}`)}
+                    alt={p.alt}
+                    loading="lazy"
+                    className="w-full aspect-[3/2] object-cover rounded-xl transition-opacity hover:opacity-90"
+                  />
                 </a>
-                ,{" "}
-                <a
-                  href="https://creativecommons.org/licenses/by-nc/2.0/"
-                  className="underline hover:text-accent">
-                  CC BY-NC 2.0
-                </a>
-                .
-              </figcaption>
-            </figure>
-
-            {Events.defaultProps.upcomingLimit !== upcomingLimit && (
-              <div className="text-center mt-10 lg:text-left">
-                <Button to="/events" label="View all Events" />
-              </div>
-            )}
-          </React.Fragment>
-        )}
-
-        {pastEvents.length > 0 && (
-          <React.Fragment>
-            <h2 className="mt-20 text-3xl lg:mt-32">
-              Past <span className="text-accent">Events</span>
-            </h2>
-
-            {showAll && (
-              <input
-                type="search"
-                value={search}
-                onChange={e => {
-                  setSearch(e.target.value)
-                  setPage(0)
-                }}
-                placeholder="Search past events"
-                aria-label="Search past events"
-                className="mt-6 w-full max-w-md rounded-xl bg-dark/20 px-4 py-3 font-normal text-white placeholder-light/70 focus:outline-none focus:ring-2 focus:ring-accent"
-              />
-            )}
-
-            <Grid md={2} xl={3} className="pr-6 pt-4 pb-6 lg:gap-12">
-              {shownPastEvents.map((item, index) => (
-                <CardEventAlt
-                  key={index}
-                  date={item.node.frontmatter?.date}
-                  title={item.node.frontmatter?.title}
-                  location={item.node.frontmatter?.location}
-                  url={item.node.frontmatter?.recordings}
-                />
               ))}
-            </Grid>
+            </div>
+            <figcaption className="text-sm text-muted">
+              Scenes from past ArgoCons. Photos:{" "}
+              <a href="https://www.flickr.com/photos/143247548@N03/">
+                CNCF on Flickr
+              </a>
+              ,{" "}
+              <a href="https://creativecommons.org/licenses/by-nc/2.0/">
+                CC BY-NC 2.0
+              </a>
+              .
+            </figcaption>
+          </Reveal>
+        </React.Fragment>
+      )}
 
-            {showAll && shownPastEvents.length === 0 && (
-              <p className="mt-4">No events match &quot;{search}&quot;.</p>
-            )}
+      {pastEvents.length > 0 && (
+        <div className="flex flex-col">
+          {isHome ? (
+            <h3 className="mb-3 font-sans text-[13px] leading-normal font-semibold tracking-[0.08em] uppercase text-muted">
+              Past events
+            </h3>
+          ) : (
+            <h2 className={`${sectionTitle} mb-6`}>Past Events</h2>
+          )}
 
-            {showAll && pageCount > 1 && (
-              <nav
-                aria-label="Past events pages"
-                className="flex items-center justify-center gap-6 mt-4 lg:justify-start">
-                <button
-                  type="button"
-                  disabled={currentPage === 0}
-                  onClick={() => setPage(currentPage - 1)}
-                  className="font-bold text-accent hover:underline disabled:opacity-40 disabled:no-underline">
-                  &larr; Newer
-                </button>
-                <span>
-                  Page {currentPage + 1} of {pageCount}
+          {showAll && (
+            <input
+              type="search"
+              value={search}
+              onChange={e => {
+                setSearch(e.target.value)
+                setPage(0)
+              }}
+              placeholder="Search past events"
+              aria-label="Search past events"
+              className="mb-4 w-full max-w-md min-h-[44px] rounded-lg bg-card border border-line-strong px-4 text-ink placeholder:text-muted"
+            />
+          )}
+
+          <ul className="border-b border-line-strong">
+            {shownPastEvents.map(({ node: { frontmatter: e } }) => (
+              <li
+                key={e.title}
+                className="flex flex-wrap items-center gap-x-6 gap-y-1 py-3.5 border-t border-line-strong">
+                <span className="flex-[0_0_120px] text-[15px] text-muted">{e.date}</span>
+                <span className="flex-[1_1_220px] font-semibold">{e.title}</span>
+                <span className="flex-[1_1_220px] text-base text-muted">
+                  {place(e.location)}
+                  {e.recordings && (
+                    <React.Fragment>
+                      {" "}
+                      &middot;{" "}
+                      <a
+                        href={e.recordings}
+                        className="font-semibold text-link underline underline-offset-2 hover:text-link-hover">
+                        Recordings
+                      </a>
+                    </React.Fragment>
+                  )}
                 </span>
-                <button
-                  type="button"
-                  disabled={currentPage === pageCount - 1}
-                  onClick={() => setPage(currentPage + 1)}
-                  className="font-bold text-accent hover:underline disabled:opacity-40 disabled:no-underline">
-                  Older &rarr;
-                </button>
-              </nav>
-            )}
+              </li>
+            ))}
+          </ul>
 
-            {!showAll && (
-              <div className="text-center mt-6 lg:text-left">
-                <Button
-                  onClick={() => setExpanded(true)}
-                  label={`Show all ${pastEvents.length} past events`}
-                />
-              </div>
-            )}
-          </React.Fragment>
-        )}
-      </Container>
-    </div>
+          {showAll && shownPastEvents.length === 0 && (
+            <p className="mt-4">No events match &quot;{search}&quot;.</p>
+          )}
+
+          {showAll && pageCount > 1 && (
+            <nav
+              aria-label="Past events pages"
+              className="flex items-center gap-6 mt-2">
+              <button
+                type="button"
+                disabled={currentPage === 0}
+                onClick={() => setPage(currentPage - 1)}
+                className={`${textLink} disabled:opacity-40 disabled:no-underline`}>
+                &larr; Newer
+              </button>
+              <span className="text-muted">
+                Page {currentPage + 1} of {pageCount}
+              </span>
+              <button
+                type="button"
+                disabled={currentPage === pageCount - 1}
+                onClick={() => setPage(currentPage + 1)}
+                className={`${textLink} disabled:opacity-40 disabled:no-underline`}>
+                Older &rarr;
+              </button>
+            </nav>
+          )}
+
+          {!showAll && (
+            <button
+              type="button"
+              onClick={() => setExpanded(true)}
+              className={`${textLink} self-start mt-2`}>
+              Show all {pastEvents.length} past events
+            </button>
+          )}
+        </div>
+      )}
+    </Container>
   )
 }
 

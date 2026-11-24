@@ -1,75 +1,21 @@
-import { Link } from "gatsby"
 import * as React from "react"
 
-const Banner = ({
-  description,
-  shortDescription,
-  emoji,
-  announcementLink,
-  cta,
-}) => {
-  const isExternalLink =
-    announcementLink.indexOf("http://") === 0 ||
-    announcementLink.indexOf("https://") === 0
+const Banner = ({ text, link, cta }) => {
+  const isExternal = /^https?:\/\//.test(link || "")
 
   return (
-    <div className="bg-accent">
-      <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-center justify-center">
-          <div className="flex w-0 flex-1 items-center">
-            {emoji && <span className="flex p-2 text-4xl">{emoji}</span>}
-            <p className="ml-3 truncate font-bold text-2xl text-night">
-              {announcementLink ? (
-                isExternalLink ? (
-                  <>
-                    <a
-                      href={announcementLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="md:hidden hover:underline hover:text-night">
-                      {shortDescription}
-                    </a>
-                    <a
-                      href={announcementLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hidden md:inline hover:underline hover:text-night">
-                      {description}
-                    </a>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      to={announcementLink}
-                      className="md:hidden hover:underline hover:text-night">
-                      {shortDescription}
-                    </Link>
-                    <Link
-                      to={announcementLink}
-                      className="hidden md:inline hover:underline hover:text-night">
-                      {description}
-                    </Link>
-                  </>
-                )
-              ) : (
-                <>
-                  <span className="md:hidden">{shortDescription}</span>
-                  <span className="hidden md:inline">{description}</span>
-                </>
-              )}
-            </p>
-          </div>
-
-          {cta && announcementLink && (
-            <a
-              href={announcementLink}
-              target={isExternalLink ? "_blank" : undefined}
-              rel={isExternalLink ? "noopener noreferrer" : undefined}
-              className="ml-3 shrink-0 rounded-lg bg-night px-4 py-2 font-display font-bold uppercase tracking-wider text-sm text-white hover:bg-dark hover:text-white">
-              {cta}
-            </a>
-          )}
-        </div>
+    <div className="bg-bar text-white border-b border-line">
+      <div className="container flex flex-wrap items-center justify-center gap-x-4 py-0.5 text-[15px] font-medium text-center">
+        <span className="py-2.5">{text}</span>
+        {link && (
+          <a
+            href={link}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            className="inline-flex items-center min-h-[44px] font-semibold text-yellow underline underline-offset-2 hover:text-white">
+            {cta}
+          </a>
+        )}
       </div>
     </div>
   )

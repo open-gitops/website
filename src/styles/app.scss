@@ -1,16 +1,95 @@
 @import "mixins";
 
 @include fontFace("montserrat", "../../static/fonts/montserrat-800", 800);
-@include fontFace("avenir", "../../static/fonts/avenir-500", 500);
+
+@font-face {
+  font-family: "montserrat";
+  font-display: swap;
+  font-weight: 700;
+  src: url("../../static/fonts/montserrat-700.woff2") format("woff2");
+}
+
+@each $weight in 400, 500, 600 {
+  @font-face {
+    font-family: "inter";
+    font-display: swap;
+    font-weight: $weight;
+    src: url("../../static/fonts/inter-#{$weight}.woff2") format("woff2");
+  }
+}
+
+// Color tokens for light and dark mode. Brand constants: blue #5D96FC,
+// navy #042660, yellow #FFF95E. Yellow is never text on blue or white.
+:root {
+  --bg: #f5f8fe;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --text: #042660;
+  --muted: #2b4478;
+  --line: #d9e3f5;
+  --line-strong: #c5d3ec;
+  --link: #1f5fd6;
+  --link-hover: #042660;
+  --bar-bg: #042660;
+  --btn-bg: #042660;
+  --btn-text: #ffffff;
+  --ghost-border: #042660;
+  --panel-bg: #5d96fc;
+  --panel-border: transparent;
+  --numeral: rgba(4, 38, 96, 0.14);
+  --principle: #042660;
+  --h1-accent: #042660;
+  --h1-hl: linear-gradient(transparent 62%, #fff95e 62%);
+  --date: #042660;
+  --mark: #042660;
+  --sw-track: #042660;
+  --sw-knob: #fff95e;
+  --sw-icon: #042660;
+  --focus: #1f5fd6;
+  color-scheme: light;
+}
+
+:root.dark {
+  --bg: #042660;
+  --surface: #03194a;
+  --card: #0b3476;
+  --text: #ffffff;
+  --muted: #c9d8f7;
+  --line: rgba(255, 255, 255, 0.16);
+  --line-strong: rgba(255, 255, 255, 0.26);
+  --link: #fff95e;
+  --link-hover: #ffffff;
+  --bar-bg: #03194a;
+  --btn-bg: #fff95e;
+  --btn-text: #042660;
+  --ghost-border: rgba(255, 255, 255, 0.6);
+  --panel-bg: repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(93, 150, 252, 0) 0 43px,
+      rgba(93, 150, 252, 0.22) 43px 44px
+    ),
+    #03194a;
+  --panel-border: rgba(93, 150, 252, 0.35);
+  --numeral: rgba(93, 150, 252, 0.3);
+  --principle: #fff95e;
+  --h1-accent: #fff95e;
+  --h1-hl: none;
+  --date: #fff95e;
+  --mark: #5d96fc;
+  --sw-track: #5d96fc;
+  --sw-knob: #03194a;
+  --sw-icon: #c9d8f7;
+  --focus: #fff95e;
+  color-scheme: dark;
+}
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
 a:not([class]) {
-  @apply text-accent;
+  @apply text-link underline underline-offset-2 hover:text-link-hover;
 }
-
 
 .no-scrollbar {
   scrollbar-width: none;
@@ -18,4 +97,100 @@ a:not([class]) {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+// Cross-fade colors when the theme switches. Only while switching, so hover
+// and reveal transitions keep their own timing the rest of the time.
+.theme-fade,
+.theme-fade *,
+.theme-fade *::before {
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease, fill 0.3s ease !important;
+}
+
+// Hero entrance and logo float.
+@keyframes ogo-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ogo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.enter {
+  animation: ogo-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.float {
+  animation: ogo-float 7s ease-in-out 1s infinite;
+}
+
+// Scroll reveals. useReveal adds .reveal from JavaScript, so content stays
+// visible when scripts fail.
+.reveal:not(.in) {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.reveal {
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.18s ease;
+}
+
+.reveal.in:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.reveal.in:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.reveal.in:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.lift {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+  &:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(3, 25, 74, 0.22);
+    transition-delay: 0s !important;
+  }
+
+  &:active {
+    transform: none !important;
+    box-shadow: none;
+  }
+}
+
+// A revealed card that also lifts keeps the fade but hovers at lift speed.
+.reveal.in.lift {
+  transition: opacity 0.6s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal:not(.in) {
+    opacity: 1;
+    transform: none;
+  }
 }

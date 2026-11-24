@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import PrinciplesItem from "./ui/principles-item"
 import MdxContent from "../components/ui/mdx-content"
+import Reveal from "./ui/reveal"
 
 const bodies = require.context("../../content/principles", false, /\.mdx$/)
 
@@ -15,15 +15,13 @@ const Principles = () => {
           }
           sort: { frontmatter: { order: ASC } }
         ) {
-          edges {
-            node {
-              internal {
-                contentFilePath
-              }
-              frontmatter {
-                order
-                title
-              }
+          nodes {
+            internal {
+              contentFilePath
+            }
+            frontmatter {
+              order
+              title
             }
           }
         }
@@ -32,19 +30,28 @@ const Principles = () => {
   )
 
   return (
-    <ol className="mt-10 space-y-20">
-      {query.allMdx.edges.map((item, index) => {
-        const file = item.node.internal.contentFilePath.split("/").pop()
-        const Body = bodies(`./${file}`).default
+    <ol className="flex flex-col gap-16 min-w-0 pl-10 flex-[999_1_560px]">
+      {query.allMdx.nodes.map(({ internal, frontmatter }) => {
+        const Body = bodies(`./${internal.contentFilePath.split("/").pop()}`)
+          .default
         return (
-          <PrinciplesItem
-            key={index}
-            order={item.node.frontmatter?.order}
-            title={item.node.frontmatter?.title}>
-            <MdxContent>
-              <Body />
-            </MdxContent>
-          </PrinciplesItem>
+          <Reveal as="li" key={frontmatter.order} className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute -left-10 -top-11 font-display font-extrabold text-8xl leading-none text-numeral">
+              {frontmatter.order}
+            </div>
+            <div className="relative flex flex-col gap-2">
+              <h3 className="m-0 text-[clamp(28px,3vw,38px)] leading-[1.15] tracking-[-0.02em] text-principle">
+                {frontmatter.title}
+              </h3>
+              <div className="text-[21px] leading-normal">
+                <MdxContent>
+                  <Body />
+                </MdxContent>
+              </div>
+            </div>
+          </Reveal>
         )
       })}
     </ol>

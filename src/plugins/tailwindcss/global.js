@@ -3,36 +3,23 @@ const plugin = require("tailwindcss/plugin")
 const globalStyles = plugin(function ({ addBase, theme }) {
   const styles = {
     body: {
-      color: theme("colors.dark"),
+      color: "var(--text)",
+      backgroundColor: "var(--bg)",
       minHeight: "100vh",
-      fontWeight: 500,
-      backgroundImage: `linear-gradient(36deg, ${theme("colors.blue")}, ${theme(
-        "colors.blue"
-      )}, #6E9EF4)`,
+      fontSize: "17px",
+      lineHeight: 1.6,
     },
 
     a: {
       transitionProperty: theme("transitionProperty.colors"),
-      transitionTimingFunction: theme("transitionTimingFunction.linear"),
-      transitionDuration: theme("transitionDuration.100"),
-
-      "&:hover": {
-        color: theme("colors.accent"),
-      },
+      transitionDuration: theme("transitionDuration.150"),
     },
 
-    "a, button, input": {
-      outline: "none",
-
-      "&:focus": {
-        outline: "none",
-        boxShadow: "0 0 0 calc(3px) rgba(255, 249, 94, 0.5)",
+    "a, button, input, [tabindex]": {
+      "&:focus-visible": {
+        outline: "3px solid var(--focus)",
+        outlineOffset: "2px",
       },
-    },
-
-    "::-moz-selection": {
-      backgroundColor: theme("colors.accent"),
-      color: theme("colors.dark"),
     },
 
     "::selection": {
