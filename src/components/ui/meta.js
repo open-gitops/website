@@ -3,7 +3,7 @@ import CalendarIcon from "../../svg/calendar.svg"
 
 const Meta = ({ author, date }) => {
   return (
-    <div className="flex flex-wrap items-center w-full p-6 text-dark bg-white shadown-2xl rounded-2xl">
+    <div className="flex flex-wrap items-center w-full p-6 text-ink bg-card border border-line rounded-2xl">
       <div className="mb-1 w-full sm:mb-0 sm:w-auto">
         By <span className="font-display">{author}</span>
       </div>

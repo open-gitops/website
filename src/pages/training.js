@@ -46,11 +46,11 @@ export default function TrainingPage({ location }) {
         url={location.href}
         image={thumbnail}
       />
-      <Container className="pt-28 lg:pt-48">
+      <Container className="py-12 md:py-20">
         <h1 className="mb-8 lg:mb-12 text-center lg:text-left">
           Training & Certification
         </h1>
-        <Grid md={2} lg={3}>
+        <Grid md={2} lg={3} className="gap-6">
           {query.allMdx.edges.map((item, index) => {
             return (
               <CardPost

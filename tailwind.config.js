@@ -3,12 +3,15 @@ const typographyContent = require("./src/plugins/tailwindcss/typography-content"
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       ...typographyContent,
+      // Content tops out at 1200px including the 32px gutters.
       container: {
         center: true,
-        padding: "1rem",
+        padding: { DEFAULT: "1rem", md: "2rem" },
+        screens: { sm: "640px", md: "768px", lg: "1024px", xl: "1200px" },
       },
       colors: {
         accent: "#fff95e",
@@ -17,14 +20,35 @@ module.exports = {
         dark: "#042660",
         light: "#d5dcf2",
         gray: "#777ea1",
+        yellow: "#fff95e",
+        // Theme tokens from src/styles/app.scss; they switch with dark mode.
+        ground: "var(--bg)",
+        surface: "var(--surface)",
+        card: "var(--card)",
+        ink: "var(--text)",
+        muted: "var(--muted)",
+        line: { DEFAULT: "var(--line)", strong: "var(--line-strong)" },
+        link: { DEFAULT: "var(--link)", hover: "var(--link-hover)" },
+        bar: "var(--bar-bg)",
+        btn: { DEFAULT: "var(--btn-bg)", ink: "var(--btn-text)" },
+        ghost: "var(--ghost-border)",
+        numeral: "var(--numeral)",
+        principle: "var(--principle)",
+        highlight: "var(--h1-accent)",
+        date: "var(--date)",
+        mark: "var(--mark)",
         transparent: {
           DEFAULT: "rgba(255, 255, 255, 0)",
           blue: "rgba(84, 141, 246, 0)",
         },
       },
       fontFamily: {
-        sans: ["avenir", ...defaultTheme.fontFamily.sans],
+        sans: ["inter", ...defaultTheme.fontFamily.sans],
         display: ["montserrat", ...defaultTheme.fontFamily.sans],
+      },
+      // Highlight text adapts to the mode: link blue on light, yellow on navy.
+      textColor: {
+        accent: "var(--link)",
       },
       fontSize: {
         xs: [".75rem", "1rem"],

@@ -1,8 +1,9 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Container, Grid } from "./ui/grid"
+import { Container } from "./ui/grid"
 import CardPost from "./ui/card-post"
 import Button from "./ui/button"
+import Reveal from "./ui/reveal"
 
 const TrainingCta = () => {
   const { allMdx } = useStaticQuery(graphql`
@@ -41,17 +42,19 @@ const TrainingCta = () => {
     .slice(0, 3)
 
   return (
-    <Container>
-      <h2 className="mb-4">
-        Training & <span className="text-accent">Certification</span>
-      </h2>
-      <p className="mb-10 max-w-3xl text-xl">
-        Learn GitOps from the community: get certified as a GitOps Associate,
-        or pick from {allMdx.nodes.length} courses covering fundamentals,
-        Argo CD and GitOps at scale.
-      </p>
+    <Container className="flex flex-col gap-8 py-16 md:py-[88px]">
+      <Reveal className="flex flex-col gap-3 max-w-[760px]">
+        <h2 className="m-0 text-[clamp(32px,3.6vw,44px)] leading-[1.12] tracking-[-0.025em]">
+          Training &amp; Certification
+        </h2>
+        <p className="text-[19px] text-muted">
+          Learn GitOps from the community: get certified as a GitOps Associate,
+          or pick from {allMdx.nodes.length} courses covering fundamentals,
+          Argo CD and GitOps at scale.
+        </p>
+      </Reveal>
 
-      <Grid md={2} lg={3}>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {teasers.map(t => (
           <CardPost
             key={t.site}
@@ -60,12 +63,13 @@ const TrainingCta = () => {
             img={t.thumbnail?.childImageSharp.gatsbyImageData}
           />
         ))}
-      </Grid>
+      </div>
 
       <Button
         to="/training"
         label="Browse all training"
-        className="w-full mt-12 md:w-auto"
+        variant="ghost"
+        className="self-start"
       />
     </Container>
   )

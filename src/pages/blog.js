@@ -101,10 +101,10 @@ const BlogPage = ({ location, perLoad }) => {
         image={thumbnail}
       />
 
-      <Container className="pt-28 lg:pt-48">
+      <Container className="py-12 md:py-20">
         <h1 className="mb-8 lg:mb-12 text-center lg:text-left">Blog</h1>
 
-        <Grid md={2} lg={3}>
+        <Grid md={2} lg={3} className="gap-6">
           {posts.map((item, index) => {
             return (
               <CardPost
@@ -123,7 +123,7 @@ const BlogPage = ({ location, perLoad }) => {
         </Grid>
 
         <div ref={loadRef} className="text-center pt-12">
-          <BeatLoader color="white" loading={hasMore} size={20} />
+          <BeatLoader color="#5d96fc" loading={hasMore} size={20} />
         </div>
       </Container>
     </Layout>

@@ -25,7 +25,7 @@ const BlogPostTemplate = ({ data, location, children }) => {
         url={currentURL}
       />
 
-      <Container narrow className="mt-24 lg:mt-48 space-y-4">
+      <Container narrow className="py-12 md:py-20 space-y-4">
         <div className="relative aspect-video rounded-2xl overflow-hidden">
           <GatsbyImage
             image={
@@ -49,8 +49,8 @@ const BlogPostTemplate = ({ data, location, children }) => {
         </ContentWrapper>
 
         <footer>
-          <div className="p-8 text-center bg-white rounded-2xl shadow-2xl">
-            <h4 className="mb-5 font-display text-base text-dark uppercase tracking-widest">
+          <div className="p-8 text-center bg-card border border-line rounded-2xl">
+            <h4 className="mb-5 font-display text-base text-ink uppercase tracking-widest">
               Share
             </h4>
 

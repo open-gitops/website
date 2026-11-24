@@ -3,24 +3,28 @@ const typographyContent = {
     DEFAULT: {
       css: {
         a: null,
-        color: theme("colors.dark"),
+        color: "var(--text)",
+        "--tw-prose-bold": "var(--text)",
+        "--tw-prose-counters": "var(--muted)",
+        "--tw-prose-hr": "var(--line)",
+        "--tw-prose-quote-borders": "var(--line-strong)",
+        "--tw-prose-code": "var(--text)",
+        "--tw-prose-th-borders": "var(--line-strong)",
+        "--tw-prose-td-borders": "var(--line)",
 
-        "a:not(.btn, .stargazers)": {
-          color: theme("colors.blue"),
-          textDecoration: "none",
-          borderBottomWidth: "2px",
-          backgroundColor: "rgba(93,150,252,.1)",
-          borderBottomColor: "rgba(93,150,252,.4)",
+        "a:not(.btn)": {
+          color: "var(--link)",
+          textUnderlineOffset: "3px",
 
           "&:hover": {
-            backgroundColor: "rgba(93,150,252,.2)",
-            borderBottomColor: "rgba(93,150,252,.8)",
+            color: "var(--link-hover)",
           },
         },
 
         "h1, h2, h3, h4, h5, h6": {
           fontWeight: theme("fontWeight.extrabold"),
-          color: theme("colors.dark"),
+          color: "var(--text)",
+          letterSpacing: "-0.02em",
         },
 
         "--tw-prose-bullets": theme("colors.blue"),
@@ -33,12 +37,12 @@ const typographyContent = {
           borderColor: theme("colors.blue"),
 
           p: {
-            color: theme("colors.dark"),
+            color: "var(--text)",
           },
 
           cite: {
             fontSize: theme("fontSize.xs[0]"),
-            color: theme("colors.gray"),
+            color: "var(--muted)",
           },
         },
 
@@ -68,7 +72,7 @@ const typographyContent = {
           tbody: {
             tr: {
               "&:nth-child(even)": {
-                backgroundColor: "#fafafa",
+                backgroundColor: "var(--bg)",
               },
             },
 

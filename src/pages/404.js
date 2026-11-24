@@ -15,13 +15,13 @@ const NotFoundPage = ({ location }) => {
         image={thumbnail}
       />
 
-      <Container narrow className="pt-28 md:pt-32 text-center">
+      <Container narrow className="py-12 md:py-20 text-center">
         <title>Not found</title>
         <h1 className="mb-8 lg:mb-12">
           Page <span className="text-accent">not found</span>
         </h1>
         <p>Sorry, we couldn’t find what you were looking for.</p>
-        <Button to="/" className="mt-6" label="Go home" />.
+        <Button to="/" className="mt-6" label="Go home" />
       </Container>
     </Layout>
   )

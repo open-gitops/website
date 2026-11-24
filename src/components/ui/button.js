@@ -3,48 +3,30 @@ import classNames from "classnames"
 import { Link } from "gatsby"
 import { linkRegex } from "../../helpers"
 
-const Button = ({ to, label, className, onClick }) => {
-  const regex = linkRegex()
-  const btnClasses = classNames({
-    btn: true,
-    [className]: className,
+// variant: "primary" (default), "ghost" (outline) or "accent" (always yellow)
+const Button = ({ to, label, className, onClick, variant, size }) => {
+  const classes = classNames("btn", className, {
+    "btn-ghost": variant === "ghost",
+    "btn-accent": variant === "accent",
+    "btn-sm": size === "sm",
   })
-
-  const inner = (
-    <div className="btn--top">
-      <div className="btn--label">{label}</div>
-      <div className="btn--border btn--border-left"></div>
-      <div className="btn--border btn--border-top"></div>
-      <div className="btn--border btn--border-right"></div>
-      <div className="btn--border btn--border-bottom"></div>
-    </div>
-  )
 
   if (onClick) {
     return (
-      <button type="button" onClick={onClick} className={btnClasses}>
-        <div className="btn--bottom"></div>
-        {inner}
+      <button type="button" onClick={onClick} className={classes}>
+        {label}
       </button>
     )
   }
 
-  return (
-    <React.Fragment>
-      {regex.test(to) && (
-        <a href={to} className={btnClasses}>
-          <div className="btn--bottom"></div>
-          {inner}
-        </a>
-      )}
-
-      {!regex.test(to) && (
-        <Link to={to} className={btnClasses}>
-          <div className="btn--bottom"></div>
-          {inner}
-        </Link>
-      )}
-    </React.Fragment>
+  return linkRegex().test(to) ? (
+    <a href={to} className={classes}>
+      {label}
+    </a>
+  ) : (
+    <Link to={to} className={classes}>
+      {label}
+    </Link>
   )
 }
 
